@@ -21,7 +21,6 @@ type Node struct {
 }
 
 func NewNode(id int64) *Node {
-
 	srvChan := make(chan interface{}, MaxMsgNO)
 	conChan := make(chan *message.RequestRecord, MaxMsgNO)
 	rChan := make(chan *message.Reply, MaxMsgNO)
@@ -43,12 +42,12 @@ func NewNode(id int64) *Node {
 }
 
 func (n *Node) Run() {
-
 	fmt.Printf("\nConsensus node[%d] start primary[%t]......\n", n.NodeID, n.NodeID == n.consensus.PrimaryID)
 
 	go n.consensus.StartConsensus(n.signal)
 	go n.service.WaitRequest(n.signal)
 	go n.Dispatch()
+
 	s := <-n.signal
 	fmt.Printf("Node[%d] exit because of:%s", n.NodeID, s)
 }
@@ -74,6 +73,7 @@ func (n *Node) Dispatch() {
 				continue
 			}
 			n.consensus.ResetState(reply)
+
 		case reply := <-n.directReplyChan:
 			if err := n.service.DirectReply(reply); err != nil {
 				fmt.Println(err)

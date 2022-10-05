@@ -219,6 +219,7 @@ func (s *StateEngine) getOrCreateLog(seq int64) *NormalLog {
 }
 
 func (s *StateEngine) InspireConsensus(request *message.Request) error {
+	//TODO:: check signature of Request
 	s.CurSequence++
 	newSeq := s.CurSequence
 	request.SeqID = newSeq
@@ -227,6 +228,7 @@ func (s *StateEngine) InspireConsensus(request *message.Request) error {
 		return err
 	}
 	client.saveRequest(request)
+
 	cMsg := message.CreateConMsg(message.MTRequest, request)
 	if err := s.p2pWire.BroadCast(cMsg); err != nil {
 		return err
@@ -241,6 +243,7 @@ func (s *StateEngine) InspireConsensus(request *message.Request) error {
 	log := s.getOrCreateLog(newSeq)
 	log.PrePrepare = ppMsg
 	log.clientID = request.ClientID
+	
 	cMsg = message.CreateConMsg(message.MTPrePrepare, ppMsg)
 	if err := s.p2pWire.BroadCast(cMsg); err != nil {
 		return err
@@ -287,7 +290,6 @@ it has request m in its log, it enters the prepare phase by multicasting a PREPA
 replicas; in addition, it adds both the PRE-PREPARE and PREPARE messages to its log.
 */
 func (s *StateEngine) idle2PrePrepare(ppMsg *message.PrePrepare) (err error) {
-
 	fmt.Printf("======>[idle2PrePrepare]Current sequence[%d]\n", ppMsg.SequenceID)
 
 	//TODO:: check signature of of pre-Prepare message
@@ -346,7 +348,6 @@ are correct, their view number equals the replica’s current view, and their se
 */
 
 func (s *StateEngine) prePrepare2Prepare(prepare *message.Prepare) (err error) {
-
 	fmt.Printf("======>[prePrepare2Prepare]Current sequence[%d]\n", prepare.SequenceID)
 
 	//TODO::signature check
@@ -378,6 +379,7 @@ func (s *StateEngine) prePrepare2Prepare(prepare *message.Prepare) (err error) {
 		return fmt.Errorf("[Prepare]:=>not same with pre-Prepare message")
 	}
 	log.Prepare[prepare.NodeID] = prepare
+	fmt.Println(len(log.Prepare))
 	if len(log.Prepare) < 2*message.MaxFaultyNode { //not different replica, just simple no
 		return nil
 	}
@@ -435,15 +437,15 @@ func (s *StateEngine) prepare2Commit(commit *message.Commit) (err error) {
 
 	log, ok := s.msgLogs[commit.SequenceID]
 	if !ok {
-		return fmt.Errorf("======>[prePrepare2Prepare]:=>havn't got log for message(%d) yet", commit.SequenceID)
+		return fmt.Errorf("======>[prepare2Commit]:=>havn't got log for message(%d) yet", commit.SequenceID)
 	}
 	if log.Stage != Prepared {
-		return fmt.Errorf("======>[prePrepare2Prepare] current[seq=%d] state isn't PrePrepared:[%s]\n", commit.SequenceID, log.Stage)
+		return fmt.Errorf("======>[prepare2Commit] current[seq=%d] state isn't Committed:[%s]\n", commit.SequenceID, log.Stage)
 	}
 
 	ppMsg := log.PrePrepare
 	if ppMsg == nil {
-		return fmt.Errorf("======>[prePrepare2Prepare]:=>havn't got pre-Prepare message(%d) yet", commit.SequenceID)
+		return fmt.Errorf("======>[prepare2Commit]:=>havn't got pre-Prepare message(%d) yet", commit.SequenceID)
 	}
 
 	if ppMsg.ViewID != commit.ViewID ||
@@ -486,6 +488,7 @@ func (s *StateEngine) procConsensusMsg(msg *message.ConMessage) (err error) {
 			return fmt.Errorf("======>[procConsensusMsg] Invalid[%s] request message[%s]\n", err, msg)
 		}
 		return s.rawRequest(request)
+
 	case message.MTPrePrepare:
 		prePrepare := &message.PrePrepare{}
 		if err := json.Unmarshal(msg.Payload, prePrepare); err != nil {

@@ -37,7 +37,6 @@ func InitService(port int, msgChan chan interface{}) *Service {
 }
 
 func (s *Service) WaitRequest(sig chan interface{}) {
-
 	defer func() {
 		if r := recover(); r != nil {
 			sig <- r
@@ -52,6 +51,7 @@ func (s *Service) WaitRequest(sig chan interface{}) {
 			continue
 		}
 		fmt.Printf("\nService message[%d] from[%s]\n", n, rAddr.String())
+
 		bo := &message.Request{}
 		if err := json.Unmarshal(buf[:n], bo); err != nil {
 			fmt.Printf("\nService message parse err:%s", err)
@@ -82,7 +82,6 @@ of order. This does not matter since it keeps the pre- prepare, prepare, and com
 corresponding request can be executed.
 */
 func (s *Service) Execute(v, n, seq int64, o *message.Request) (reply *message.Reply, err error) {
-
 	fmt.Printf("Service is executing opertion[%s]......\n", o.Operation)
 	r := &message.Reply{
 		SeqID:     seq,

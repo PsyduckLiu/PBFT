@@ -16,7 +16,6 @@ func request(conn *net.UDPConn, wg *sync.RWMutex) {
 		wg.Lock()
 		primaryID, _ := strconv.Atoi(os.Args[1])
 		rAddr := net.UDPAddr{
-			IP:   net.IPv4(127, 0, 0, 1),
 			Port: message.PortByID(int64(primaryID)),
 		}
 

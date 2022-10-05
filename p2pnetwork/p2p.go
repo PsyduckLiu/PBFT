@@ -23,12 +23,10 @@ type SimpleP2p struct {
 }
 
 func NewSimpleP2pLib(id int64, msgChan chan<- *message.ConMessage) P2pNetwork {
-
 	port := message.PortByID(id)
 	s, err := net.ListenTCP("tcp4", &net.TCPAddr{
 		Port: port,
 	})
-
 	if err != nil {
 		panic(err)
 	}
@@ -39,6 +37,7 @@ func NewSimpleP2pLib(id int64, msgChan chan<- *message.ConMessage) P2pNetwork {
 		MsgChan: msgChan,
 	}
 	go sp.monitor()
+
 	for _, pid := range nodeList {
 		if pid == id {
 			continue
