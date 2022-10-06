@@ -229,10 +229,10 @@ func (s *StateEngine) InspireConsensus(request *message.Request) error {
 	}
 	client.saveRequest(request)
 
-	cMsg := message.CreateConMsg(message.MTRequest, request)
-	if err := s.p2pWire.BroadCast(cMsg); err != nil {
-		return err
-	}
+	// cMsg := message.CreateConMsg(message.MTRequest, request)
+	// if err := s.p2pWire.BroadCast(cMsg); err != nil {
+	// 	return err
+	// }
 	dig := message.Digest(request)
 	ppMsg := &message.PrePrepare{
 		ViewID:     s.CurViewID,
@@ -243,12 +243,18 @@ func (s *StateEngine) InspireConsensus(request *message.Request) error {
 	log := s.getOrCreateLog(newSeq)
 	log.PrePrepare = ppMsg
 	log.clientID = request.ClientID
-	
+	log.Stage = PrePrepared
+
+	cMsg := message.CreateConMsg(message.MTRequest, request)
+	if err := s.p2pWire.BroadCast(cMsg); err != nil {
+		return err
+	}
+
 	cMsg = message.CreateConMsg(message.MTPrePrepare, ppMsg)
 	if err := s.p2pWire.BroadCast(cMsg); err != nil {
 		return err
 	}
-	log.Stage = PrePrepared
+	// log.Stage = PrePrepared
 	fmt.Printf("======>[Primary]Consensus broadcast message(%d)\n", newSeq)
 	return nil
 }
@@ -379,6 +385,7 @@ func (s *StateEngine) prePrepare2Prepare(prepare *message.Prepare) (err error) {
 		return fmt.Errorf("[Prepare]:=>not same with pre-Prepare message")
 	}
 	log.Prepare[prepare.NodeID] = prepare
+	fmt.Println(prepare.NodeID)
 	fmt.Println(len(log.Prepare))
 	if len(log.Prepare) < 2*message.MaxFaultyNode { //not different replica, just simple no
 		return nil
@@ -440,7 +447,7 @@ func (s *StateEngine) prepare2Commit(commit *message.Commit) (err error) {
 		return fmt.Errorf("======>[prepare2Commit]:=>havn't got log for message(%d) yet", commit.SequenceID)
 	}
 	if log.Stage != Prepared {
-		return fmt.Errorf("======>[prepare2Commit] current[seq=%d] state isn't Committed:[%s]\n", commit.SequenceID, log.Stage)
+		return fmt.Errorf("======>[prepare2Commit] current[seq=%d] state isn't Prepared:[%s]\n", commit.SequenceID, log.Stage)
 	}
 
 	ppMsg := log.PrePrepare
@@ -453,6 +460,7 @@ func (s *StateEngine) prepare2Commit(commit *message.Commit) (err error) {
 		ppMsg.Digest != commit.Digest {
 		return fmt.Errorf("[Prepare]:=>not same with pre-Prepare message")
 	}
+
 	log.Commit[commit.NodeID] = commit
 	if len(log.Commit) < 2*message.MaxFaultyNode+1 {
 		return nil
