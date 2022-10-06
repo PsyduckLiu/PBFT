@@ -7,20 +7,15 @@ import (
 	"net"
 )
 
-/*
-Our algorithm can be used to implement any deterministic replicated service with a state and some operations. The
-operations are not restricted to simple reads or writes of portions of the service state; they can perform arbitrary
-deterministic computations using the state and operation arguments. Clients issue requests to the replicated service to
-invoke operations and block waiting for a reply. The replicated service is implemented by   replicas. Clients and
-replicas are non-faulty if they follow the algorithm in Section 4 and if no attacker can forge their signature.
-*/
-
+// [SrvHub]: contians UDP connection with client
+// [nodeChan]: a channel connects [service] with [node], deliver service message(request), corresponding to [srvChan] in [node]
 type Service struct {
 	SrvHub   *net.UDPConn
 	nodeChan chan interface{}
 }
 
 func InitService(port int, msgChan chan interface{}) *Service {
+	// 0.0.0.0:port
 	locAddr := net.UDPAddr{
 		Port: port,
 	}
@@ -29,6 +24,7 @@ func InitService(port int, msgChan chan interface{}) *Service {
 		return nil
 	}
 	fmt.Printf("\n===>Service Listening at[%d]", port)
+
 	s := &Service{
 		SrvHub:   srv,
 		nodeChan: msgChan,
@@ -50,19 +46,19 @@ func (s *Service) WaitRequest(sig chan interface{}) {
 			fmt.Printf("Service received err:%s\n", err)
 			continue
 		}
-		fmt.Printf("\nService message[%d] from[%s]\n", n, rAddr.String())
 
 		bo := &message.Request{}
 		if err := json.Unmarshal(buf[:n], bo); err != nil {
 			fmt.Printf("\nService message parse err:%s", err)
 			continue
 		}
+		fmt.Printf("\nService message from[%s], Length is [%d], Client id is[%s], Operation is [%s]\n", rAddr.String(), n, bo.ClientID, bo.Operation)
+
 		go s.process(bo)
 	}
 }
 
 func (s *Service) process(op *message.Request) {
-
 	/*
 		TODO:: Check operation
 		1. if clientID is authorized
@@ -71,16 +67,6 @@ func (s *Service) process(op *message.Request) {
 	s.nodeChan <- op
 }
 
-/*
-	Each replica i executes the operation requested by m  after committed-local(m, v, n, i)is true and i’s state
-reflects the sequential execution of all requests with lower sequence numbers. This ensures that all non- faulty replicas
-execute requests in the same order as required to provide the safety property. After executing the requested operation,
-replicas send a reply to the client. Replicas discard requests whose timestamp is lower than the timestamp in the last
-reply they sent to the client to guarantee exactly-once semantics.
-	We do not rely on ordered message delivery, and therefore it is possible for a replica to commit requests out
-of order. This does not matter since it keeps the pre- prepare, prepare, and commit messages logged until the
-corresponding request can be executed.
-*/
 func (s *Service) Execute(v, n, seq int64, o *message.Request) (reply *message.Reply, err error) {
 	fmt.Printf("Service is executing opertion[%s]......\n", o.Operation)
 	r := &message.Reply{
@@ -101,7 +87,7 @@ func (s *Service) Execute(v, n, seq int64, o *message.Request) (reply *message.R
 		fmt.Printf("Reply client failed:%s\n", err)
 		return nil, err
 	}
-	fmt.Printf("Reply Success!:%d seq=%d\n", no, seq)
+	fmt.Printf("Reply Success! Seq is [%d], Result is [%s], Length is [%d]\n", seq, r.Result, no)
 	return r, nil
 }
 
@@ -115,6 +101,6 @@ func (s *Service) DirectReply(r *message.Reply) error {
 		fmt.Printf("Reply client failed:%s\n", err)
 		return err
 	}
-	fmt.Printf("Reply Directly Success!:%d seq=%d\n", no, r.SeqID)
-	return nil
+	fmt.Printf("Reply Success! Seq is [%d], Result is [%s], Length is [%d]\n", r.SeqID, r.Result, no)
+	return nil 
 }

@@ -35,6 +35,7 @@ func CreateConMsg(t MType, msg interface{}) *ConMessage {
 		return nil
 	}
 
+	// TODO: modify signature
 	sig := fmt.Sprintf("consensus message[%s]", t)
 	consMsg := &ConMessage{
 		Typ:     t,
@@ -76,6 +77,7 @@ type CheckPoint struct {
 	ViewID     int64  `json:"viewID"`
 	NodeID     int64  `json:"nodeID"`
 }
+
 type PTuple struct {
 	PPMsg *PrePrepare `json:"pre-prepare"`
 	PMsg  PrepareMsg  `json:"prepare"`
@@ -83,13 +85,14 @@ type PTuple struct {
 
 type ViewChange struct {
 	NewViewID int64                 `json:"newViewID"`
-	LastCPSeq int64                 `json:"lastCPSeq"`
+	// LastCPSeq int64                 `json:"lastCPSeq"`
 	NodeID    int64                 `json:"nodeID"`
-	CMsg      map[int64]*CheckPoint `json:"cMsg"`
+	// CMsg      map[int64]*CheckPoint `json:"cMsg"`
 	PMsg      map[int64]*PTuple     `json:"pMsg"`
 }
 
 func (vc *ViewChange) Digest() string {
+	// TODO: modify digest
 	return fmt.Sprintf("this is digest for[%d-%d]", vc.NewViewID, vc.LastCPSeq)
 }
 

@@ -9,6 +9,10 @@ import (
 
 const MaxMsgNO = 100
 
+// [signal]:  a channel connects [node] with [consensus] and [service], deliver the exit message
+// [srvChan]: a channel connects [node] with [service], deliver service message(request)
+// [conChan]: a channel connects [node] with [consensus], deliver {message.RequestRecord} message to clients
+// [directReplyChan]: a channel connects [node] with [consensus], deliver {message.Reply} message to clients
 type Node struct {
 	NodeID          int64
 	signal          chan interface{}
@@ -55,17 +59,19 @@ func (n *Node) Run() {
 func (n *Node) Dispatch() {
 	for {
 		select {
+			// handle service message 
 		case srvMsg := <-n.srvChan:
 			opMsg, ok := srvMsg.(*message.Request)
 			if !ok {
 				return
 			}
-
+			// a new service message invokes InspireConsensus()
 			if err := n.consensus.InspireConsensus(opMsg); err != nil {
 				fmt.Printf("consesus layer err:%s", err)
 				n.waitQueue = append(n.waitQueue, opMsg)
 			}
 
+			// handle comitted message.RequestRecord
 		case record := <-n.conChan:
 			reply, err := n.service.Execute(record.ViewID, n.NodeID, record.SequenceID, record.Request)
 			if err != nil {
@@ -74,6 +80,7 @@ func (n *Node) Dispatch() {
 			}
 			n.consensus.ResetState(reply)
 
+			// handle committed and replied message.Reply
 		case reply := <-n.directReplyChan:
 			if err := n.service.DirectReply(reply); err != nil {
 				fmt.Println(err)

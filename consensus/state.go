@@ -14,8 +14,8 @@ type Consensus interface {
 	Prepare()
 	Commit()
 }
-type Stage int
 
+type Stage int
 const (
 	Idle Stage = iota
 	PrePrepared
@@ -39,8 +39,8 @@ func (s Stage) String() string {
 
 const StateTimerOut = 5 * time.Second
 const MaxStateMsgNO = 100
-const CheckPointInterval = 1 << 5          //32
-const CheckPointK = 2 * CheckPointInterval //64
+// const CheckPointInterval = 1 << 5         
+// const CheckPointK = 2 * CheckPointInterval 
 
 type RequestTimer struct {
 	*time.Ticker
@@ -54,10 +54,6 @@ func newRequestTimer() *RequestTimer {
 		Ticker: tick,
 		IsOk:   false,
 	}
-}
-
-func (rt *RequestTimer) isRunning() bool {
-	return rt.IsOk
 }
 
 func (rt *RequestTimer) tick() {
@@ -74,7 +70,6 @@ func (rt *RequestTimer) tack() {
 }
 
 type EngineStatus int8
-
 const (
 	Syncing EngineStatus = iota
 	Serving
@@ -111,8 +106,8 @@ type StateEngine struct {
 	MiniSeq   int64 `json:"miniSeq"`
 	MaxSeq    int64 `json:"maxSeq"`
 	msgLogs   map[int64]*NormalLog
-	checks    map[int64]*CheckPoint
-	lastCP    *CheckPoint
+	// checks    map[int64]*CheckPoint
+	// lastCP    *CheckPoint
 	cliRecord map[string]*ClientRecord
 	sCache    *VCCache
 }
@@ -126,7 +121,8 @@ func InitConsensus(id int64, cChan chan<- *message.RequestRecord, rChan chan<- *
 		CurSequence:     0,
 		LasExeSeq:       0,
 		MiniSeq:         0,
-		MaxSeq:          0 + CheckPointK,
+		// MaxSeq:          0 + CheckPointK,
+		MaxSeq:          64,
 		Timer:           newRequestTimer(),
 		p2pWire:         p2p,
 		MsgChan:         ch,
@@ -141,13 +137,9 @@ func InitConsensus(id int64, cChan chan<- *message.RequestRecord, rChan chan<- *
 	return se
 }
 
+// receive and handle consensus message
 func (s *StateEngine) StartConsensus(sig chan interface{}) {
 	s.nodeStatus = Serving
-	//defer func() {
-	//	if r := recover(); r != nil {
-	//		sig <- r
-	//	}
-	//}()
 
 	for {
 		select {
@@ -177,18 +169,8 @@ func (s *StateEngine) StartConsensus(sig chan interface{}) {
 	}
 }
 
-/*
-	In the pre-Prepare phase, the primary assigns a sequence number, n, to the Request, multicasts a pre- Prepare
-message with   piggybacked to all the backups, and appends the message to its log. The message has the
-form <<PRE-PREPARE, v, n, d>, m> where v indicates the view in which the message is being sent, m is client’s Request
-message, and  d ism’s digest.
-	Requests are not included in pre-Prepare messages to keep them small. This is important because pre-Prepare
-messages are used as a proof that the Request was assigned sequence number   in view   in view changes. Additionally,
-it decouples the protocol to totally order requests from the protocol to transmit the Request to the replicas;
-allowing us to use a transport optimized for small messages for protocol messages and a transport optimized for
-large messages for large requests.
-*/
-
+// new client ==> record
+// old client ==> decide whether to directly reply
 func (s *StateEngine) checkClientRecord(request *message.Request) (*ClientRecord, error) {
 	client, ok := s.cliRecord[request.ClientID]
 	if !ok {
@@ -209,6 +191,7 @@ func (s *StateEngine) checkClientRecord(request *message.Request) (*ClientRecord
 	return client, nil
 }
 
+// get OR create log for request[seq]
 func (s *StateEngine) getOrCreateLog(seq int64) *NormalLog {
 	log, ok := s.msgLogs[seq]
 	if !ok {
@@ -218,10 +201,12 @@ func (s *StateEngine) getOrCreateLog(seq int64) *NormalLog {
 	return log
 }
 
+// new request comes
 func (s *StateEngine) InspireConsensus(request *message.Request) error {
 	//TODO:: check signature of Request
-	s.CurSequence++
+	// s.CurSequence++
 	newSeq := s.CurSequence
+	s.CurSequence = (s.CurSequence + 1) % s.MaxSeq
 	request.SeqID = newSeq
 	client, err := s.checkClientRecord(request)
 	if err != nil || client == nil {
@@ -229,10 +214,6 @@ func (s *StateEngine) InspireConsensus(request *message.Request) error {
 	}
 	client.saveRequest(request)
 
-	// cMsg := message.CreateConMsg(message.MTRequest, request)
-	// if err := s.p2pWire.BroadCast(cMsg); err != nil {
-	// 	return err
-	// }
 	dig := message.Digest(request)
 	ppMsg := &message.PrePrepare{
 		ViewID:     s.CurViewID,
@@ -254,26 +235,15 @@ func (s *StateEngine) InspireConsensus(request *message.Request) error {
 	if err := s.p2pWire.BroadCast(cMsg); err != nil {
 		return err
 	}
-	// log.Stage = PrePrepared
+
 	fmt.Printf("======>[Primary]Consensus broadcast message(%d)\n", newSeq)
 	return nil
 }
 
-/*
-A backup accepts a pre-Prepare message provided:
-	1. the signatures in the Request and the pre-Prepare message are correct and d is the digest for m ;
-	2. it is in view v;
-	3. it has not accepted a pre-Prepare message for view v and sequence number n containing a different digest;
-	4. the sequence number in the pre-Prepare message is between a low water mark, h, and a high water mark H,
-
-The last condition prevents a faulty primary from exhausting the space of sequence numbers by selecting a very large one.
-
-	If backup i accepts the <<PRE-PREPARE, v, n, d>, m> message, it enters the Prepare phase by multicasting a
-<PREPARE, v, n, d, i>  message to all other replicas and adds both messages to its log. Otherwise, it does nothing.
-*/
-
+// Backups receive a new request
 func (s *StateEngine) rawRequest(request *message.Request) (err error) {
 	//TODO:: check signature of Request
+	s.CurSequence = request.SeqID
 	client, err := s.checkClientRecord(request)
 	if err != nil || client == nil {
 		return err
@@ -285,16 +255,7 @@ func (s *StateEngine) rawRequest(request *message.Request) (err error) {
 	return nil
 }
 
-/*
-
-	Like PRE-PREPAREs, the PREPARE and COMMIT messages sent in the other phases also contain n and v. A replica
-only accepts one of these messages provided that it is in view v; that it can verify the authenticity of the message;
-and that n is between a low water mark h and a high water mark H.
-	A backup i accepts the PRE-PREPARE message provided (in addition to the conditions above) it has not accepted
-a PRE-PREPARE for view v and sequence number n containing a different digest.If a backup i accepts the PRE-PREPARE and
-it has request m in its log, it enters the prepare phase by multicasting a PREPARE message with m’s digest to all other
-replicas; in addition, it adds both the PRE-PREPARE and PREPARE messages to its log.
-*/
+// Backups receive a new Preprepare
 func (s *StateEngine) idle2PrePrepare(ppMsg *message.PrePrepare) (err error) {
 	fmt.Printf("======>[idle2PrePrepare]Current sequence[%d]\n", ppMsg.SequenceID)
 
@@ -322,40 +283,30 @@ func (s *StateEngine) idle2PrePrepare(ppMsg *message.PrePrepare) (err error) {
 			return
 		}
 	}
+
 	prepare := &message.Prepare{
 		ViewID:     s.CurViewID,
 		SequenceID: ppMsg.SequenceID,
 		Digest:     ppMsg.Digest,
 		NodeID:     s.NodeID,
 	}
-	cMsg := message.CreateConMsg(message.MTPrepare, ppMsg)
+	cMsg := message.CreateConMsg(message.MTPrepare, prepare)
 	if err := s.p2pWire.BroadCast(cMsg); err != nil {
 		return err
 	}
+
 	log.PrePrepare = ppMsg
 	log.Prepare[s.NodeID] = prepare
 	log.Stage = PrePrepared
+
 	fmt.Printf("======>[idle2PrePrepare] Consensus status is [%s] seq=%d\n", log.Stage, ppMsg.SequenceID)
 	return nil
 }
 
-/*
-	A replica (including the primary) accepts Prepare messages and adds them to its log provided their signatures
-are correct, their view number equals the replica’s current view, and their sequence number is between h and H.
-
-	We define the predicate prepared (m, v, n, i) to be true if and only if replica i has inserted in its log:
-	1. the Request m, a pre-Prepare for m in view  v with sequence number n,
-	2. 2f prepares from different backups that match the pre-Prepare.
-
-	The replicas verify whether the prepares match the pre-Prepare by checking that they have the same :
-	1. view,
-	2. sequence number,
-	3. and digest.
-*/
-
+// Backups receive a new Prepare
 func (s *StateEngine) prePrepare2Prepare(prepare *message.Prepare) (err error) {
+	fmt.Printf("======>[prePrepare2Prepare]Current Prepare Message from Node[%d]\n", prepare.NodeID)
 	fmt.Printf("======>[prePrepare2Prepare]Current sequence[%d]\n", prepare.SequenceID)
-
 	//TODO::signature check
 	//fmt.Printf("Verify Prepare message digest:%s\n", Prepare.Digest)
 	if prepare.ViewID != s.CurViewID {
@@ -385,8 +336,7 @@ func (s *StateEngine) prePrepare2Prepare(prepare *message.Prepare) (err error) {
 		return fmt.Errorf("[Prepare]:=>not same with pre-Prepare message")
 	}
 	log.Prepare[prepare.NodeID] = prepare
-	fmt.Println(prepare.NodeID)
-	fmt.Println(len(log.Prepare))
+	
 	if len(log.Prepare) < 2*message.MaxFaultyNode { //not different replica, just simple no
 		return nil
 	}
@@ -408,27 +358,9 @@ func (s *StateEngine) prePrepare2Prepare(prepare *message.Prepare) (err error) {
 	return
 }
 
-/*
-	Replica i multicasts a <COMMIT, v, n, D(m), i> to the other replicas when prepared (m, v, n, i) become true.
-This starts the Commit phase. Replicas accept Commit messages and insert them in their log provided they are properly
-signed, the view number in the message is equal to the replica’s current view, and the sequence number is between h and H
-
-	We define the committed and committed-local predicates as follows: committed(m, v, n) is true if and only
-if prepared(m, v, n, i) is true for all i in some set of f + 1 non-faulty replicas; and committed-local(m, v, n, i) is
-true if and only if prepared(m, v, n, i) is true and i has accepted 2f + 1 commits (possibly including its own) from
-different replicas that match the pre-Prepare for m; a Commit matches a pre-Prepare if they have the same view, sequence
-number, and digest.
-	The Commit phase ensures the following invariant: if committed-local(m, v, n, i) is true for some non-faulty i
-then committed(m, v, n, i) is true. This invariant and the view-change protocol described in Section 4.4 ensure that
-non-faulty replicas agree on the sequence numbers of requests that Commit locally even if they Commit in different views
-at each replica. Furthermore, it ensures that any Request that commits locally at a non-faulty replica will Commit at
- f + 1 or more non-faulty replicas eventually.
-	We do not rely on ordered message delivery, and therefore it is possible for a replica to Commit requests out
-of order. This does not matter since it keeps the pre- Prepare, Prepare, and Commit messages logged until the
-corresponding Request can be executed.
-*/
-
+// Backups receive a new commit
 func (s *StateEngine) prepare2Commit(commit *message.Commit) (err error) {
+	fmt.Printf("======>[prePrepare2Prepare]Current Prepare Message from Node[%d]\n", commit.NodeID)
 	fmt.Printf("======>[prepare2Commit] Current sequence[%d]\n", commit.SequenceID)
 
 	//TODO:: Commit is properly signed
@@ -484,12 +416,10 @@ func (s *StateEngine) prepare2Commit(commit *message.Commit) (err error) {
 }
 
 func (s *StateEngine) procConsensusMsg(msg *message.ConMessage) (err error) {
-	s.Timer.Reset(StateTimerOut)
-
+	// s.Timer.Reset(StateTimerOut)
 	fmt.Printf("\n======>[procConsensusMsg] Consesus message signature:(%s)\n", msg.Sig)
 
 	switch msg.Typ {
-
 	case message.MTRequest:
 		request := &message.Request{}
 		if err := json.Unmarshal(msg.Payload, request); err != nil {
@@ -523,13 +453,12 @@ func (s *StateEngine) procConsensusMsg(msg *message.ConMessage) (err error) {
 
 func (s *StateEngine) procManageMsg(msg *message.ConMessage) (err error) {
 	switch msg.Typ {
-
-	case message.MTCheckpoint:
-		checkpoint := &message.CheckPoint{}
-		if err := json.Unmarshal(msg.Payload, checkpoint); err != nil {
-			return fmt.Errorf("======>[procConsensusMsg] invalid[%s]checkpoint message[%s]\n", err, msg)
-		}
-		return s.checkingPoint(checkpoint)
+	// case message.MTCheckpoint:
+	// 	checkpoint := &message.CheckPoint{}
+	// 	if err := json.Unmarshal(msg.Payload, checkpoint); err != nil {
+	// 		return fmt.Errorf("======>[procConsensusMsg] invalid[%s]checkpoint message[%s]\n", err, msg)
+	// 	}
+	// 	return s.checkingPoint(checkpoint)
 
 	case message.MTViewChange:
 		vc := &message.ViewChange{}
@@ -546,4 +475,11 @@ func (s *StateEngine) procManageMsg(msg *message.ConMessage) (err error) {
 		return s.didChangeView(vc)
 	}
 	return nil
+}
+
+func (s *StateEngine) ResetState(reply *message.Reply) {
+	s.msgLogs[reply.SeqID].Stage = Idle
+	s.msgLogs[reply.SeqID].PrePrepare = nil
+	s.msgLogs[reply.SeqID].Commit = nil
+	delete(s.msgLogs, reply.SeqID)
 }

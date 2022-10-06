@@ -60,7 +60,6 @@ func normalCaseOperation(roundSize int) {
 		if err != nil {
 			panic(err)
 		}
-		//fmt.Printf("Client Read[%d] Reply from[%s]:\n", n, rAddr.String())
 
 		re := &message.Reply{}
 		if err := json.Unmarshal(waitBuffer[:n], re); err != nil {
@@ -71,6 +70,7 @@ func normalCaseOperation(roundSize int) {
 			continue
 		}
 
+		fmt.Printf("Client Read[%d] Reply from[%d], Result is[%s]:\n", n, re.NodeID, re.Result)
 		counter++
 		if counter >= 2 {
 			fmt.Printf("Consensus(seq=%d) operation(%d) success!\n", curSeq, roundSize)

@@ -13,15 +13,18 @@ var nodeList = []int64{0, 1, 2, 3}
 
 type P2pNetwork interface {
 	BroadCast(v interface{}) error
-	SendToNode(nodeID int64, v interface{}) error
 }
 
+// [SrvHub]: contains all TCP connections with other nodes
+// [Peers]: map TCP connect to an int number 
+// [MsgChan]: a channel connects [p2p] with [state(consensus)], deliver consensus message, corresponding to [ch] in [state(consensus)]
 type SimpleP2p struct {
-	SrvBub  *net.TCPListener
+	SrvHub  *net.TCPListener
 	Peers   map[string]*net.TCPConn
 	MsgChan chan<- *message.ConMessage
 }
 
+// new simple P2P liarary
 func NewSimpleP2pLib(id int64, msgChan chan<- *message.ConMessage) P2pNetwork {
 	port := message.PortByID(id)
 	s, err := net.ListenTCP("tcp4", &net.TCPAddr{
@@ -32,7 +35,7 @@ func NewSimpleP2pLib(id int64, msgChan chan<- *message.ConMessage) P2pNetwork {
 	}
 
 	sp := &SimpleP2p{
-		SrvBub:  s,
+		SrvHub:  s,
 		Peers:   make(map[string]*net.TCPConn),
 		MsgChan: msgChan,
 	}
@@ -51,15 +54,17 @@ func NewSimpleP2pLib(id int64, msgChan chan<- *message.ConMessage) P2pNetwork {
 		}
 		sp.Peers[conn.RemoteAddr().String()] = conn
 		fmt.Printf("node [%d] connected=[%s=>%s]\n", pid, conn.LocalAddr().String(), conn.RemoteAddr().String())
+		
 		go sp.waitData(conn)
 	}
 	return sp
 }
 
+// add new node OR remove old node
 func (sp *SimpleP2p) monitor() {
-	fmt.Printf("===>P2p node is waiting at:%s\n", sp.SrvBub.Addr().String())
+	fmt.Printf("===>P2p node is waiting at:%s\n", sp.SrvHub.Addr().String())
 	for {
-		conn, err := sp.SrvBub.AcceptTCP()
+		conn, err := sp.SrvHub.AcceptTCP()
 		if err != nil {
 			fmt.Printf("P2p network accept err:%s\n", err)
 			if err == io.EOF {
@@ -75,6 +80,7 @@ func (sp *SimpleP2p) monitor() {
 	}
 }
 
+// remove old node AND deliver consensus mseeage by [MsgChan]
 func (sp *SimpleP2p) waitData(conn *net.TCPConn) {
 	buf := make([]byte, 2048)
 	for {
@@ -85,10 +91,10 @@ func (sp *SimpleP2p) waitData(conn *net.TCPConn) {
 				fmt.Printf("Remove peer node%s\n", conn.RemoteAddr().String())
 				delete(sp.Peers, conn.RemoteAddr().String())
 				return
-
 			}
 			continue
 		}
+
 		conMsg := &message.ConMessage{}
 		if err := json.Unmarshal(buf[:n], conMsg); err != nil {
 			fmt.Println(string(buf[:n]))
@@ -98,6 +104,7 @@ func (sp *SimpleP2p) waitData(conn *net.TCPConn) {
 	}
 }
 
+// BroadCast message to all connected nodes
 func (sp *SimpleP2p) BroadCast(v interface{}) error {
 	if v == nil {
 		return fmt.Errorf("empty msg body")
@@ -106,6 +113,7 @@ func (sp *SimpleP2p) BroadCast(v interface{}) error {
 	if err != nil {
 		return err
 	}
+
 	for name, conn := range sp.Peers {
 		_, err := conn.Write(data)
 		if err != nil {
@@ -114,9 +122,4 @@ func (sp *SimpleP2p) BroadCast(v interface{}) error {
 	}
 	time.Sleep(300 * time.Millisecond)
 	return nil
-}
-
-func (sp *SimpleP2p) SendToNode(nodeID int64, v interface{}) error {
-	//TODO:: single point message
-	return sp.BroadCast(v)
 }

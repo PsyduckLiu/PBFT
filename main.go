@@ -26,17 +26,15 @@ func main() {
 		syscall.SIGQUIT)
 
 	pid := strconv.Itoa(os.Getpid())
-	fmt.Printf("\n===>PBFT Demo PID:%s\n", pid)
+	fmt.Printf("\n===>PBFT demo is running at PID[%s]\n", pid)
 	fmt.Println()
-	fmt.Println()
-	fmt.Println("==============================================>")
+	fmt.Println("===============================================")
 	fmt.Println("*                                             *")
 	fmt.Println("*     Practical Byzantine Fault Tolerance     *")
 	fmt.Println("*                                             *")
-	fmt.Println("<==============================================")
-	fmt.Println()
+	fmt.Println("===============================================")
 	fmt.Println()
 
 	sig := <-sigCh
-	fmt.Printf("Finish by signal:===>[%s]\n", sig.String())
+	fmt.Printf("Finish by signal[%s]\n", sig.String())
 }

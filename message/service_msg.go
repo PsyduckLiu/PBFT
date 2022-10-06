@@ -15,10 +15,12 @@ const (
 	MTViewChange
 	MTNewView
 )
+// to be modified
 const MaxFaultyNode = 1
 const TotalNodeNO = 3*MaxFaultyNode + 1
 
 func Digest(v interface{}) string {
+	// TODO: hash  SHA256
 	return "0x111111"
 }
 
