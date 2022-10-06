@@ -129,7 +129,7 @@ func InitConsensus(id int64, cChan chan<- *message.RequestRecord, rChan chan<- *
 		nodeChan:        cChan,
 		directReplyChan: rChan,
 		msgLogs:         make(map[int64]*NormalLog),
-		checks:          make(map[int64]*CheckPoint),
+		// checks:          make(map[int64]*CheckPoint),
 		cliRecord:       make(map[string]*ClientRecord),
 		sCache:          NewVCCache(),
 	}
@@ -144,6 +144,7 @@ func (s *StateEngine) StartConsensus(sig chan interface{}) {
 	for {
 		select {
 		case <-s.Timer.C:
+			fmt.Println("Time is out and view change view starts")
 			s.ViewChange()
 		case conMsg := <-s.MsgChan:
 			switch conMsg.Typ {
@@ -237,6 +238,7 @@ func (s *StateEngine) InspireConsensus(request *message.Request) error {
 	}
 
 	fmt.Printf("======>[Primary]Consensus broadcast message(%d)\n", newSeq)
+	s.Timer.tick()
 	return nil
 }
 

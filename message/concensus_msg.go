@@ -71,42 +71,42 @@ type Commit struct {
 	NodeID     int64  `json:"nodeID"`
 }
 
-type CheckPoint struct {
-	SequenceID int64  `json:"sequenceID"`
-	Digest     string `json:"digest"`
-	ViewID     int64  `json:"viewID"`
-	NodeID     int64  `json:"nodeID"`
-}
+// type CheckPoint struct {
+// 	SequenceID int64  `json:"sequenceID"`
+// 	Digest     string `json:"digest"`
+// 	ViewID     int64  `json:"viewID"`
+// 	NodeID     int64  `json:"nodeID"`
+// }
 
-type PTuple struct {
-	PPMsg *PrePrepare `json:"pre-prepare"`
-	PMsg  PrepareMsg  `json:"prepare"`
-}
+// type PTuple struct {
+// 	PPMsg *PrePrepare `json:"pre-prepare"`
+// 	PMsg  PrepareMsg  `json:"prepare"`
+// }
 
+type VMessage map[int64]*ViewChange
 type ViewChange struct {
 	NewViewID int64                 `json:"newViewID"`
 	// LastCPSeq int64                 `json:"lastCPSeq"`
 	NodeID    int64                 `json:"nodeID"`
 	// CMsg      map[int64]*CheckPoint `json:"cMsg"`
-	PMsg      map[int64]*PTuple     `json:"pMsg"`
+	// PMsg      map[int64]*PTuple     `json:"pMsg"`
 }
 
 func (vc *ViewChange) Digest() string {
 	// TODO: modify digest
-	return fmt.Sprintf("this is digest for[%d-%d]", vc.NewViewID, vc.LastCPSeq)
+	// return fmt.Sprintf("this is digest for[%d-%d]", vc.NewViewID, vc.LastCPSeq)
+	return fmt.Sprintf("this is digest for[%d]", vc.NewViewID)
 }
 
-type OMessage map[int64]*PrePrepare
+// type OMessage map[int64]*PrePrepare
+// func (m OMessage) EQ(msg OMessage) bool {
+	// return HASH(m) == HASH(msg)
+// 	return true
+// }
 
-func (m OMessage) EQ(msg OMessage) bool {
-	//return HASH(m) == HASH(msg)
-	return true
-}
-
-type VMessage map[int64]*ViewChange
 type NewView struct {
 	NewViewID int64    `json:"newViewID"`
 	VMsg      VMessage `json:"vMSG"`
-	OMsg      OMessage `json:"oMSG"`
-	NMsg      OMessage `json:"nMSG"`
+	// OMsg      OMessage `json:"oMSG"`
+	// NMsg      OMessage `json:"nMSG"`
 }
