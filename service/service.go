@@ -68,7 +68,7 @@ func (s *Service) process(op *message.Request) {
 }
 
 func (s *Service) Execute(v, n, seq int64, o *message.Request) (reply *message.Reply, err error) {
-	fmt.Printf("Service is executing opertion[%s]......\n", o.Operation)
+	fmt.Printf("\nService is executing opertion[%s]......\n", o.Operation)
 	r := &message.Reply{
 		SeqID:     seq,
 		ViewID:    v,
@@ -102,5 +102,5 @@ func (s *Service) DirectReply(r *message.Reply) error {
 		return err
 	}
 	fmt.Printf("Reply Success! Seq is [%d], Result is [%s], Length is [%d]\n", r.SeqID, r.Result, no)
-	return nil 
+	return nil
 }

@@ -1,6 +1,7 @@
 package message
 
 import (
+	"crypto/sha256"
 	"fmt"
 )
 
@@ -11,17 +12,21 @@ const (
 	MTRequest
 	MTPrepare
 	MTCommit
-	MTCheckpoint
 	MTViewChange
 	MTNewView
+	MTPublicKey
 )
+
 // to be modified
 const MaxFaultyNode = 1
 const TotalNodeNO = 3*MaxFaultyNode + 1
 
-func Digest(v interface{}) string {
-	// TODO: hash  SHA256
-	return "0x111111"
+func Digest(v interface{}) []byte {
+	h := sha256.New()
+	h.Write([]byte(fmt.Sprintf("%s", v)))
+	digest := h.Sum(nil)
+
+	return digest
 }
 
 func PortByID(id int64) int {
@@ -32,15 +37,10 @@ func (mt MType) String() string {
 	switch mt {
 	case MTPrePrepare:
 		return "PrePrepare"
-
 	case MTPrepare:
 		return "Prepare"
-
 	case MTCommit:
 		return "Commit"
-
-	case MTCheckpoint:
-		return "Checkpoint"
 	}
 	return "Unknown"
 }

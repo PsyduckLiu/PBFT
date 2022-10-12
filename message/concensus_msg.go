@@ -1,6 +1,7 @@
 package message
 
 import (
+	"crypto/ecdsa"
 	"encoding/json"
 	"fmt"
 )
@@ -45,6 +46,11 @@ func CreateConMsg(t MType, msg interface{}) *ConMessage {
 	return consMsg
 }
 
+type NewPublicKey struct {
+	NodeID int64            `json:"nodeID"`
+	PK     *ecdsa.PublicKey `json:"pk"`
+}
+
 type RequestRecord struct {
 	*PrePrepare
 	*Request
@@ -53,43 +59,28 @@ type RequestRecord struct {
 type PrePrepare struct {
 	ViewID     int64  `json:"viewID"`
 	SequenceID int64  `json:"sequenceID"`
-	Digest     string `json:"digest"`
+	Digest     []byte `json:"digest"`
 }
 
 type PrepareMsg map[int64]*Prepare
 type Prepare struct {
 	ViewID     int64  `json:"viewID"`
 	SequenceID int64  `json:"sequenceID"`
-	Digest     string `json:"digest"`
+	Digest     []byte `json:"digest"`
 	NodeID     int64  `json:"nodeID"`
 }
 
 type Commit struct {
 	ViewID     int64  `json:"viewID"`
 	SequenceID int64  `json:"sequenceID"`
-	Digest     string `json:"digest"`
+	Digest     []byte `json:"digest"`
 	NodeID     int64  `json:"nodeID"`
 }
 
-// type CheckPoint struct {
-// 	SequenceID int64  `json:"sequenceID"`
-// 	Digest     string `json:"digest"`
-// 	ViewID     int64  `json:"viewID"`
-// 	NodeID     int64  `json:"nodeID"`
-// }
-
-// type PTuple struct {
-// 	PPMsg *PrePrepare `json:"pre-prepare"`
-// 	PMsg  PrepareMsg  `json:"prepare"`
-// }
-
 type VMessage map[int64]*ViewChange
 type ViewChange struct {
-	NewViewID int64                 `json:"newViewID"`
-	// LastCPSeq int64                 `json:"lastCPSeq"`
-	NodeID    int64                 `json:"nodeID"`
-	// CMsg      map[int64]*CheckPoint `json:"cMsg"`
-	// PMsg      map[int64]*PTuple     `json:"pMsg"`
+	NewViewID int64 `json:"newViewID"`
+	NodeID    int64 `json:"nodeID"`
 }
 
 func (vc *ViewChange) Digest() string {
@@ -98,15 +89,7 @@ func (vc *ViewChange) Digest() string {
 	return fmt.Sprintf("this is digest for[%d]", vc.NewViewID)
 }
 
-// type OMessage map[int64]*PrePrepare
-// func (m OMessage) EQ(msg OMessage) bool {
-	// return HASH(m) == HASH(msg)
-// 	return true
-// }
-
 type NewView struct {
 	NewViewID int64    `json:"newViewID"`
 	VMsg      VMessage `json:"vMSG"`
-	// OMsg      OMessage `json:"oMSG"`
-	// NMsg      OMessage `json:"nMSG"`
 }

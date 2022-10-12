@@ -2,11 +2,13 @@ package p2pnetwork
 
 import (
 	"PBFT/message"
+	"crypto/ecdsa"
+	"crypto/elliptic"
+	"crypto/rand"
 	"encoding/json"
 	"fmt"
 	"io"
 	"net"
-	"time"
 )
 
 var nodeList = []int64{0, 1, 2, 3}
@@ -16,12 +18,15 @@ type P2pNetwork interface {
 }
 
 // [SrvHub]: contains all TCP connections with other nodes
-// [Peers]: map TCP connect to an int number 
+// [Peers]: map TCP connect to an int number
 // [MsgChan]: a channel connects [p2p] with [state(consensus)], deliver consensus message, corresponding to [ch] in [state(consensus)]
 type SimpleP2p struct {
-	SrvHub  *net.TCPListener
-	Peers   map[string]*net.TCPConn
-	MsgChan chan<- *message.ConMessage
+	NodeId         int64
+	SrvHub         *net.TCPListener
+	Peers          map[string]*net.TCPConn
+	PrivateKey     *ecdsa.PrivateKey
+	PeerPublicKeys map[string]*ecdsa.PublicKey
+	MsgChan        chan<- *message.ConMessage
 }
 
 // new simple P2P liarary
@@ -33,11 +38,18 @@ func NewSimpleP2pLib(id int64, msgChan chan<- *message.ConMessage) P2pNetwork {
 	if err != nil {
 		panic(err)
 	}
+	privateKey, err := ecdsa.GenerateKey(elliptic.P256(), rand.Reader)
+	if err != nil {
+		panic(err)
+	}
 
 	sp := &SimpleP2p{
-		SrvHub:  s,
-		Peers:   make(map[string]*net.TCPConn),
-		MsgChan: msgChan,
+		NodeId:         id,
+		SrvHub:         s,
+		Peers:          make(map[string]*net.TCPConn),
+		PrivateKey:     privateKey,
+		PeerPublicKeys: make(map[string]*ecdsa.PublicKey),
+		MsgChan:        msgChan,
 	}
 	go sp.monitor()
 
@@ -54,9 +66,20 @@ func NewSimpleP2pLib(id int64, msgChan chan<- *message.ConMessage) P2pNetwork {
 		}
 		sp.Peers[conn.RemoteAddr().String()] = conn
 		fmt.Printf("node [%d] connected=[%s=>%s]\n", pid, conn.LocalAddr().String(), conn.RemoteAddr().String())
-		
+
 		go sp.waitData(conn)
 	}
+
+	// new public key message
+	npkMsg := &message.NewPublicKey{
+		NodeID: sp.NodeId,
+		PK:     &privateKey.PublicKey,
+	}
+	cMsg := message.CreateConMsg(message.MTRequest, npkMsg)
+	if err := sp.BroadCast(cMsg); err != nil {
+		panic(err)
+	}
+
 	return sp
 }
 
@@ -76,6 +99,17 @@ func (sp *SimpleP2p) monitor() {
 
 		sp.Peers[conn.RemoteAddr().String()] = conn
 		fmt.Printf("connection create [%s->%s]\n", conn.RemoteAddr().String(), conn.LocalAddr().String())
+
+		// new public key message
+		npkMsg := &message.NewPublicKey{
+			NodeID: sp.NodeId,
+			PK:     &sp.PrivateKey.PublicKey,
+		}
+		cMsg := message.CreateConMsg(message.MTRequest, npkMsg)
+		if err := sp.BroadCast(cMsg); err != nil {
+			panic(err)
+		}
+
 		go sp.waitData(conn)
 	}
 }
@@ -100,6 +134,14 @@ func (sp *SimpleP2p) waitData(conn *net.TCPConn) {
 			fmt.Println(string(buf[:n]))
 			panic(err)
 		}
+		if conMsg.Typ == message.MTPublicKey {
+			npk := &message.NewPublicKey{}
+			if err := json.Unmarshal(conMsg.Payload, npk); err != nil {
+				return fmt.Errorf("======>[procConsensusMsg] invalid[%s] didiViewChange message[%s]", err, conMsg)
+			}
+		}
+
+		s.p2pWire.PeerPublicKeys[npk.NodeID] = npk.PK
 		sp.MsgChan <- conMsg
 	}
 }
@@ -120,6 +162,6 @@ func (sp *SimpleP2p) BroadCast(v interface{}) error {
 			fmt.Printf("write to node[%s] err:%s\n", name, err)
 		}
 	}
-	time.Sleep(300 * time.Millisecond)
+	// time.Sleep(300 * time.Millisecond)
 	return nil
 }

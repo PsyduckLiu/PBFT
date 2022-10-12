@@ -16,6 +16,7 @@ type Consensus interface {
 }
 
 type Stage int
+
 const (
 	Idle Stage = iota
 	PrePrepared
@@ -39,8 +40,6 @@ func (s Stage) String() string {
 
 const StateTimerOut = 5 * time.Second
 const MaxStateMsgNO = 100
-// const CheckPointInterval = 1 << 5         
-// const CheckPointK = 2 * CheckPointInterval 
 
 type RequestTimer struct {
 	*time.Ticker
@@ -70,22 +69,19 @@ func (rt *RequestTimer) tack() {
 }
 
 type EngineStatus int8
+
 const (
-	Syncing EngineStatus = iota
-	Serving
+	Serving EngineStatus = iota
 	ViewChanging
 )
 
 func (es EngineStatus) String() string {
 	switch es {
-	case Syncing:
-		return "Syncing block chain......"
 	case Serving:
 		return "Server consensus......"
 	case ViewChanging:
 		return "Changing views......"
 	}
-
 	return "Unknown"
 }
 
@@ -93,7 +89,6 @@ type StateEngine struct {
 	NodeID      int64 `json:"nodeID"`
 	CurViewID   int64 `json:"viewID"`
 	CurSequence int64 `json:"curSeq"`
-	LasExeSeq   int64 `json:"lastExeSeq"`
 	PrimaryID   int64 `json:"primaryID"`
 	nodeStatus  EngineStatus
 
@@ -106,8 +101,6 @@ type StateEngine struct {
 	MiniSeq   int64 `json:"miniSeq"`
 	MaxSeq    int64 `json:"maxSeq"`
 	msgLogs   map[int64]*NormalLog
-	// checks    map[int64]*CheckPoint
-	// lastCP    *CheckPoint
 	cliRecord map[string]*ClientRecord
 	sCache    *VCCache
 }
@@ -119,9 +112,7 @@ func InitConsensus(id int64, cChan chan<- *message.RequestRecord, rChan chan<- *
 		NodeID:          id,
 		CurViewID:       0,
 		CurSequence:     0,
-		LasExeSeq:       0,
 		MiniSeq:         0,
-		// MaxSeq:          0 + CheckPointK,
 		MaxSeq:          64,
 		Timer:           newRequestTimer(),
 		p2pWire:         p2p,
@@ -129,7 +120,6 @@ func InitConsensus(id int64, cChan chan<- *message.RequestRecord, rChan chan<- *
 		nodeChan:        cChan,
 		directReplyChan: rChan,
 		msgLogs:         make(map[int64]*NormalLog),
-		// checks:          make(map[int64]*CheckPoint),
 		cliRecord:       make(map[string]*ClientRecord),
 		sCache:          NewVCCache(),
 	}
@@ -144,7 +134,7 @@ func (s *StateEngine) StartConsensus(sig chan interface{}) {
 	for {
 		select {
 		case <-s.Timer.C:
-			fmt.Println("Time is out and view change view starts")
+			fmt.Printf("======>[Node%d]Time is out and view change starts", s.NodeID)
 			s.ViewChange()
 		case conMsg := <-s.MsgChan:
 			switch conMsg.Typ {
@@ -159,10 +149,13 @@ func (s *StateEngine) StartConsensus(sig chan interface{}) {
 				if err := s.procConsensusMsg(conMsg); err != nil {
 					fmt.Print(err)
 				}
-			case message.MTCheckpoint,
-				message.MTViewChange,
+			case message.MTViewChange,
 				message.MTNewView:
 				if err := s.procManageMsg(conMsg); err != nil {
+					fmt.Print(err)
+				}
+			case message.MTPublicKey:
+				if err := s.procNewKeyMsg(conMsg); err != nil {
 					fmt.Print(err)
 				}
 			}
@@ -205,7 +198,6 @@ func (s *StateEngine) getOrCreateLog(seq int64) *NormalLog {
 // new request comes
 func (s *StateEngine) InspireConsensus(request *message.Request) error {
 	//TODO:: check signature of Request
-	// s.CurSequence++
 	newSeq := s.CurSequence
 	s.CurSequence = (s.CurSequence + 1) % s.MaxSeq
 	request.SeqID = newSeq
@@ -215,11 +207,11 @@ func (s *StateEngine) InspireConsensus(request *message.Request) error {
 	}
 	client.saveRequest(request)
 
-	dig := message.Digest(request)
+	dig := message.Digest(*request)
 	ppMsg := &message.PrePrepare{
 		ViewID:     s.CurViewID,
 		SequenceID: newSeq,
-		Digest:     dig,
+		Digest:     json.RawMessage(dig),
 	}
 
 	log := s.getOrCreateLog(newSeq)
@@ -231,7 +223,6 @@ func (s *StateEngine) InspireConsensus(request *message.Request) error {
 	if err := s.p2pWire.BroadCast(cMsg); err != nil {
 		return err
 	}
-
 	cMsg = message.CreateConMsg(message.MTPrePrepare, ppMsg)
 	if err := s.p2pWire.BroadCast(cMsg); err != nil {
 		return err
@@ -245,40 +236,49 @@ func (s *StateEngine) InspireConsensus(request *message.Request) error {
 // Backups receive a new request
 func (s *StateEngine) rawRequest(request *message.Request) (err error) {
 	//TODO:: check signature of Request
+	fmt.Print("======>[NewRequest]Receive a new request", *request, "\n")
+
 	s.CurSequence = request.SeqID
 	client, err := s.checkClientRecord(request)
 	if err != nil || client == nil {
 		return err
 	}
+	client.saveRequest(request)
+
 	log := s.getOrCreateLog(request.SeqID)
 	log.clientID = request.ClientID
-	client.saveRequest(request)
+
 	s.Timer.tick()
 	return nil
 }
 
 // Backups receive a new Preprepare
 func (s *StateEngine) idle2PrePrepare(ppMsg *message.PrePrepare) (err error) {
+	//TODO:: check signature of of pre-Prepare message
 	fmt.Printf("======>[idle2PrePrepare]Current sequence[%d]\n", ppMsg.SequenceID)
 
-	//TODO:: check signature of of pre-Prepare message
-	//TODO:: check digest of pre-Prepare message
-
 	if ppMsg.ViewID != s.CurViewID {
-		return fmt.Errorf("======>[idle2PrePrepare] invalid view id Msg=%d state=%d\n", ppMsg.ViewID, s.CurViewID)
+		return fmt.Errorf("======>[idle2PrePrepare] invalid view id Msg=%d state=%d", ppMsg.ViewID, s.CurViewID)
 	}
-
 	if ppMsg.SequenceID > s.MaxSeq || ppMsg.SequenceID < s.MiniSeq {
-		return fmt.Errorf("======>[idle2PrePrepare] sequence no[%d] invalid[%d~%d]\n", ppMsg.SequenceID, s.MiniSeq, s.MaxSeq)
+		return fmt.Errorf("======>[idle2PrePrepare] sequence no[%d] invalid[%d~%d]", ppMsg.SequenceID, s.MiniSeq, s.MaxSeq)
 	}
 
 	log := s.getOrCreateLog(ppMsg.SequenceID)
+	client, ok := s.cliRecord[log.clientID]
+	if !ok {
+		return fmt.Errorf("======>[idle2PrePrepare] haven't receive request for sequence no[%d]", ppMsg.SequenceID)
+	}
 
+	requestDigest := message.Digest(*(client.Request[ppMsg.SequenceID]))
+	if string(requestDigest) != string(ppMsg.Digest) {
+		return fmt.Errorf("digest in pre-Prepare message and digest for request[%d] are not the same", ppMsg.SequenceID)
+	}
 	if log.Stage != Idle {
 		return fmt.Errorf("invalid stage[current %s] when to prePrepared", log.Stage)
 	}
 	if log.PrePrepare != nil {
-		if log.PrePrepare.Digest != ppMsg.Digest {
+		if string(log.PrePrepare.Digest) != string(ppMsg.Digest) {
 			return fmt.Errorf("pre-Prepare message in same v-n but not same digest")
 		} else {
 			fmt.Println("======>[idle2PrePrepare] duplicate pre-Prepare message")
@@ -307,16 +307,15 @@ func (s *StateEngine) idle2PrePrepare(ppMsg *message.PrePrepare) (err error) {
 
 // Backups receive a new Prepare
 func (s *StateEngine) prePrepare2Prepare(prepare *message.Prepare) (err error) {
+	//TODO::signature check
 	fmt.Printf("======>[prePrepare2Prepare]Current Prepare Message from Node[%d]\n", prepare.NodeID)
 	fmt.Printf("======>[prePrepare2Prepare]Current sequence[%d]\n", prepare.SequenceID)
-	//TODO::signature check
-	//fmt.Printf("Verify Prepare message digest:%s\n", Prepare.Digest)
-	if prepare.ViewID != s.CurViewID {
-		return fmt.Errorf("======>[prePrepare2Prepare]:=>invalid view id Msg=%d state=%d\n", prepare.ViewID, s.CurViewID)
-	}
 
+	if prepare.ViewID != s.CurViewID {
+		return fmt.Errorf("======>[prePrepare2Prepare]:=>invalid view id Msg=%d state=%d", prepare.ViewID, s.CurViewID)
+	}
 	if prepare.SequenceID > s.MaxSeq || prepare.SequenceID < s.MiniSeq {
-		return fmt.Errorf("======>[prePrepare2Prepare]:=>sequence no[%d] invalid[%d~%d]\n", prepare.SequenceID, s.MiniSeq, s.MaxSeq)
+		return fmt.Errorf("======>[prePrepare2Prepare]:=>sequence no[%d] invalid[%d~%d]", prepare.SequenceID, s.MiniSeq, s.MaxSeq)
 	}
 
 	log, ok := s.msgLogs[prepare.SequenceID]
@@ -324,7 +323,7 @@ func (s *StateEngine) prePrepare2Prepare(prepare *message.Prepare) (err error) {
 		return fmt.Errorf("======>[prePrepare2Prepare]:=>havn't got log for message(%d) yet", prepare.SequenceID)
 	}
 	if log.Stage != PrePrepared {
-		return fmt.Errorf("======>[prePrepare2Prepare] current[seq=%d] state isn't PrePrepared:[%s]\n", prepare.SequenceID, log.Stage)
+		return fmt.Errorf("======>[prePrepare2Prepare] current[seq=%d] state isn't PrePrepared:[%s]", prepare.SequenceID, log.Stage)
 	}
 
 	ppMsg := log.PrePrepare
@@ -334,16 +333,20 @@ func (s *StateEngine) prePrepare2Prepare(prepare *message.Prepare) (err error) {
 
 	if ppMsg.ViewID != prepare.ViewID ||
 		ppMsg.SequenceID != prepare.SequenceID ||
-		ppMsg.Digest != prepare.Digest {
+		string(ppMsg.Digest) != string(prepare.Digest) {
 		return fmt.Errorf("[Prepare]:=>not same with pre-Prepare message")
 	}
 	log.Prepare[prepare.NodeID] = prepare
-	
-	if len(log.Prepare) < 2*message.MaxFaultyNode { //not different replica, just simple no
+
+	prepareNodeNum := 0
+	for _, prepare := range log.Prepare {
+		if string(prepare.Digest) == string(ppMsg.Digest) {
+			prepareNodeNum++
+		}
+	}
+	if prepareNodeNum < 2*message.MaxFaultyNode+1 {
 		return nil
 	}
-
-	fmt.Printf("======>[prePrepare2Prepare] Consensus status is [%s] seq=%d\n", log.Stage, prepare.SequenceID)
 
 	commit := &message.Commit{
 		ViewID:     s.CurViewID,
@@ -355,24 +358,25 @@ func (s *StateEngine) prePrepare2Prepare(prepare *message.Prepare) (err error) {
 	if err := s.p2pWire.BroadCast(cMsg); err != nil {
 		return err
 	}
+
 	log.Commit[s.NodeID] = commit
 	log.Stage = Prepared
+
+	fmt.Printf("======>[prePrepare2Prepare] Consensus status is [%s] seq=%d\n", log.Stage, prepare.SequenceID)
 	return
 }
 
 // Backups receive a new commit
 func (s *StateEngine) prepare2Commit(commit *message.Commit) (err error) {
-	fmt.Printf("======>[prePrepare2Prepare]Current Prepare Message from Node[%d]\n", commit.NodeID)
-	fmt.Printf("======>[prepare2Commit] Current sequence[%d]\n", commit.SequenceID)
-
 	//TODO:: Commit is properly signed
-	//fmt.Printf("Verify Commit message digest:%s\n", Commit.Digest)
-	if commit.ViewID != s.CurViewID {
-		return fmt.Errorf("======>[prepare2Commit]  invalid view id Msg=%d state=%d\n", commit.ViewID, s.CurViewID)
-	}
+	fmt.Printf("======>[prepare2Commit]Current Commit Message from Node[%d]\n", commit.NodeID)
+	fmt.Printf("======>[prepare2Commit]Current sequence[%d]\n", commit.SequenceID)
 
+	if commit.ViewID != s.CurViewID {
+		return fmt.Errorf("======>[prepare2Commit]  invalid view id Msg=%d state=%d", commit.ViewID, s.CurViewID)
+	}
 	if commit.SequenceID > s.MaxSeq || commit.SequenceID < s.MiniSeq {
-		return fmt.Errorf("======>[prepare2Commit] sequence no[%d] invalid[%d~%d]\n",
+		return fmt.Errorf("======>[prepare2Commit] sequence no[%d] invalid[%d~%d]",
 			commit.SequenceID, s.MiniSeq, s.MaxSeq)
 	}
 
@@ -381,29 +385,34 @@ func (s *StateEngine) prepare2Commit(commit *message.Commit) (err error) {
 		return fmt.Errorf("======>[prepare2Commit]:=>havn't got log for message(%d) yet", commit.SequenceID)
 	}
 	if log.Stage != Prepared {
-		return fmt.Errorf("======>[prepare2Commit] current[seq=%d] state isn't Prepared:[%s]\n", commit.SequenceID, log.Stage)
+		return fmt.Errorf("======>[prepare2Commit] current[seq=%d] state isn't Prepared:[%s]", commit.SequenceID, log.Stage)
 	}
 
 	ppMsg := log.PrePrepare
 	if ppMsg == nil {
 		return fmt.Errorf("======>[prepare2Commit]:=>havn't got pre-Prepare message(%d) yet", commit.SequenceID)
 	}
-
 	if ppMsg.ViewID != commit.ViewID ||
 		ppMsg.SequenceID != commit.SequenceID ||
-		ppMsg.Digest != commit.Digest {
+		string(ppMsg.Digest) != string(commit.Digest) {
 		return fmt.Errorf("[Prepare]:=>not same with pre-Prepare message")
 	}
-
 	log.Commit[commit.NodeID] = commit
-	if len(log.Commit) < 2*message.MaxFaultyNode+1 {
+
+	commitNodeNum := 0
+	for _, commit := range log.Commit {
+		if string(commit.Digest) == string(ppMsg.Digest) {
+			commitNodeNum++
+		}
+	}
+	if commitNodeNum < 2*message.MaxFaultyNode+1 {
 		return nil
 	}
+
 	log.Stage = Committed
 	s.Timer.tack()
-	fmt.Printf("======>[prepare2Commit] Consensus status is [%s] seq=%d and timer stop\n", log.Stage, commit.SequenceID)
+	fmt.Printf("======>[prepare2Commit]Consensus status is [%s] seq=%d and timer stop\n", log.Stage, commit.SequenceID)
 
-	//TODO::should execute request with smallest  sequence no, current committed sequence may not be the smallest one.
 	request, ok := s.cliRecord[log.clientID].Request[commit.SequenceID]
 	if !ok {
 		return fmt.Errorf("no raw request for such seq[%d]", commit.SequenceID)
@@ -412,41 +421,40 @@ func (s *StateEngine) prepare2Commit(commit *message.Commit) (err error) {
 		Request:    request,
 		PrePrepare: ppMsg,
 	}
-	//TODO::Check the reply whose sequence is smaller than current sequence.
+
 	s.nodeChan <- exeParam
 	return
 }
 
 func (s *StateEngine) procConsensusMsg(msg *message.ConMessage) (err error) {
-	// s.Timer.Reset(StateTimerOut)
-	fmt.Printf("\n======>[procConsensusMsg] Consesus message signature:(%s)\n", msg.Sig)
+	fmt.Printf("\n======>[procConsensusMsg]Consesus message signature:(%s)\n", msg.Sig)
 
 	switch msg.Typ {
 	case message.MTRequest:
 		request := &message.Request{}
 		if err := json.Unmarshal(msg.Payload, request); err != nil {
-			return fmt.Errorf("======>[procConsensusMsg] Invalid[%s] request message[%s]\n", err, msg)
+			return fmt.Errorf("======>[procConsensusMsg] Invalid[%s] request message[%s]", err, msg)
 		}
 		return s.rawRequest(request)
 
 	case message.MTPrePrepare:
 		prePrepare := &message.PrePrepare{}
 		if err := json.Unmarshal(msg.Payload, prePrepare); err != nil {
-			return fmt.Errorf("======>[procConsensusMsg] Invalid[%s] pre-Prepare message[%s]\n", err, msg)
+			return fmt.Errorf("======>[procConsensusMsg] Invalid[%s] pre-Prepare message[%s]", err, msg)
 		}
 		return s.idle2PrePrepare(prePrepare)
 
 	case message.MTPrepare:
 		prepare := &message.Prepare{}
 		if err := json.Unmarshal(msg.Payload, prepare); err != nil {
-			return fmt.Errorf("======>[procConsensusMsg]invalid[%s] Prepare message[%s]\n", err, msg)
+			return fmt.Errorf("======>[procConsensusMsg]invalid[%s] Prepare message[%s]", err, msg)
 		}
 		return s.prePrepare2Prepare(prepare)
 
 	case message.MTCommit:
 		commit := &message.Commit{}
 		if err := json.Unmarshal(msg.Payload, commit); err != nil {
-			return fmt.Errorf("======>[procConsensusMsg] invalid[%s] Commit message[%s]\n", err, msg)
+			return fmt.Errorf("======>[procConsensusMsg] invalid[%s] Commit message[%s]", err, msg)
 		}
 		return s.prepare2Commit(commit)
 	}
@@ -455,27 +463,32 @@ func (s *StateEngine) procConsensusMsg(msg *message.ConMessage) (err error) {
 
 func (s *StateEngine) procManageMsg(msg *message.ConMessage) (err error) {
 	switch msg.Typ {
-	// case message.MTCheckpoint:
-	// 	checkpoint := &message.CheckPoint{}
-	// 	if err := json.Unmarshal(msg.Payload, checkpoint); err != nil {
-	// 		return fmt.Errorf("======>[procConsensusMsg] invalid[%s]checkpoint message[%s]\n", err, msg)
-	// 	}
-	// 	return s.checkingPoint(checkpoint)
-
 	case message.MTViewChange:
 		vc := &message.ViewChange{}
 		if err := json.Unmarshal(msg.Payload, vc); err != nil {
-			return fmt.Errorf("======>[procConsensusMsg] invalid[%s]ViewChange message[%s]\n", err, msg)
+			return fmt.Errorf("======>[procConsensusMsg] invalid[%s]ViewChange message[%s]", err, msg)
 		}
 		return s.procViewChange(vc)
 
 	case message.MTNewView:
 		vc := &message.NewView{}
 		if err := json.Unmarshal(msg.Payload, vc); err != nil {
-			return fmt.Errorf("======>[procConsensusMsg] invalid[%s] didiViewChange message[%s]\n", err, msg)
+			return fmt.Errorf("======>[procConsensusMsg] invalid[%s] didiViewChange message[%s]", err, msg)
 		}
 		return s.didChangeView(vc)
 	}
+	return nil
+}
+
+func (s *StateEngine) procNewKeyMsg(msg *message.ConMessage) (err error) {
+	if msg.Typ != message.MTPublicKey {
+		return fmt.Errorf("======>[procNewKeyMsg] invalid[%s] NewPublicKey message[%s]", err, msg)
+	}
+	npk := &message.NewPublicKey{}
+	if err := json.Unmarshal(msg.Payload, npk); err != nil {
+		return fmt.Errorf("======>[procConsensusMsg] invalid[%s] didiViewChange message[%s]", err, msg)
+	}
+	s.p2pWire.PeerPublicKeys[npk.NodeID] = npk.PK
 	return nil
 }
 
