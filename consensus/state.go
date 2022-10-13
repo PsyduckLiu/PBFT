@@ -154,10 +154,6 @@ func (s *StateEngine) StartConsensus(sig chan interface{}) {
 				if err := s.procManageMsg(conMsg); err != nil {
 					fmt.Print(err)
 				}
-			case message.MTPublicKey:
-				if err := s.procNewKeyMsg(conMsg); err != nil {
-					fmt.Print(err)
-				}
 			}
 		}
 	}
@@ -477,18 +473,6 @@ func (s *StateEngine) procManageMsg(msg *message.ConMessage) (err error) {
 		}
 		return s.didChangeView(vc)
 	}
-	return nil
-}
-
-func (s *StateEngine) procNewKeyMsg(msg *message.ConMessage) (err error) {
-	if msg.Typ != message.MTPublicKey {
-		return fmt.Errorf("======>[procNewKeyMsg] invalid[%s] NewPublicKey message[%s]", err, msg)
-	}
-	npk := &message.NewPublicKey{}
-	if err := json.Unmarshal(msg.Payload, npk); err != nil {
-		return fmt.Errorf("======>[procConsensusMsg] invalid[%s] didiViewChange message[%s]", err, msg)
-	}
-	s.p2pWire.PeerPublicKeys[npk.NodeID] = npk.PK
 	return nil
 }
 

@@ -23,7 +23,7 @@ func InitService(port int, msgChan chan interface{}) *Service {
 	if err != nil {
 		return nil
 	}
-	fmt.Printf("\n===>Service Listening at[%d]", port)
+	fmt.Printf("\n===>Service Listening at[%d]\n", port)
 
 	s := &Service{
 		SrvHub:   srv,

@@ -1,7 +1,6 @@
 package message
 
 import (
-	"crypto/ecdsa"
 	"encoding/json"
 	"fmt"
 )
@@ -9,7 +8,7 @@ import (
 type ConMessage struct {
 	Typ     MType  `json:"type"`
 	Sig     string `json:"sig"`
-	From    string `json:"from"`
+	From    int64  `json:"from"`
 	Payload []byte `json:"payload"`
 }
 
@@ -46,10 +45,10 @@ func CreateConMsg(t MType, msg interface{}) *ConMessage {
 	return consMsg
 }
 
-type NewPublicKey struct {
-	NodeID int64            `json:"nodeID"`
-	PK     *ecdsa.PublicKey `json:"pk"`
-}
+// type NewPublicKey struct {
+// 	NodeID int64            `json:"nodeID"`
+// 	PK     *ecdsa.PublicKey `json:"pk"`
+// }
 
 type RequestRecord struct {
 	*PrePrepare
