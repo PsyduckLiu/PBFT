@@ -49,7 +49,7 @@ func (n *Node) Run() {
 	fmt.Printf("\nConsensus node[%d] start primary[%t]......\n", n.NodeID, n.NodeID == n.consensus.PrimaryID)
 
 	go n.consensus.StartConsensus(n.signal)
-	go n.service.WaitRequest(n.signal)
+	go n.service.WaitRequest(n.signal, n.consensus)
 	go n.Dispatch()
 
 	s := <-n.signal

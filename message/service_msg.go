@@ -23,7 +23,7 @@ const TotalNodeNO = 3*MaxFaultyNode + 1
 
 func Digest(v interface{}) []byte {
 	h := sha256.New()
-	h.Write([]byte(fmt.Sprintf("%s", v)))
+	h.Write([]byte(fmt.Sprintf("%v", v)))
 	digest := h.Sum(nil)
 
 	return digest
@@ -35,14 +35,30 @@ func PortByID(id int64) int {
 
 func (mt MType) String() string {
 	switch mt {
+	case MTRequest:
+		return "Request"
 	case MTPrePrepare:
 		return "PrePrepare"
 	case MTPrepare:
 		return "Prepare"
 	case MTCommit:
 		return "Commit"
+	case MTViewChange:
+		return "ViewChange"
+	case MTNewView:
+		return "NewView"
+	case MTPublicKey:
+		return "PublicKey"
 	}
 	return "Unknown"
+}
+
+type ClientMessage struct {
+	Sig       []byte `json:"sig"`
+	TimeStamp int64  `json:"timestamp"`
+	ClientID  string `json:"clientID"`
+	Operation string `json:"operation"`
+	PublicKey []byte `json:"pk"`
 }
 
 type Request struct {
@@ -53,7 +69,7 @@ type Request struct {
 }
 
 func (r *Request) String() string {
-	return fmt.Sprintf("\n clientID:%20s"+
+	return fmt.Sprintf("\n clientID:%s"+
 		"\n time:%d"+
 		"\n operation:%s",
 		r.ClientID,

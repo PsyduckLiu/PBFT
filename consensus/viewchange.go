@@ -2,11 +2,12 @@ package consensus
 
 import (
 	"PBFT/message"
+	"PBFT/signature"
 	"fmt"
 )
 
 // view change cache
-// vcMsg = view change message   
+// vcMsg = view change message
 // VMessage map[int64]*ViewChange
 // nvMsg = new view message
 type VCCache struct {
@@ -53,8 +54,9 @@ func (s *StateEngine) ViewChange() {
 		s.sCache.pushVC(vc) //[vc.NodeID] = vc
 	}
 
-	consMsg := message.CreateConMsg(message.MTViewChange, vc)
-	if err := s.p2pWire.BroadCast(consMsg); err != nil {
+	sk := s.P2pWire.GetMySecretkey()
+	consMsg := message.CreateConMsg(message.MTViewChange, vc, sk, s.NodeID)
+	if err := s.P2pWire.BroadCast(consMsg); err != nil {
 		fmt.Println(err)
 		return
 	}
@@ -63,7 +65,14 @@ func (s *StateEngine) ViewChange() {
 }
 
 // invoked by state.go when received a viewchage message
-func (s *StateEngine) procViewChange(vc *message.ViewChange) error {
+func (s *StateEngine) procViewChange(vc *message.ViewChange, msg *message.ConMessage) error {
+	publicKey := s.P2pWire.GetPeerPublickey(msg.From)
+	verify := signature.VerifySig(msg.Payload, msg.Sig, publicKey)
+	if !verify {
+		return fmt.Errorf("!===>Verify ViewChange message failed, From Node[%d]\n", msg.From)
+	}
+	fmt.Printf("======>[ViewChange]Verify success\n")
+
 	nextPrimaryID := vc.NewViewID % message.TotalNodeNO
 	if s.NodeID != nextPrimaryID {
 		fmt.Printf("I'm Node[%d] not the new[%d] primary node\n", s.NodeID, nextPrimaryID)
@@ -94,8 +103,9 @@ func (s *StateEngine) createNewViewMsg(newVID int64) error {
 	s.PrimaryID = s.CurViewID % message.TotalNodeNO
 	fmt.Printf("======>[ViewChange] New primary is me[%d].....\n", s.PrimaryID)
 
-	msg := message.CreateConMsg(message.MTNewView, nv)
-	if err := s.p2pWire.BroadCast(msg); err != nil {
+	sk := s.P2pWire.GetMySecretkey()
+	msg := message.CreateConMsg(message.MTNewView, nv, sk, s.NodeID)
+	if err := s.P2pWire.BroadCast(msg); err != nil {
 		return err
 	}
 
@@ -104,21 +114,15 @@ func (s *StateEngine) createNewViewMsg(newVID int64) error {
 	return nil
 }
 
-// func (s *StateEngine) cleanRequest() {
-// 	for cid, client := range s.cliRecord {
-// 		for seq, req := range client.Request {
-// 			if req.TimeStamp < client.LastReplyTime {
-// 				delete(client.Request, seq)
-// 				fmt.Printf("cleaning request[%d] when view changed for client[%s]\n", seq, cid)
-// 			}
-// 		}
-// 	}
-// 	return
-// }
-
 // invoked by state.go when received a newview message
-func (s *StateEngine) didChangeView(nv *message.NewView) error {
-	// TODO:verify the NewView message
+func (s *StateEngine) didChangeView(nv *message.NewView, msg *message.ConMessage) error {
+	publicKey := s.P2pWire.GetPeerPublickey(msg.From)
+	verify := signature.VerifySig(msg.Payload, msg.Sig, publicKey)
+	if !verify {
+		return fmt.Errorf("!===>Verify NewView message failed, From Node[%d]\n", msg.From)
+	}
+	fmt.Printf("======>[NewView]Verify success\n")
+
 	s.CurViewID = nv.NewViewID
 	s.sCache.vcMsg = nv.VMsg
 	s.sCache.addNewView(nv)

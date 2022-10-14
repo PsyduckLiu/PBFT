@@ -3,6 +3,7 @@ package consensus
 import (
 	"PBFT/message"
 	"PBFT/p2pnetwork"
+	"PBFT/signature"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -93,7 +94,7 @@ type StateEngine struct {
 	nodeStatus  EngineStatus
 
 	Timer           *RequestTimer
-	p2pWire         p2pnetwork.P2pNetwork
+	P2pWire         p2pnetwork.P2pNetwork
 	MsgChan         <-chan *message.ConMessage
 	nodeChan        chan<- *message.RequestRecord
 	directReplyChan chan<- *message.Reply
@@ -115,7 +116,7 @@ func InitConsensus(id int64, cChan chan<- *message.RequestRecord, rChan chan<- *
 		MiniSeq:         0,
 		MaxSeq:          64,
 		Timer:           newRequestTimer(),
-		p2pWire:         p2p,
+		P2pWire:         p2p,
 		MsgChan:         ch,
 		nodeChan:        cChan,
 		directReplyChan: rChan,
@@ -193,7 +194,6 @@ func (s *StateEngine) getOrCreateLog(seq int64) *NormalLog {
 
 // new request comes
 func (s *StateEngine) InspireConsensus(request *message.Request) error {
-	//TODO:: check signature of Request
 	newSeq := s.CurSequence
 	s.CurSequence = (s.CurSequence + 1) % s.MaxSeq
 	request.SeqID = newSeq
@@ -215,12 +215,14 @@ func (s *StateEngine) InspireConsensus(request *message.Request) error {
 	log.clientID = request.ClientID
 	log.Stage = PrePrepared
 
-	cMsg := message.CreateConMsg(message.MTRequest, request)
-	if err := s.p2pWire.BroadCast(cMsg); err != nil {
+	sk := s.P2pWire.GetMySecretkey()
+	cMsg := message.CreateConMsg(message.MTRequest, request, sk, s.NodeID)
+	// fmt.Println(cMsg)
+	if err := s.P2pWire.BroadCast(cMsg); err != nil {
 		return err
 	}
-	cMsg = message.CreateConMsg(message.MTPrePrepare, ppMsg)
-	if err := s.p2pWire.BroadCast(cMsg); err != nil {
+	cMsg = message.CreateConMsg(message.MTPrePrepare, ppMsg, sk, s.NodeID)
+	if err := s.P2pWire.BroadCast(cMsg); err != nil {
 		return err
 	}
 
@@ -230,9 +232,15 @@ func (s *StateEngine) InspireConsensus(request *message.Request) error {
 }
 
 // Backups receive a new request
-func (s *StateEngine) rawRequest(request *message.Request) (err error) {
-	//TODO:: check signature of Request
-	fmt.Print("======>[NewRequest]Receive a new request", *request, "\n")
+func (s *StateEngine) rawRequest(request *message.Request, msg *message.ConMessage) (err error) {
+	fmt.Printf("======>[NewRequest]Receive a new request[%d]\n", request.SeqID)
+
+	publicKey := s.P2pWire.GetPeerPublickey(msg.From)
+	verify := signature.VerifySig(msg.Payload, msg.Sig, publicKey)
+	if !verify {
+		return fmt.Errorf("!===>Verify new request Signature failed, From Client[%s] and Node[%d]\n", request.ClientID, msg.From)
+	}
+	fmt.Printf("======>[NewRequest]Verify success\n")
 
 	s.CurSequence = request.SeqID
 	client, err := s.checkClientRecord(request)
@@ -249,9 +257,15 @@ func (s *StateEngine) rawRequest(request *message.Request) (err error) {
 }
 
 // Backups receive a new Preprepare
-func (s *StateEngine) idle2PrePrepare(ppMsg *message.PrePrepare) (err error) {
-	//TODO:: check signature of of pre-Prepare message
+func (s *StateEngine) idle2PrePrepare(ppMsg *message.PrePrepare, msg *message.ConMessage) (err error) {
 	fmt.Printf("======>[idle2PrePrepare]Current sequence[%d]\n", ppMsg.SequenceID)
+
+	publicKey := s.P2pWire.GetPeerPublickey(msg.From)
+	verify := signature.VerifySig(msg.Payload, msg.Sig, publicKey)
+	if !verify {
+		return fmt.Errorf("!===>Verify pre-Prepare message failed, From Node[%d]\n", msg.From)
+	}
+	fmt.Printf("======>[idle2PrePrepare]Verify success\n")
 
 	if ppMsg.ViewID != s.CurViewID {
 		return fmt.Errorf("======>[idle2PrePrepare] invalid view id Msg=%d state=%d", ppMsg.ViewID, s.CurViewID)
@@ -288,8 +302,9 @@ func (s *StateEngine) idle2PrePrepare(ppMsg *message.PrePrepare) (err error) {
 		Digest:     ppMsg.Digest,
 		NodeID:     s.NodeID,
 	}
-	cMsg := message.CreateConMsg(message.MTPrepare, prepare)
-	if err := s.p2pWire.BroadCast(cMsg); err != nil {
+	sk := s.P2pWire.GetMySecretkey()
+	cMsg := message.CreateConMsg(message.MTPrepare, prepare, sk, s.NodeID)
+	if err := s.P2pWire.BroadCast(cMsg); err != nil {
 		return err
 	}
 
@@ -302,10 +317,16 @@ func (s *StateEngine) idle2PrePrepare(ppMsg *message.PrePrepare) (err error) {
 }
 
 // Backups receive a new Prepare
-func (s *StateEngine) prePrepare2Prepare(prepare *message.Prepare) (err error) {
-	//TODO::signature check
+func (s *StateEngine) prePrepare2Prepare(prepare *message.Prepare, msg *message.ConMessage) (err error) {
 	fmt.Printf("======>[prePrepare2Prepare]Current Prepare Message from Node[%d]\n", prepare.NodeID)
 	fmt.Printf("======>[prePrepare2Prepare]Current sequence[%d]\n", prepare.SequenceID)
+
+	publicKey := s.P2pWire.GetPeerPublickey(msg.From)
+	verify := signature.VerifySig(msg.Payload, msg.Sig, publicKey)
+	if !verify {
+		return fmt.Errorf("!===>Verify prePrepare2Prepare message failed, From Node[%d]\n", msg.From)
+	}
+	fmt.Printf("======>[prePrepare2Prepare]Verify success\n")
 
 	if prepare.ViewID != s.CurViewID {
 		return fmt.Errorf("======>[prePrepare2Prepare]:=>invalid view id Msg=%d state=%d", prepare.ViewID, s.CurViewID)
@@ -350,8 +371,9 @@ func (s *StateEngine) prePrepare2Prepare(prepare *message.Prepare) (err error) {
 		Digest:     prepare.Digest,
 		NodeID:     s.NodeID,
 	}
-	cMsg := message.CreateConMsg(message.MTCommit, commit)
-	if err := s.p2pWire.BroadCast(cMsg); err != nil {
+	sk := s.P2pWire.GetMySecretkey()
+	cMsg := message.CreateConMsg(message.MTCommit, commit, sk, s.NodeID)
+	if err := s.P2pWire.BroadCast(cMsg); err != nil {
 		return err
 	}
 
@@ -363,10 +385,16 @@ func (s *StateEngine) prePrepare2Prepare(prepare *message.Prepare) (err error) {
 }
 
 // Backups receive a new commit
-func (s *StateEngine) prepare2Commit(commit *message.Commit) (err error) {
-	//TODO:: Commit is properly signed
+func (s *StateEngine) prepare2Commit(commit *message.Commit, msg *message.ConMessage) (err error) {
 	fmt.Printf("======>[prepare2Commit]Current Commit Message from Node[%d]\n", commit.NodeID)
 	fmt.Printf("======>[prepare2Commit]Current sequence[%d]\n", commit.SequenceID)
+
+	publicKey := s.P2pWire.GetPeerPublickey(msg.From)
+	verify := signature.VerifySig(msg.Payload, msg.Sig, publicKey)
+	if !verify {
+		return fmt.Errorf("!===>Verify prepare2Commit message failed, From Node[%d]\n", msg.From)
+	}
+	fmt.Printf("======>[prepare2Commit]Verify success\n")
 
 	if commit.ViewID != s.CurViewID {
 		return fmt.Errorf("======>[prepare2Commit]  invalid view id Msg=%d state=%d", commit.ViewID, s.CurViewID)
@@ -423,7 +451,7 @@ func (s *StateEngine) prepare2Commit(commit *message.Commit) (err error) {
 }
 
 func (s *StateEngine) procConsensusMsg(msg *message.ConMessage) (err error) {
-	fmt.Printf("\n======>[procConsensusMsg]Consesus message signature:(%s)\n", msg.Sig)
+	fmt.Printf("\n======>[procConsensusMsg]Consesus message type:[%s] from Node[%d]\n", msg.Typ, msg.From)
 
 	switch msg.Typ {
 	case message.MTRequest:
@@ -431,28 +459,28 @@ func (s *StateEngine) procConsensusMsg(msg *message.ConMessage) (err error) {
 		if err := json.Unmarshal(msg.Payload, request); err != nil {
 			return fmt.Errorf("======>[procConsensusMsg] Invalid[%s] request message[%s]", err, msg)
 		}
-		return s.rawRequest(request)
+		return s.rawRequest(request, msg)
 
 	case message.MTPrePrepare:
 		prePrepare := &message.PrePrepare{}
 		if err := json.Unmarshal(msg.Payload, prePrepare); err != nil {
 			return fmt.Errorf("======>[procConsensusMsg] Invalid[%s] pre-Prepare message[%s]", err, msg)
 		}
-		return s.idle2PrePrepare(prePrepare)
+		return s.idle2PrePrepare(prePrepare, msg)
 
 	case message.MTPrepare:
 		prepare := &message.Prepare{}
 		if err := json.Unmarshal(msg.Payload, prepare); err != nil {
 			return fmt.Errorf("======>[procConsensusMsg]invalid[%s] Prepare message[%s]", err, msg)
 		}
-		return s.prePrepare2Prepare(prepare)
+		return s.prePrepare2Prepare(prepare, msg)
 
 	case message.MTCommit:
 		commit := &message.Commit{}
 		if err := json.Unmarshal(msg.Payload, commit); err != nil {
 			return fmt.Errorf("======>[procConsensusMsg] invalid[%s] Commit message[%s]", err, msg)
 		}
-		return s.prepare2Commit(commit)
+		return s.prepare2Commit(commit, msg)
 	}
 	return
 }
@@ -464,14 +492,14 @@ func (s *StateEngine) procManageMsg(msg *message.ConMessage) (err error) {
 		if err := json.Unmarshal(msg.Payload, vc); err != nil {
 			return fmt.Errorf("======>[procConsensusMsg] invalid[%s]ViewChange message[%s]", err, msg)
 		}
-		return s.procViewChange(vc)
+		return s.procViewChange(vc, msg)
 
 	case message.MTNewView:
 		vc := &message.NewView{}
 		if err := json.Unmarshal(msg.Payload, vc); err != nil {
 			return fmt.Errorf("======>[procConsensusMsg] invalid[%s] didiViewChange message[%s]", err, msg)
 		}
-		return s.didChangeView(vc)
+		return s.didChangeView(vc, msg)
 	}
 	return nil
 }

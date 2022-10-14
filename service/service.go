@@ -1,7 +1,11 @@
 package service
 
 import (
+	"PBFT/consensus"
 	"PBFT/message"
+	"PBFT/signature"
+	"crypto/ecdsa"
+	"crypto/x509"
 	"encoding/json"
 	"fmt"
 	"net"
@@ -32,7 +36,7 @@ func InitService(port int, msgChan chan interface{}) *Service {
 	return s
 }
 
-func (s *Service) WaitRequest(sig chan interface{}) {
+func (s *Service) WaitRequest(sig chan interface{}, stateMachine *consensus.StateEngine) {
 	defer func() {
 		if r := recover(); r != nil {
 			sig <- r
@@ -47,14 +51,39 @@ func (s *Service) WaitRequest(sig chan interface{}) {
 			continue
 		}
 
-		bo := &message.Request{}
-		if err := json.Unmarshal(buf[:n], bo); err != nil {
-			fmt.Printf("\nService message parse err:%s", err)
+		requestFromClient := &message.ClientMessage{}
+		if err := json.Unmarshal(buf[:n], requestFromClient); err != nil {
+			fmt.Printf("Service message parse err:%s\n", err)
 			continue
 		}
-		fmt.Printf("\nService message from[%s], Length is [%d], Client id is[%s], Operation is [%s]\n", rAddr.String(), n, bo.ClientID, bo.Operation)
 
-		go s.process(bo)
+		requestWithoutSig := &message.ClientMessage{
+			TimeStamp: requestFromClient.TimeStamp,
+			ClientID:  requestFromClient.ClientID,
+			Operation: requestFromClient.Operation,
+			PublicKey: requestFromClient.PublicKey,
+		}
+		pub, err := x509.ParsePKIXPublicKey(requestWithoutSig.PublicKey)
+		if err != nil {
+			fmt.Printf("Key message parse err:%s\n", err)
+			continue
+		}
+		publicKey := pub.(*ecdsa.PublicKey)
+		verify := signature.VerifySig([]byte(fmt.Sprintf("%v", requestWithoutSig)), requestFromClient.Sig, publicKey)
+		if !verify {
+			fmt.Printf("!===>Verify new request Signature failed, From Client[%s]\n", requestFromClient.ClientID)
+			continue
+		}
+		stateMachine.P2pWire.NewClientPublickey(requestFromClient.ClientID, publicKey)
+
+		requestInPBFT := &message.Request{
+			TimeStamp: requestFromClient.TimeStamp,
+			ClientID:  requestFromClient.ClientID,
+			Operation: requestFromClient.Operation,
+		}
+
+		fmt.Printf("\nService message from[%s], Length is [%d], Client id is[%s], Operation is [%s]\n", rAddr.String(), n, requestInPBFT.ClientID, requestInPBFT.Operation)
+		go s.process(requestInPBFT)
 	}
 }
 
