@@ -11,11 +11,13 @@ import (
 	"os"
 	"strconv"
 	"sync"
+	"time"
 )
 
 func request(conn *net.UDPConn, wg *sync.RWMutex, sk *ecdsa.PrivateKey) {
 	for {
 		wg.Lock()
+
 		primaryID, _ := strconv.Atoi(os.Args[1])
 		rAddr := net.UDPAddr{
 			Port: message.PortByID(int64(primaryID)),
@@ -36,6 +38,7 @@ func request(conn *net.UDPConn, wg *sync.RWMutex, sk *ecdsa.PrivateKey) {
 }
 
 func normalCaseOperation(roundSize int, sk *ecdsa.PrivateKey) {
+	beginTime := time.Now()
 	fmt.Println("start test.....")
 	lclAddr := net.UDPAddr{
 		Port: 8088,
@@ -79,6 +82,9 @@ func normalCaseOperation(roundSize int, sk *ecdsa.PrivateKey) {
 		}
 		if roundSize <= 0 {
 			fmt.Println("Test case finished")
+			endTime := time.Since(beginTime)
+			fmt.Println("Total Run time is:", endTime)
+			fmt.Println("Average Run time is:", endTime)
 			os.Exit(0)
 		}
 	}
@@ -96,5 +102,9 @@ func main() {
 	}
 	fmt.Printf("===>[Client]my own key is: %v\n", privateKey)
 
-	normalCaseOperation(1, privateKey)
+	// beginTime := time.Now()
+	normalCaseOperation(20, privateKey)
+	// endTime := time.Since(beginTime)
+
+	// fmt.Println("Run time is:", endTime)
 }

@@ -7,7 +7,7 @@ import (
 	"fmt"
 )
 
-const MaxMsgNO = 100
+const MaxMsgNum = 100
 
 // [signal]:  a channel connects [node] with [consensus] and [service], deliver the exit message
 // [srvChan]: a channel connects [node] with [service], deliver service message(request)
@@ -24,10 +24,11 @@ type Node struct {
 	service         *service.Service
 }
 
+// initialize a new node
 func NewNode(id int64) *Node {
-	srvChan := make(chan interface{}, MaxMsgNO)
-	conChan := make(chan *message.RequestRecord, MaxMsgNO)
-	rChan := make(chan *message.Reply, MaxMsgNO)
+	srvChan := make(chan interface{}, MaxMsgNum)
+	conChan := make(chan *message.RequestRecord, MaxMsgNum)
+	rChan := make(chan *message.Reply, MaxMsgNum)
 
 	c := consensus.InitConsensus(id, conChan, rChan)
 	sr := service.InitService(message.PortByID(id), srvChan)
@@ -42,20 +43,23 @@ func NewNode(id int64) *Node {
 		conChan:         conChan,
 		directReplyChan: rChan,
 	}
+
 	return n
 }
 
+// run a node
 func (n *Node) Run() {
-	fmt.Printf("\nConsensus node[%d] start primary[%t]......\n", n.NodeID, n.NodeID == n.consensus.PrimaryID)
+	fmt.Printf("===>Consensus node[%d] start primary[%t]......\n", n.NodeID, n.NodeID == n.consensus.PrimaryID)
 
 	go n.consensus.StartConsensus(n.signal)
 	go n.service.WaitRequest(n.signal, n.consensus)
 	go n.Dispatch()
 
 	s := <-n.signal
-	fmt.Printf("Node[%d] exit because of:%s", n.NodeID, s)
+	fmt.Printf("===>[EXIT]Node[%d] exit because of:%s", n.NodeID, s)
 }
 
+// handle different messages
 func (n *Node) Dispatch() {
 	for {
 		select {
@@ -67,7 +71,7 @@ func (n *Node) Dispatch() {
 			}
 			// a new service message invokes InspireConsensus()
 			if err := n.consensus.InspireConsensus(opMsg); err != nil {
-				fmt.Printf("consesus layer err:%s", err)
+				fmt.Printf("===>[ERROR]consesus layer err:%s", err)
 				n.waitQueue = append(n.waitQueue, opMsg)
 			}
 
@@ -75,7 +79,7 @@ func (n *Node) Dispatch() {
 		case record := <-n.conChan:
 			reply, err := n.service.Execute(record.ViewID, n.NodeID, record.SequenceID, record.Request)
 			if err != nil {
-				fmt.Printf("service layer err:%s", err)
+				fmt.Printf("===>[ERROR]Service layer err:%s", err)
 				continue
 			}
 			n.consensus.ResetState(reply)

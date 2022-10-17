@@ -7,6 +7,7 @@ import (
 	"fmt"
 )
 
+// consensus message type in Consensus
 type ConMessage struct {
 	Typ     MType  `json:"type"`
 	Sig     []byte `json:"sig"`
@@ -14,6 +15,7 @@ type ConMessage struct {
 	Payload []byte `json:"payload"`
 }
 
+// consensus message.String()
 func (cm *ConMessage) String() string {
 	return fmt.Sprintf("\n======Consensus Messagetype======"+
 		"\ntype:%s"+
@@ -27,17 +29,14 @@ func (cm *ConMessage) String() string {
 		len(cm.Payload))
 }
 
-func (cm *ConMessage) Verify() bool {
-	//hash := HASH(cm.Payload)
-	//return cm.From == Revert(hash, cm.Sig)
-	return true
-}
-
+// create consensus message
 func CreateConMsg(t MType, msg interface{}, sk *ecdsa.PrivateKey, id int64) *ConMessage {
 	data, e := json.Marshal(msg)
 	if e != nil {
 		return nil
 	}
+
+	// sign message.Payload
 	sig := signature.GenerateSig(data, sk)
 	consMsg := &ConMessage{
 		Typ:     t,
@@ -45,22 +44,28 @@ func CreateConMsg(t MType, msg interface{}, sk *ecdsa.PrivateKey, id int64) *Con
 		From:    id,
 		Payload: data,
 	}
-	// fmt.Println(consMsg)
+
 	return consMsg
 }
 
+// RequestRecord type in Consensus
 type RequestRecord struct {
 	*PrePrepare
 	*Request
 }
 
+// PrePrepare type in Consensus
 type PrePrepare struct {
 	ViewID     int64  `json:"viewID"`
 	SequenceID int64  `json:"sequenceID"`
 	Digest     []byte `json:"digest"`
 }
 
+// Prepare array
+// index is node ID
 type PrepareMsg map[int64]*Prepare
+
+// Prepare type in Consensus
 type Prepare struct {
 	ViewID     int64  `json:"viewID"`
 	SequenceID int64  `json:"sequenceID"`
@@ -68,6 +73,7 @@ type Prepare struct {
 	NodeID     int64  `json:"nodeID"`
 }
 
+// Commit type in Consensus
 type Commit struct {
 	ViewID     int64  `json:"viewID"`
 	SequenceID int64  `json:"sequenceID"`
@@ -75,18 +81,16 @@ type Commit struct {
 	NodeID     int64  `json:"nodeID"`
 }
 
+// ViewChange array
 type VMessage map[int64]*ViewChange
+
+// ViewChange type in Consensus
 type ViewChange struct {
 	NewViewID int64 `json:"newViewID"`
 	NodeID    int64 `json:"nodeID"`
 }
 
-func (vc *ViewChange) Digest() string {
-	// TODO: modify digest
-	// return fmt.Sprintf("this is digest for[%d-%d]", vc.NewViewID, vc.LastCPSeq)
-	return fmt.Sprintf("this is digest for[%d]", vc.NewViewID)
-}
-
+// NewView type in Consensus
 type NewView struct {
 	NewViewID int64    `json:"newViewID"`
 	VMsg      VMessage `json:"vMSG"`

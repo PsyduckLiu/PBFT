@@ -3,7 +3,7 @@ package consensus
 import "PBFT/message"
 
 type NormalLog struct {
-	clientID   string                    `json:"clientID"`
+	ClientID   string                    `json:"clientID"`
 	Stage      Stage                     `json:"Stage"`
 	PrePrepare *message.PrePrepare       `json:"PrePrepare"`
 	Prepare    message.PrepareMsg        `json:"Prepare"`

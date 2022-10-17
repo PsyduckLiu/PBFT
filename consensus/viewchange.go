@@ -49,13 +49,14 @@ func (s *StateEngine) ViewChange() {
 		NodeID:    s.NodeID,
 	}
 
-	nextPrimaryID := vc.NewViewID % message.TotalNodeNO
+	nextPrimaryID := vc.NewViewID % message.TotalNodeNum
 	if s.NodeID == nextPrimaryID {
 		s.sCache.pushVC(vc) //[vc.NodeID] = vc
 	}
 
 	sk := s.P2pWire.GetMySecretkey()
 	consMsg := message.CreateConMsg(message.MTViewChange, vc, sk, s.NodeID)
+	// locker := &sync.RWMutex{}
 	if err := s.P2pWire.BroadCast(consMsg); err != nil {
 		fmt.Println(err)
 		return
@@ -73,7 +74,7 @@ func (s *StateEngine) procViewChange(vc *message.ViewChange, msg *message.ConMes
 	}
 	fmt.Printf("======>[ViewChange]Verify success\n")
 
-	nextPrimaryID := vc.NewViewID % message.TotalNodeNO
+	nextPrimaryID := vc.NewViewID % message.TotalNodeNum
 	if s.NodeID != nextPrimaryID {
 		fmt.Printf("I'm Node[%d] not the new[%d] primary node\n", s.NodeID, nextPrimaryID)
 		return nil
@@ -100,11 +101,12 @@ func (s *StateEngine) createNewViewMsg(newVID int64) error {
 
 	s.sCache.addNewView(nv)
 	s.CurSequence = 0
-	s.PrimaryID = s.CurViewID % message.TotalNodeNO
+	s.PrimaryID = s.CurViewID % message.TotalNodeNum
 	fmt.Printf("======>[ViewChange] New primary is me[%d].....\n", s.PrimaryID)
 
 	sk := s.P2pWire.GetMySecretkey()
 	msg := message.CreateConMsg(message.MTNewView, nv, sk, s.NodeID)
+	// locker := &sync.RWMutex{}
 	if err := s.P2pWire.BroadCast(msg); err != nil {
 		return err
 	}
@@ -127,7 +129,7 @@ func (s *StateEngine) didChangeView(nv *message.NewView, msg *message.ConMessage
 	s.sCache.vcMsg = nv.VMsg
 	s.sCache.addNewView(nv)
 	s.CurSequence = 0
-	s.PrimaryID = s.CurViewID % message.TotalNodeNO
+	s.PrimaryID = s.CurViewID % message.TotalNodeNum
 	fmt.Printf("======>[NewView] New primary is(%d).....\n", s.PrimaryID)
 
 	// s.cleanRequest()

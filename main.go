@@ -10,6 +10,8 @@ import (
 )
 
 func main() {
+	// Input: node id
+	// Usage: go run main.go [id]
 	if len(os.Args) < 2 {
 		panic("usage: input id")
 	}
@@ -26,7 +28,7 @@ func main() {
 		syscall.SIGQUIT)
 
 	pid := strconv.Itoa(os.Getpid())
-	fmt.Printf("\n===>PBFT demo is running at PID[%s]\n", pid)
+	fmt.Printf("===>PBFT demo is running at PID[%s]\n", pid)
 	fmt.Println()
 	fmt.Println("===============================================")
 	fmt.Println("*                                             *")
@@ -36,5 +38,5 @@ func main() {
 	fmt.Println()
 
 	sig := <-sigCh
-	fmt.Printf("Finish by signal[%s]\n", sig.String())
+	fmt.Printf("===>Finish by signal[%s]\n", sig.String())
 }

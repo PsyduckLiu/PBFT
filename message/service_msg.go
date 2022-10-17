@@ -7,9 +7,10 @@ import (
 
 type MType int16
 
+// number different kinds of message types
 const (
-	MTPrePrepare MType = iota
-	MTRequest
+	MTRequest MType = iota
+	MTPrePrepare
 	MTPrepare
 	MTCommit
 	MTViewChange
@@ -18,9 +19,10 @@ const (
 )
 
 // to be modified
-const MaxFaultyNode = 1
-const TotalNodeNO = 3*MaxFaultyNode + 1
+const MaxFaultyNode = 2
+const TotalNodeNum = 3*MaxFaultyNode + 1
 
+// Hash message v, SHA256
 func Digest(v interface{}) []byte {
 	h := sha256.New()
 	h.Write([]byte(fmt.Sprintf("%v", v)))
@@ -29,10 +31,12 @@ func Digest(v interface{}) []byte {
 	return digest
 }
 
+// Get Port(30000 + id)
 func PortByID(id int64) int {
 	return 30000 + int(id)
 }
 
+// MType.String()
 func (mt MType) String() string {
 	switch mt {
 	case MTRequest:
@@ -53,6 +57,7 @@ func (mt MType) String() string {
 	return "Unknown"
 }
 
+// message type from client
 type ClientMessage struct {
 	Sig       []byte `json:"sig"`
 	TimeStamp int64  `json:"timestamp"`
@@ -61,6 +66,7 @@ type ClientMessage struct {
 	PublicKey []byte `json:"pk"`
 }
 
+// request type in consensus
 type Request struct {
 	SeqID     int64  `json:"sequenceID"`
 	TimeStamp int64  `json:"timestamp"`
@@ -68,6 +74,7 @@ type Request struct {
 	Operation string `json:"operation"`
 }
 
+// request.String()
 func (r *Request) String() string {
 	return fmt.Sprintf("\n clientID:%s"+
 		"\n time:%d"+
@@ -77,6 +84,7 @@ func (r *Request) String() string {
 		r.Operation)
 }
 
+// reply type in consensus
 type Reply struct {
 	SeqID     int64  `json:"sequenceID"`
 	ViewID    int64  `json:"viewID"`
