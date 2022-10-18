@@ -163,10 +163,10 @@ func (sp *SimpleP2p) waitData(conn *net.TCPConn) {
 		}
 
 		// fmt.Printf("===>Receive [%s->%s]\n", conn.RemoteAddr().String(), conn.LocalAddr().String())
-		fmt.Println(string(buf[:n]))
+		// fmt.Println(string(buf[:n]))
 		conMsg := &message.ConMessage{}
 		if err := json.Unmarshal(buf[:n], conMsg); err != nil {
-			// fmt.Println(string(buf[:n]))
+			fmt.Println(string(buf[:n]))
 			panic(err)
 		}
 		// if MutexLocked(sp.PeersMutex[conn.RemoteAddr().String()]) {
@@ -225,7 +225,8 @@ func (sp *SimpleP2p) BroadCast(v interface{}) error {
 		}
 		fmt.Println("Broadcast")
 	}
-	time.Sleep(200 * time.Millisecond)
+
+	time.Sleep(300 * time.Millisecond)
 	return nil
 }
 
@@ -236,8 +237,7 @@ func (sp *SimpleP2p) SendUniqueNode(conn *net.TCPConn, v interface{}) error {
 	if v == nil {
 		return fmt.Errorf("===>[ERROR]empty msg body")
 	}
-	time.Sleep(200 * time.Millisecond)
-
+	
 	data, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -248,6 +248,7 @@ func (sp *SimpleP2p) SendUniqueNode(conn *net.TCPConn, v interface{}) error {
 		return fmt.Errorf("===>===>[ERROR]write to node[%s] err:%s\n", conn.RemoteAddr().String(), err)
 	}
 
+	time.Sleep(200 * time.Millisecond)
 	return nil
 }
 
