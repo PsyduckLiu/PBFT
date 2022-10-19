@@ -1,85 +1,125 @@
-===>[Client]my own key is: &{{0x67cb00 4421400815705681386859608462783061732091415528812166804906711004138552510114 34825129159328539224312363802921397662575536951396977560469372111189885754759} 41068183984216189370723130765581532824987724925802399841350080817276535961945}
+===>[Client]my own key is: &{{0x67cb00 22092722963354853582041004407403868545865959274363704127262590753599369028357 67154229017774171523379978937714855675447263449569173704230920018167121058306} 28866009480101233346786427471078454168822451576710247622853673225691426013122}
 start test.....
 Send request success!:=>
-Client Read[110] Reply from[0], Result is[success]:
-Client Read[110] Reply from[3], Result is[success]:
+Client Read[110] Reply from[6], Result is[success]:
+Client Read[110] Reply from[2], Result is[success]:
+Client Read[110] Reply from[4], Result is[success]:
+Client Read[110] Reply from[5], Result is[success]:
 Consensus(seq=0) operation(20) success!
 Send request success!:=>
-Client Read[110] Reply from[0], Result is[success]:
-Client Read[110] Reply from[2], Result is[success]:
+Client Read[110] Reply from[5], Result is[success]:
+Client Read[110] Reply from[4], Result is[success]:
+Client Read[110] Reply from[9], Result is[success]:
+Client Read[110] Reply from[7], Result is[success]:
 Consensus(seq=1) operation(19) success!
 Send request success!:=>
-Client Read[110] Reply from[0], Result is[success]:
-Client Read[110] Reply from[3], Result is[success]:
+Client Read[110] Reply from[9], Result is[success]:
+Client Read[110] Reply from[2], Result is[success]:
+Client Read[110] Reply from[7], Result is[success]:
+Client Read[110] Reply from[1], Result is[success]:
 Consensus(seq=2) operation(18) success!
 Send request success!:=>
-Client Read[110] Reply from[0], Result is[success]:
+Client Read[110] Reply from[7], Result is[success]:
 Client Read[110] Reply from[1], Result is[success]:
+Client Read[110] Reply from[9], Result is[success]:
+Client Read[110] Reply from[0], Result is[success]:
 Consensus(seq=3) operation(17) success!
 Send request success!:=>
-Client Read[110] Reply from[0], Result is[success]:
-Client Read[110] Reply from[5], Result is[success]:
+Client Read[110] Reply from[9], Result is[success]:
+Client Read[110] Reply from[2], Result is[success]:
+Client Read[110] Reply from[8], Result is[success]:
+Client Read[110] Reply from[6], Result is[success]:
 Consensus(seq=4) operation(16) success!
 Send request success!:=>
-Client Read[110] Reply from[0], Result is[success]:
+Client Read[110] Reply from[2], Result is[success]:
+Client Read[110] Reply from[7], Result is[success]:
 Client Read[110] Reply from[6], Result is[success]:
+Client Read[110] Reply from[9], Result is[success]:
 Consensus(seq=5) operation(15) success!
 Send request success!:=>
-Client Read[110] Reply from[0], Result is[success]:
-Client Read[110] Reply from[5], Result is[success]:
+Client Read[110] Reply from[6], Result is[success]:
+Client Read[110] Reply from[4], Result is[success]:
+Client Read[110] Reply from[1], Result is[success]:
+Client Read[110] Reply from[2], Result is[success]:
 Consensus(seq=6) operation(14) success!
 Send request success!:=>
-Client Read[110] Reply from[0], Result is[success]:
+Client Read[110] Reply from[9], Result is[success]:
 Client Read[110] Reply from[3], Result is[success]:
+Client Read[110] Reply from[5], Result is[success]:
+Client Read[110] Reply from[2], Result is[success]:
 Consensus(seq=7) operation(13) success!
 Send request success!:=>
+Client Read[110] Reply from[3], Result is[success]:
+Client Read[110] Reply from[1], Result is[success]:
+Client Read[110] Reply from[7], Result is[success]:
 Client Read[110] Reply from[0], Result is[success]:
-Client Read[110] Reply from[6], Result is[success]:
 Consensus(seq=8) operation(12) success!
 Send request success!:=>
-Client Read[110] Reply from[0], Result is[success]:
+Client Read[110] Reply from[4], Result is[success]:
 Client Read[110] Reply from[2], Result is[success]:
+Client Read[110] Reply from[1], Result is[success]:
+Client Read[110] Reply from[8], Result is[success]:
 Consensus(seq=9) operation(11) success!
 Send request success!:=>
 Client Read[111] Reply from[0], Result is[success]:
-Client Read[111] Reply from[1], Result is[success]:
+Client Read[111] Reply from[7], Result is[success]:
+Client Read[111] Reply from[4], Result is[success]:
+Client Read[111] Reply from[9], Result is[success]:
 Consensus(seq=10) operation(10) success!
 Send request success!:=>
-Client Read[111] Reply from[0], Result is[success]:
-Client Read[111] Reply from[6], Result is[success]:
+Client Read[111] Reply from[3], Result is[success]:
+Client Read[111] Reply from[4], Result is[success]:
+Client Read[111] Reply from[8], Result is[success]:
+Client Read[111] Reply from[7], Result is[success]:
 Consensus(seq=11) operation(9) success!
 Send request success!:=>
+Client Read[111] Reply from[2], Result is[success]:
+Client Read[111] Reply from[3], Result is[success]:
+Client Read[111] Reply from[1], Result is[success]:
 Client Read[111] Reply from[0], Result is[success]:
-Client Read[111] Reply from[5], Result is[success]:
 Consensus(seq=12) operation(8) success!
 Send request success!:=>
-Client Read[111] Reply from[0], Result is[success]:
-Client Read[111] Reply from[3], Result is[success]:
+Client Read[111] Reply from[5], Result is[success]:
+Client Read[111] Reply from[1], Result is[success]:
+Client Read[111] Reply from[2], Result is[success]:
+Client Read[111] Reply from[9], Result is[success]:
 Consensus(seq=13) operation(7) success!
 Send request success!:=>
-Client Read[111] Reply from[0], Result is[success]:
-Client Read[111] Reply from[5], Result is[success]:
+Client Read[111] Reply from[8], Result is[success]:
+Client Read[111] Reply from[4], Result is[success]:
+Client Read[111] Reply from[2], Result is[success]:
+Client Read[111] Reply from[1], Result is[success]:
 Consensus(seq=14) operation(6) success!
 Send request success!:=>
-Client Read[111] Reply from[0], Result is[success]:
-Client Read[111] Reply from[4], Result is[success]:
+Client Read[111] Reply from[5], Result is[success]:
+Client Read[111] Reply from[3], Result is[success]:
+Client Read[111] Reply from[1], Result is[success]:
+Client Read[111] Reply from[8], Result is[success]:
 Consensus(seq=15) operation(5) success!
 Send request success!:=>
 Client Read[111] Reply from[0], Result is[success]:
-Client Read[111] Reply from[3], Result is[success]:
+Client Read[111] Reply from[4], Result is[success]:
+Client Read[111] Reply from[2], Result is[success]:
+Client Read[111] Reply from[6], Result is[success]:
 Consensus(seq=16) operation(4) success!
 Send request success!:=>
-Client Read[111] Reply from[0], Result is[success]:
+Client Read[111] Reply from[5], Result is[success]:
+Client Read[111] Reply from[9], Result is[success]:
+Client Read[111] Reply from[6], Result is[success]:
 Client Read[111] Reply from[4], Result is[success]:
 Consensus(seq=17) operation(3) success!
 Send request success!:=>
-Client Read[111] Reply from[0], Result is[success]:
 Client Read[111] Reply from[1], Result is[success]:
+Client Read[111] Reply from[9], Result is[success]:
+Client Read[111] Reply from[4], Result is[success]:
+Client Read[111] Reply from[5], Result is[success]:
 Consensus(seq=18) operation(2) success!
 Send request success!:=>
 Client Read[111] Reply from[0], Result is[success]:
+Client Read[111] Reply from[9], Result is[success]:
+Client Read[111] Reply from[1], Result is[success]:
 Client Read[111] Reply from[2], Result is[success]:
 Consensus(seq=19) operation(1) success!
 Test case finished
-Total Run time is: 18.1534852s
-Average Run time is: 18.1534852s
+Total Run time is: 8.4384192s
+Average Run time is: 8.4384192s

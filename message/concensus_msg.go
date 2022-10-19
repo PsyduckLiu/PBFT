@@ -56,6 +56,9 @@ type RequestRecord struct {
 
 // PrePrepare type in Consensus
 type PrePrepare struct {
+	// TimeStamp  int64  `json:"timestamp"`
+	// ClientID   string `json:"clientID"`
+	// Operation  string `json:"operation"`
 	ViewID     int64  `json:"viewID"`
 	SequenceID int64  `json:"sequenceID"`
 	Digest     []byte `json:"digest"`

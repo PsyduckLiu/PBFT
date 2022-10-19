@@ -11,16 +11,17 @@ import (
 	"fmt"
 	"io"
 	"net"
-	"reflect"
 	"sync"
 	"time"
 )
 
-const mutexLocked = 1
+// const mutexLocked = 1
 
-var nodeList = []int64{0, 1, 2, 3, 4, 5, 6}
+// var nodeList = []int64{0, 1, 2, 3}
 
 // var nodeList = []int64{0, 1, 2, 3, 4, 5, 6}
+
+var nodeList = []int64{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 
 type P2pNetwork interface {
 	GetPeerPublickey(peerId int64) *ecdsa.PublicKey
@@ -34,10 +35,10 @@ type P2pNetwork interface {
 // [Peers]: map TCP connect to an int number
 // [MsgChan]: a channel connects [p2p] with [state(consensus)], deliver consensus message, corresponding to [ch] in [state(consensus)]
 type SimpleP2p struct {
-	NodeId           int64
-	SrvHub           *net.TCPListener
-	Peers            map[string]*net.TCPConn
-	PeersMutex       map[string]*sync.Mutex
+	NodeId int64
+	SrvHub *net.TCPListener
+	Peers  map[string]*net.TCPConn
+	// PeersMutex       map[string]*sync.Mutex
 	Ip2Id            map[string]int64
 	PrivateKey       *ecdsa.PrivateKey
 	PeerPublicKeys   map[int64]*ecdsa.PublicKey
@@ -62,10 +63,10 @@ func NewSimpleP2pLib(id int64, msgChan chan<- *message.ConMessage) P2pNetwork {
 	fmt.Printf("===>[Node%d] my own key is: %v\n", id, privateKey)
 
 	sp := &SimpleP2p{
-		NodeId:           id,
-		SrvHub:           s,
-		Peers:            make(map[string]*net.TCPConn),
-		PeersMutex:       make(map[string]*sync.Mutex),
+		NodeId: id,
+		SrvHub: s,
+		Peers:  make(map[string]*net.TCPConn),
+		// PeersMutex:       make(map[string]*sync.Mutex),
 		Ip2Id:            make(map[string]int64),
 		PrivateKey:       privateKey,
 		PeerPublicKeys:   make(map[int64]*ecdsa.PublicKey),
@@ -80,7 +81,7 @@ func NewSimpleP2pLib(id int64, msgChan chan<- *message.ConMessage) P2pNetwork {
 		}
 
 		rPort := message.PortByID(pid)
-		mutex := sync.Mutex{}
+		// mutex := sync.Mutex{}
 		conn, err := net.DialTCP("tcp", nil, &net.TCPAddr{Port: rPort})
 		if err != nil {
 			fmt.Printf("===>[Node%d] is not valid currently\n", pid)
@@ -88,7 +89,7 @@ func NewSimpleP2pLib(id int64, msgChan chan<- *message.ConMessage) P2pNetwork {
 		}
 
 		sp.Peers[conn.RemoteAddr().String()] = conn
-		sp.PeersMutex[conn.RemoteAddr().String()] = &mutex
+		// sp.PeersMutex[conn.RemoteAddr().String()] = &mutex
 		sp.Ip2Id[conn.RemoteAddr().String()] = pid
 		fmt.Printf("===>[Node%d]Connected=[%s=>%s]\n", pid, conn.LocalAddr().String(), conn.RemoteAddr().String())
 
@@ -117,7 +118,7 @@ func (sp *SimpleP2p) monitor(id int64) {
 			if err == io.EOF {
 				fmt.Printf("===>[Node%d] Remove peer node%s\n", id, conn.RemoteAddr().String())
 				delete(sp.Peers, conn.RemoteAddr().String())
-				delete(sp.PeersMutex, conn.RemoteAddr().String())
+				// delete(sp.PeersMutex, conn.RemoteAddr().String())
 				fmt.Printf("===>[Node%d] Remove peer node%s's public key%s\n", id, conn.RemoteAddr().String(), sp.PeerPublicKeys[sp.Ip2Id[conn.RemoteAddr().String()]])
 				delete(sp.PeerPublicKeys, sp.Ip2Id[conn.RemoteAddr().String()])
 				delete(sp.Ip2Id, conn.RemoteAddr().String())
@@ -125,15 +126,14 @@ func (sp *SimpleP2p) monitor(id int64) {
 			continue
 		}
 
-		mutex := sync.Mutex{}
+		// mutex := sync.Mutex{}
 		sp.Peers[conn.RemoteAddr().String()] = conn
-		sp.PeersMutex[conn.RemoteAddr().String()] = &mutex
+		// sp.PeersMutex[conn.RemoteAddr().String()] = &mutex
 		fmt.Printf("===>[Node%d]New connection create [%s->%s]\n", id, conn.RemoteAddr().String(), conn.LocalAddr().String())
 
 		// new public key message
 		// send key message to new node
 		kMsg := message.CreateKeyMsg(message.MTPublicKey, sp.NodeId, sp.PrivateKey)
-		// locker := &sync.RWMutex{}
 		if err := sp.SendUniqueNode(conn, kMsg); err != nil {
 			panic(err)
 		}
@@ -146,14 +146,13 @@ func (sp *SimpleP2p) monitor(id int64) {
 func (sp *SimpleP2p) waitData(conn *net.TCPConn) {
 	buf := make([]byte, 2048)
 	for {
-		// bufGuard.Lock()
 		n, err := conn.Read(buf)
 		if err != nil {
 			fmt.Printf("===>P2p network capture data err:%s\n", err)
 			if err == io.EOF {
 				fmt.Printf("===>Remove peer node%s\n", conn.RemoteAddr().String())
 				delete(sp.Peers, conn.RemoteAddr().String())
-				delete(sp.PeersMutex, conn.RemoteAddr().String())
+				// delete(sp.PeersMutex, conn.RemoteAddr().String())
 				fmt.Printf("===>Remove peer node%s's public key%s\n", conn.RemoteAddr().String(), sp.PeerPublicKeys[sp.Ip2Id[conn.RemoteAddr().String()]])
 				delete(sp.PeerPublicKeys, sp.Ip2Id[conn.RemoteAddr().String()])
 				delete(sp.Ip2Id, conn.RemoteAddr().String())
@@ -163,12 +162,13 @@ func (sp *SimpleP2p) waitData(conn *net.TCPConn) {
 		}
 
 		// fmt.Printf("===>Receive [%s->%s]\n", conn.RemoteAddr().String(), conn.LocalAddr().String())
-		// fmt.Println(string(buf[:n]))
 		conMsg := &message.ConMessage{}
 		if err := json.Unmarshal(buf[:n], conMsg); err != nil {
 			fmt.Println(string(buf[:n]))
 			panic(err)
 		}
+		time.Sleep(100 * time.Millisecond)
+
 		// if MutexLocked(sp.PeersMutex[conn.RemoteAddr().String()]) {
 		// 	sp.PeersMutex[conn.RemoteAddr().String()].Unlock()
 		// }
@@ -189,21 +189,25 @@ func (sp *SimpleP2p) waitData(conn *net.TCPConn) {
 			}
 
 			if sp.PeerPublicKeys[conMsg.From] != newPublicKey {
+				mutex := sync.Mutex{}
+				mutex.Lock()
 				sp.Ip2Id[conn.RemoteAddr().String()] = conMsg.From
 				sp.PeerPublicKeys[conMsg.From] = newPublicKey
+				mutex.Unlock()
+				// sp.PeersMutex[conn.RemoteAddr().String()] = &mutex
 
 				fmt.Printf("===>Get new public key from Node[%d], IP[%s]\n", conMsg.From, conn.RemoteAddr().String())
 				fmt.Printf("===>Node[%d]'s new public key is[%v]\n", conMsg.From, newPublicKey)
 			}
 
-			if MutexLocked(sp.PeersMutex[conn.RemoteAddr().String()]) {
-				sp.PeersMutex[conn.RemoteAddr().String()].Unlock()
-			}
+			// if MutexLocked(sp.PeersMutex[conn.RemoteAddr().String()]) {
+			// 	sp.PeersMutex[conn.RemoteAddr().String()].Unlock()
+			// }
 		// handle consensus message from backups
 		default:
 			sp.MsgChan <- conMsg
 		}
-		// bufGuard.Unlock()
+
 	}
 }
 
@@ -218,38 +222,45 @@ func (sp *SimpleP2p) BroadCast(v interface{}) error {
 	}
 
 	for name, conn := range sp.Peers {
+		go WriteTCP(conn, data, name)
 		// sp.PeersMutex[conn.RemoteAddr().String()].Lock()
-		_, err := conn.Write(data)
-		if err != nil {
-			fmt.Printf("===>[ERROR]write to node[%s] err:%s\n", name, err)
-		}
-		fmt.Println("Broadcast")
+		// _, err := conn.Write(data)
+		// if err != nil {
+		// 	fmt.Printf("===>[ERROR]write to node[%s] err:%s\n", name, err)
+		// }
 	}
 
-	time.Sleep(300 * time.Millisecond)
+	// time.Sleep(1000 * time.Millisecond)
 	return nil
 }
 
 // BroadCast message to all connected nodes
 func (sp *SimpleP2p) SendUniqueNode(conn *net.TCPConn, v interface{}) error {
-	sp.PeersMutex[conn.RemoteAddr().String()].Lock()
-
 	if v == nil {
 		return fmt.Errorf("===>[ERROR]empty msg body")
 	}
-	
+
 	data, err := json.Marshal(v)
 	if err != nil {
 		return err
 	}
 
-	_, err = conn.Write(data)
-	if err != nil {
-		return fmt.Errorf("===>===>[ERROR]write to node[%s] err:%s\n", conn.RemoteAddr().String(), err)
-	}
+	go WriteTCP(conn, data, conn.RemoteAddr().String())
+	// _, err = conn.Write(data)
+	// if err != nil {
+	// 	return fmt.Errorf("===>===>[ERROR]write to node[%s] err:%s\n", conn.RemoteAddr().String(), err)
+	// }
 
-	time.Sleep(200 * time.Millisecond)
+	// time.Sleep(200 * time.Millisecond)
 	return nil
+}
+
+func WriteTCP(conn *net.TCPConn, v []byte, name string) {
+	_, err := conn.Write(v)
+	if err != nil {
+		fmt.Printf("===>[ERROR]write to node[%s] err:%s\n", name, err)
+		panic(err)
+	}
 }
 
 // Get Peer Publickey
@@ -272,7 +283,7 @@ func (sp *SimpleP2p) NewClientPublickey(clientId string, pk *ecdsa.PublicKey) {
 	sp.ClientPublicKeys[clientId] = pk
 }
 
-func MutexLocked(m *sync.Mutex) bool {
-	state := reflect.ValueOf(m).Elem().FieldByName("state")
-	return state.Int()&mutexLocked == mutexLocked
-}
+// func MutexLocked(m *sync.Mutex) bool {
+// 	state := reflect.ValueOf(m).Elem().FieldByName("state")
+// 	return state.Int()&mutexLocked == mutexLocked
+// }

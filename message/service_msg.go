@@ -19,7 +19,7 @@ const (
 )
 
 // to be modified
-const MaxFaultyNode = 2
+const MaxFaultyNode = 3
 const TotalNodeNum = 3*MaxFaultyNode + 1
 
 // Hash message v, SHA256

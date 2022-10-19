@@ -73,7 +73,7 @@ func normalCaseOperation(roundSize int, sk *ecdsa.PrivateKey) {
 
 		fmt.Printf("Client Read[%d] Reply from[%d], Result is[%s]:\n", n, re.NodeID, re.Result)
 		counter++
-		if counter >= 2 {
+		if counter >= 4 {
 			fmt.Printf("Consensus(seq=%d) operation(%d) success!\n", curSeq, roundSize)
 			locker.Unlock()
 			counter = 0

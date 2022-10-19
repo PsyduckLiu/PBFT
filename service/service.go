@@ -53,6 +53,8 @@ func (s *Service) WaitRequest(sig chan interface{}, stateMachine *consensus.Stat
 			continue
 		}
 
+		// time.Sleep(100 * time.Millisecond)
+
 		// get request message from client
 		requestFromClient := &message.ClientMessage{}
 		if err := json.Unmarshal(buf[:n], requestFromClient); err != nil {

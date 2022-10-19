@@ -42,7 +42,7 @@ func (s Stage) String() string {
 }
 
 // timer
-const StateTimerOut = 5 * time.Second
+const StateTimerOut = 10 * time.Second
 const MaxStateMsgNO = 100
 
 type RequestTimer struct {
@@ -223,6 +223,9 @@ func (s *StateEngine) InspireConsensus(request *message.Request) error {
 	// generate message digest and pre-prepare message
 	dig := message.Digest(*request)
 	ppMsg := &message.PrePrepare{
+		// TimeStamp:  request.TimeStamp,
+		// ClientID:   request.ClientID,
+		// Operation:  request.Operation,
 		ViewID:     s.CurViewID,
 		SequenceID: newSeq,
 		Digest:     json.RawMessage(dig),
@@ -243,7 +246,8 @@ func (s *StateEngine) InspireConsensus(request *message.Request) error {
 	}
 	fmt.Printf("======>[Primary]Consensus broadcast Request message(%d)\n", newSeq)
 
-	// time.Sleep(100 * time.Millisecond)
+	time.Sleep(100 * time.Millisecond)
+
 	// create and broadcast PrePrepare message
 	cMsg = message.CreateConMsg(message.MTPrePrepare, ppMsg, sk, s.NodeID)
 	if err := s.P2pWire.BroadCast(cMsg); err != nil {
@@ -289,6 +293,7 @@ func (s *StateEngine) rawRequest(request *message.Request, msg *message.ConMessa
 
 // Backups receive a new Preprepare
 func (s *StateEngine) idle2PrePrepare(ppMsg *message.PrePrepare, msg *message.ConMessage) (err error) {
+	// fmt.Printf("======>[NewRequest]Receive a new request[%d]\n", ppMsg.SequenceID)
 	fmt.Printf("======>[idle2PrePrepare]Current sequence[%d]\n", ppMsg.SequenceID)
 
 	// verify the message signature

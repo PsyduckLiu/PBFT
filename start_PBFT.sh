@@ -1,5 +1,5 @@
 #!/bin/bash
-for i in $(seq 0 6)
+for i in $(seq 0 9)
 do
 go run main.go $i > result/result$i.txt &
 sleep 1
