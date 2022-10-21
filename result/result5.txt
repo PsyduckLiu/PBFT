@@ -1,17 +1,17 @@
-===>[Node5] my own key is: &{{0x6a8d50 50021514872860836552003574870784530802821893472933023620812505406798023846271 59638905498477928453180559882608549697790337177939424095637776561477435324202} 106272949849585164465386765921283940894080750541687939259491055077163464326739}
+===>[Node5] my own key is: &{{0x6a8d50 58610997304163251952372240525480608935399073863057370422311469906995081389878 100770504709220734271466331253361335125842571145183336068264042645514528599754} 114583167443969262045992672686637817558992402992390778111734775606682464295925}
 ===>P2p [Node5] is waiting at:0.0.0.0:30005
-===>[Node0]Connected=[127.0.0.1:40796=>127.0.0.1:30000]
-===>[Node1]Connected=[127.0.0.1:44082=>127.0.0.1:30001]
-===>[Node2]Connected=[127.0.0.1:39200=>127.0.0.1:30002]
-===>[Node3]Connected=[127.0.0.1:59592=>127.0.0.1:30003]
-===>[Node4]Connected=[127.0.0.1:40818=>127.0.0.1:30004]
+===>[Node0]Connected=[127.0.0.1:54594=>127.0.0.1:30000]
+===>[Node1]Connected=[127.0.0.1:53224=>127.0.0.1:30001]
+===>[Node2]Connected=[127.0.0.1:57984=>127.0.0.1:30002]
+===>[Node3]Connected=[127.0.0.1:48698=>127.0.0.1:30003]
+===>[Node4]Connected=[127.0.0.1:46846=>127.0.0.1:30004]
 ===>[Node6] is not valid currently
 ===>[Node7] is not valid currently
 ===>[Node8] is not valid currently
 ===>[Node9] is not valid currently
 ===>Service is Listening at[30005]
 ===>Consensus node[5] start primary[false]......
-===>PBFT demo is running at PID[816]
+===>PBFT demo is running at PID[1533]
 
 ===============================================
 *                                             *
@@ -19,28 +19,28 @@
 *                                             *
 ===============================================
 
-===>Get new public key from Node[2], IP[127.0.0.1:30002]
-===>Get new public key from Node[1], IP[127.0.0.1:30001]
-===>Node[2]'s new public key is[&{0x6a8d50 22231503282887722416158000184721466379366753646225943809869686363897352660518 18666253098403351655789401807054584639433619906834889688175174510064981885596}]
-===>Node[1]'s new public key is[&{0x6a8d50 92066874195348683044944196039607179204606463263491004851232956861028549840801 93581632191197472847542096230035828532685309985160235269892947299170665104375}]
-===>Get new public key from Node[3], IP[127.0.0.1:30003]
-===>Node[3]'s new public key is[&{0x6a8d50 756585054631481041400805377733725411487349939316979851155544222628447102066 55349697957339930197211917396274389548222982219488246796261945483033956207411}]
-===>Get new public key from Node[4], IP[127.0.0.1:30004]
-===>Node[4]'s new public key is[&{0x6a8d50 70403969055605032843382703995939878141040420729106493537929241477377367804424 51169261226823838211826321051255092162264338126685806523865286805435586737656}]
 ===>Get new public key from Node[0], IP[127.0.0.1:30000]
-===>Node[0]'s new public key is[&{0x6a8d50 39553845035563731245167851876915849907161178597583586243444215559768454174742 47599000414961751172764744644127015638794492830800991253111074329079659832983}]
-===>[Node5]New connection create [127.0.0.1:55140->127.0.0.1:30005]
-===>Get new public key from Node[6], IP[127.0.0.1:55140]
-===>Node[6]'s new public key is[&{0x6a8d50 47575848510757441419988833090015538127817719094340425205428855460821841768052 64531357362259700726369081166722650350071225084942251495360220184763372467292}]
-===>[Node5]New connection create [127.0.0.1:55158->127.0.0.1:30005]
-===>Get new public key from Node[7], IP[127.0.0.1:55158]
-===>Node[7]'s new public key is[&{0x6a8d50 96421024928736391161085382057009282327661546227635673983235754518779027744439 102157549544145978577433503031704360429232183296690832457145851261227939318092}]
-===>[Node5]New connection create [127.0.0.1:55176->127.0.0.1:30005]
-===>Get new public key from Node[8], IP[127.0.0.1:55176]
-===>Node[8]'s new public key is[&{0x6a8d50 24949406502046905381171094658583961397555933114897064173108415987249999828852 7105774687069619635539314697526582123521327894111025667236980702132563062757}]
-===>[Node5]New connection create [127.0.0.1:55194->127.0.0.1:30005]
-===>Get new public key from Node[9], IP[127.0.0.1:55194]
-===>Node[9]'s new public key is[&{0x6a8d50 49837653263818278200593874985724171327629905300898606960892507649676109420395 96627440622872574308714545055506269579947683644951559066621805469443013179419}]
+===>Node[0]'s new public key is[&{0x6a8d50 52115224380479343272450926908740342735843273975494604334108685004759064029995 34766945186024552050407297402121725771124709292716995726771402912416086735251}]
+===>Get new public key from Node[2], IP[127.0.0.1:30002]
+===>Get new public key from Node[3], IP[127.0.0.1:30003]
+===>Get new public key from Node[1], IP[127.0.0.1:30001]
+===>Node[1]'s new public key is[&{0x6a8d50 106663591543826571446214906072441105594296935662693305616946031657304065711116 26071000657343042369365887564898433953796793328800586222655318374875754541512}]
+===>Node[3]'s new public key is[&{0x6a8d50 47915045597974915637795709986536563292995174625492295175219414066607274199178 33495368986078617273865242823272551706600170921926794117975081171967468016437}]
+===>Node[2]'s new public key is[&{0x6a8d50 19302597563231192234872472270023735676697187243471853513699165199747869940454 88825592308136782092864563427106407676151589427554756076087317765602358997105}]
+===>Get new public key from Node[4], IP[127.0.0.1:30004]
+===>Node[4]'s new public key is[&{0x6a8d50 110216427497848988422438201017369138449941898139239622340464449968091267426417 70147516418048759791925210433585878464049932634649329130854690253917845794246}]
+===>[Node5]New connection create [127.0.0.1:58422->127.0.0.1:30005]
+===>Get new public key from Node[6], IP[127.0.0.1:58422]
+===>Node[6]'s new public key is[&{0x6a8d50 41161323595822458448697192504664232294213650257666300223875377070669565422742 11376421251078784005356800058916617426022902511056124698904748319669755802348}]
+===>[Node5]New connection create [127.0.0.1:58440->127.0.0.1:30005]
+===>Get new public key from Node[7], IP[127.0.0.1:58440]
+===>Node[7]'s new public key is[&{0x6a8d50 106529759643672357270308594156023884680692287940397340642760444834377847625079 22342824350880085857063010668169856046759664902316877885727242267933370617865}]
+===>[Node5]New connection create [127.0.0.1:58458->127.0.0.1:30005]
+===>Get new public key from Node[8], IP[127.0.0.1:58458]
+===>Node[8]'s new public key is[&{0x6a8d50 73623378300555769127480035549093420004291659061012736538576339053101304893590 74187671399200010117236555613228256856996620733626727896150086254031195980025}]
+===>[Node5]New connection create [127.0.0.1:58476->127.0.0.1:30005]
+===>Get new public key from Node[9], IP[127.0.0.1:58476]
+===>Node[9]'s new public key is[&{0x6a8d50 54582742279811077122368207098970336594182457604465111983173903208492372732074 108669771753599492663759623885394554754418723647455960198484316713638881142969}]
 
 ======>[procConsensusMsg]Consesus message type:[Request] from Node[0]
 ======>[NewRequest]Receive a new request[0]
@@ -52,21 +52,6 @@
 ======>[idle2PrePrepare]Verify success
 ======>[idle2PrePrepare] Consensus status is [PrePrepared] seq=0
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
-======>[prePrepare2Prepare]Current Prepare Message from Node[3]
-======>[prePrepare2Prepare]Current sequence[0]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
-======>[prePrepare2Prepare]Current Prepare Message from Node[1]
-======>[prePrepare2Prepare]Current sequence[0]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
-======>[prePrepare2Prepare]Current Prepare Message from Node[4]
-======>[prePrepare2Prepare]Current sequence[0]
-======>[prePrepare2Prepare]Verify success
-
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[7]
 ======>[prePrepare2Prepare]Current sequence[0]
@@ -77,31 +62,51 @@
 ======>[prePrepare2Prepare]Current sequence[0]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
-======>[prePrepare2Prepare]Current Prepare Message from Node[2]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
+======>[prePrepare2Prepare]Current Prepare Message from Node[3]
 ======>[prePrepare2Prepare]Current sequence[0]
 ======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] Consensus status is [Prepared] seq=0
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[6]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[6]
 ======>[prePrepare2Prepare]Current sequence[0]
 ======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] current[seq=0] state isn't PrePrepared:[Prepared]
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[8]
 ======>[prePrepare2Prepare]Current sequence[0]
 ======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
+======>[prePrepare2Prepare]Current Prepare Message from Node[4]
+======>[prePrepare2Prepare]Current sequence[0]
+======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] Consensus status is [Prepared] seq=0
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
+======>[prePrepare2Prepare]Current Prepare Message from Node[1]
+======>[prePrepare2Prepare]Current sequence[0]
+======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=0] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
-======>[prepare2Commit]Current Commit Message from Node[3]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
+======>[prePrepare2Prepare]Current Prepare Message from Node[2]
+======>[prePrepare2Prepare]Current sequence[0]
+======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] current[seq=0] state isn't PrePrepared:[Prepared]
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
+======>[prepare2Commit]Current Commit Message from Node[7]
 ======>[prepare2Commit]Current sequence[0]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
-======>[prepare2Commit]Current Commit Message from Node[9]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
+======>[prepare2Commit]Current Commit Message from Node[6]
+======>[prepare2Commit]Current sequence[0]
+======>[prepare2Commit]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
+======>[prepare2Commit]Current Commit Message from Node[8]
 ======>[prepare2Commit]Current sequence[0]
 ======>[prepare2Commit]Verify success
 
@@ -110,8 +115,8 @@
 ======>[prepare2Commit]Current sequence[0]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
-======>[prepare2Commit]Current Commit Message from Node[4]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
+======>[prepare2Commit]Current Commit Message from Node[2]
 ======>[prepare2Commit]Current sequence[0]
 ======>[prepare2Commit]Verify success
 
@@ -119,29 +124,24 @@
 ======>[prepare2Commit]Current Commit Message from Node[1]
 ======>[prepare2Commit]Current sequence[0]
 ======>[prepare2Commit]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
-======>[prepare2Commit]Current Commit Message from Node[7]
-======>[prepare2Commit]Current sequence[0]
-======>[prepare2Commit]Verify success
 ======>[prepare2Commit]Consensus status is [Committed] seq=0 and timer stop
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
-======>[prepare2Commit]Current Commit Message from Node[6]
-======>[prepare2Commit]Current sequence[0]
-======>[prepare2Commit]Verify success
-======>[prepare2Commit] current[seq=0] state isn't Prepared:[Committed]
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
-======>[prepare2Commit]Current Commit Message from Node[2]
-======>[prepare2Commit]Current sequence[0]
 ===>Service is executing opertion[<READ TX FROM POOL>]......
 ===>Reply Success! Seq is [0], Result is [success], Length is [110]
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
+======>[prepare2Commit]Current Commit Message from Node[9]
+======>[prepare2Commit]Current sequence[0]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(0) yet
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
-======>[prepare2Commit]Current Commit Message from Node[8]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
+======>[prepare2Commit]Current Commit Message from Node[4]
+======>[prepare2Commit]Current sequence[0]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]:=>havn't got log for message(0) yet
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
+======>[prepare2Commit]Current Commit Message from Node[3]
 ======>[prepare2Commit]Current sequence[0]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(0) yet
@@ -160,16 +160,6 @@
 ======>[prePrepare2Prepare]Current sequence[1]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
-======>[prePrepare2Prepare]Current Prepare Message from Node[9]
-======>[prePrepare2Prepare]Current sequence[1]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
-======>[prePrepare2Prepare]Current Prepare Message from Node[3]
-======>[prePrepare2Prepare]Current sequence[1]
-======>[prePrepare2Prepare]Verify success
-
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[1]
 ======>[prePrepare2Prepare]Current sequence[1]
@@ -180,31 +170,46 @@
 ======>[prePrepare2Prepare]Current sequence[1]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
-======>[prePrepare2Prepare]Current Prepare Message from Node[4]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
+======>[prePrepare2Prepare]Current Prepare Message from Node[9]
 ======>[prePrepare2Prepare]Current sequence[1]
 ======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] Consensus status is [Prepared] seq=1
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[2]
 ======>[prePrepare2Prepare]Current sequence[1]
 ======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] current[seq=1] state isn't PrePrepared:[Prepared]
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[8]
 ======>[prePrepare2Prepare]Current sequence[1]
 ======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] Consensus status is [Prepared] seq=1
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
+======>[prePrepare2Prepare]Current Prepare Message from Node[3]
+======>[prePrepare2Prepare]Current sequence[1]
+======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=1] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
-======>[prepare2Commit]Current Commit Message from Node[1]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
+======>[prePrepare2Prepare]Current Prepare Message from Node[4]
+======>[prePrepare2Prepare]Current sequence[1]
+======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] current[seq=1] state isn't PrePrepared:[Prepared]
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
+======>[prepare2Commit]Current Commit Message from Node[6]
 ======>[prepare2Commit]Current sequence[1]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
-======>[prepare2Commit]Current Commit Message from Node[4]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
+======>[prepare2Commit]Current Commit Message from Node[2]
+======>[prepare2Commit]Current sequence[1]
+======>[prepare2Commit]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
+======>[prepare2Commit]Current Commit Message from Node[0]
 ======>[prepare2Commit]Current sequence[1]
 ======>[prepare2Commit]Verify success
 
@@ -213,38 +218,33 @@
 ======>[prepare2Commit]Current sequence[1]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
-======>[prepare2Commit]Current Commit Message from Node[3]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
+======>[prepare2Commit]Current Commit Message from Node[9]
 ======>[prepare2Commit]Current sequence[1]
 ======>[prepare2Commit]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
+======>[prepare2Commit]Current Commit Message from Node[4]
+======>[prepare2Commit]Current sequence[1]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]Consensus status is [Committed] seq=1 and timer stop
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
+======>[prepare2Commit]Current Commit Message from Node[1]
+======>[prepare2Commit]Current sequence[1]
+===>Service is executing opertion[<READ TX FROM POOL>]......
+===>Reply Success! Seq is [1], Result is [success], Length is [110]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]:=>havn't got log for message(1) yet
 
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
 ======>[prepare2Commit]Current Commit Message from Node[7]
 ======>[prepare2Commit]Current sequence[1]
 ======>[prepare2Commit]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
-======>[prepare2Commit]Current Commit Message from Node[6]
-======>[prepare2Commit]Current sequence[1]
-======>[prepare2Commit]Verify success
-======>[prepare2Commit]Consensus status is [Committed] seq=1 and timer stop
-===>Service is executing opertion[<READ TX FROM POOL>]......
-===>Reply Success! Seq is [1], Result is [success], Length is [110]
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
-======>[prepare2Commit]Current Commit Message from Node[2]
-======>[prepare2Commit]Current sequence[1]
-======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(1) yet
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
-======>[prepare2Commit]Current Commit Message from Node[9]
-======>[prepare2Commit]Current sequence[1]
-======>[prepare2Commit]Verify success
-======>[prepare2Commit]:=>havn't got log for message(1) yet
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
-======>[prepare2Commit]Current Commit Message from Node[0]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
+======>[prepare2Commit]Current Commit Message from Node[3]
 ======>[prepare2Commit]Current sequence[1]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(1) yet
@@ -263,8 +263,18 @@
 ======>[prePrepare2Prepare]Current sequence[2]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
-======>[prePrepare2Prepare]Current Prepare Message from Node[4]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
+======>[prePrepare2Prepare]Current Prepare Message from Node[8]
+======>[prePrepare2Prepare]Current sequence[2]
+======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
+======>[prePrepare2Prepare]Current Prepare Message from Node[2]
+======>[prePrepare2Prepare]Current sequence[2]
+======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
+======>[prePrepare2Prepare]Current Prepare Message from Node[3]
 ======>[prePrepare2Prepare]Current sequence[2]
 ======>[prePrepare2Prepare]Verify success
 
@@ -273,41 +283,31 @@
 ======>[prePrepare2Prepare]Current sequence[2]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
-======>[prePrepare2Prepare]Current Prepare Message from Node[1]
-======>[prePrepare2Prepare]Current sequence[2]
-======>[prePrepare2Prepare]Verify success
-
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[6]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[6]
 ======>[prePrepare2Prepare]Current sequence[2]
 ======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
-======>[prePrepare2Prepare]Current Prepare Message from Node[2]
-======>[prePrepare2Prepare]Current sequence[2]
-======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] Consensus status is [Prepared] seq=2
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
-======>[prePrepare2Prepare]Current Prepare Message from Node[8]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
+======>[prePrepare2Prepare]Current Prepare Message from Node[4]
 ======>[prePrepare2Prepare]Current sequence[2]
 ======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=2] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
-======>[prePrepare2Prepare]Current Prepare Message from Node[3]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
+======>[prePrepare2Prepare]Current Prepare Message from Node[1]
 ======>[prePrepare2Prepare]Current sequence[2]
 ======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=2] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
-======>[prepare2Commit]Current Commit Message from Node[9]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
+======>[prepare2Commit]Current Commit Message from Node[7]
 ======>[prepare2Commit]Current sequence[2]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
-======>[prepare2Commit]Current Commit Message from Node[2]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
+======>[prepare2Commit]Current Commit Message from Node[8]
 ======>[prepare2Commit]Current sequence[2]
 ======>[prepare2Commit]Verify success
 
@@ -316,13 +316,8 @@
 ======>[prepare2Commit]Current sequence[2]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
-======>[prepare2Commit]Current Commit Message from Node[7]
-======>[prepare2Commit]Current sequence[2]
-======>[prepare2Commit]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
-======>[prepare2Commit]Current Commit Message from Node[6]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
+======>[prepare2Commit]Current Commit Message from Node[9]
 ======>[prepare2Commit]Current sequence[2]
 ======>[prepare2Commit]Verify success
 
@@ -330,24 +325,29 @@
 ======>[prepare2Commit]Current Commit Message from Node[3]
 ======>[prepare2Commit]Current sequence[2]
 ======>[prepare2Commit]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
+======>[prepare2Commit]Current Commit Message from Node[2]
+======>[prepare2Commit]Current sequence[2]
+======>[prepare2Commit]Verify success
 ======>[prepare2Commit]Consensus status is [Committed] seq=2 and timer stop
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
-======>[prepare2Commit]Current Commit Message from Node[8]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
+======>[prepare2Commit]Current Commit Message from Node[1]
 ======>[prepare2Commit]Current sequence[2]
 ===>Service is executing opertion[<READ TX FROM POOL>]......
-======>[prepare2Commit]Verify success
-======>[prepare2Commit] current[seq=2] state isn't Prepared:[Committed]
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
-======>[prepare2Commit]Current Commit Message from Node[4]
-======>[prepare2Commit]Current sequence[2]
 ===>Reply Success! Seq is [2], Result is [success], Length is [110]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(2) yet
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
-======>[prepare2Commit]Current Commit Message from Node[1]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
+======>[prepare2Commit]Current Commit Message from Node[6]
+======>[prepare2Commit]Current sequence[2]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]:=>havn't got log for message(2) yet
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
+======>[prepare2Commit]Current Commit Message from Node[4]
 ======>[prepare2Commit]Current sequence[2]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(2) yet
@@ -366,13 +366,8 @@
 ======>[prePrepare2Prepare]Current sequence[3]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
-======>[prePrepare2Prepare]Current Prepare Message from Node[4]
-======>[prePrepare2Prepare]Current sequence[3]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
-======>[prePrepare2Prepare]Current Prepare Message from Node[7]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
+======>[prePrepare2Prepare]Current Prepare Message from Node[1]
 ======>[prePrepare2Prepare]Current sequence[3]
 ======>[prePrepare2Prepare]Verify success
 
@@ -381,36 +376,41 @@
 ======>[prePrepare2Prepare]Current sequence[3]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
-======>[prePrepare2Prepare]Current Prepare Message from Node[1]
-======>[prePrepare2Prepare]Current sequence[3]
-======>[prePrepare2Prepare]Verify success
-
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[2]
 ======>[prePrepare2Prepare]Current sequence[3]
 ======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] Consensus status is [Prepared] seq=3
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[6]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[6]
 ======>[prePrepare2Prepare]Current sequence[3]
 ======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] current[seq=3] state isn't PrePrepared:[Prepared]
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[3]
 ======>[prePrepare2Prepare]Current sequence[3]
 ======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] Consensus status is [Prepared] seq=3
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
+======>[prePrepare2Prepare]Current Prepare Message from Node[7]
+======>[prePrepare2Prepare]Current sequence[3]
+======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=3] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
-======>[prepare2Commit]Current Commit Message from Node[0]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
+======>[prePrepare2Prepare]Current Prepare Message from Node[4]
+======>[prePrepare2Prepare]Current sequence[3]
+======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] current[seq=3] state isn't PrePrepared:[Prepared]
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
+======>[prepare2Commit]Current Commit Message from Node[1]
 ======>[prepare2Commit]Current sequence[3]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
-======>[prepare2Commit]Current Commit Message from Node[2]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
+======>[prepare2Commit]Current Commit Message from Node[7]
 ======>[prepare2Commit]Current sequence[3]
 ======>[prepare2Commit]Verify success
 
@@ -424,33 +424,33 @@
 ======>[prepare2Commit]Current sequence[3]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
-======>[prepare2Commit]Current Commit Message from Node[1]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
+======>[prepare2Commit]Current Commit Message from Node[3]
 ======>[prepare2Commit]Current sequence[3]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
-======>[prepare2Commit]Current Commit Message from Node[4]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
+======>[prepare2Commit]Current Commit Message from Node[2]
 ======>[prepare2Commit]Current sequence[3]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]Consensus status is [Committed] seq=3 and timer stop
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
 ===>Service is executing opertion[<READ TX FROM POOL>]......
 ===>Reply Success! Seq is [3], Result is [success], Length is [110]
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
+======>[prepare2Commit]Current Commit Message from Node[0]
+======>[prepare2Commit]Current sequence[3]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]:=>havn't got log for message(3) yet
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
 ======>[prepare2Commit]Current Commit Message from Node[8]
 ======>[prepare2Commit]Current sequence[3]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(3) yet
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
-======>[prepare2Commit]Current Commit Message from Node[3]
-======>[prepare2Commit]Current sequence[3]
-======>[prepare2Commit]Verify success
-======>[prepare2Commit]:=>havn't got log for message(3) yet
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
-======>[prepare2Commit]Current Commit Message from Node[7]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
+======>[prepare2Commit]Current Commit Message from Node[4]
 ======>[prepare2Commit]Current sequence[3]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(3) yet
@@ -464,18 +464,18 @@
 ======>[idle2PrePrepare]Verify success
 ======>[idle2PrePrepare] Consensus status is [PrePrepared] seq=4
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
-======>[prePrepare2Prepare]Current Prepare Message from Node[7]
-======>[prePrepare2Prepare]Current sequence[4]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
-======>[prePrepare2Prepare]Current Prepare Message from Node[2]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
+======>[prePrepare2Prepare]Current Prepare Message from Node[1]
 ======>[prePrepare2Prepare]Current sequence[4]
 ======>[prePrepare2Prepare]Verify success
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[8]
+======>[prePrepare2Prepare]Current sequence[4]
+======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
+======>[prePrepare2Prepare]Current Prepare Message from Node[7]
 ======>[prePrepare2Prepare]Current sequence[4]
 ======>[prePrepare2Prepare]Verify success
 
@@ -489,8 +489,8 @@
 ======>[prePrepare2Prepare]Current sequence[4]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
-======>[prePrepare2Prepare]Current Prepare Message from Node[1]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
+======>[prePrepare2Prepare]Current Prepare Message from Node[2]
 ======>[prePrepare2Prepare]Current sequence[4]
 ======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] Consensus status is [Prepared] seq=4
@@ -507,23 +507,8 @@
 ======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=4] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
-======>[prepare2Commit]Current Commit Message from Node[6]
-======>[prepare2Commit]Current sequence[4]
-======>[prepare2Commit]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
-======>[prepare2Commit]Current Commit Message from Node[0]
-======>[prepare2Commit]Current sequence[4]
-======>[prepare2Commit]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
-======>[prepare2Commit]Current Commit Message from Node[2]
-======>[prepare2Commit]Current sequence[4]
-======>[prepare2Commit]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
-======>[prepare2Commit]Current Commit Message from Node[3]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
+======>[prepare2Commit]Current Commit Message from Node[1]
 ======>[prepare2Commit]Current sequence[4]
 ======>[prepare2Commit]Verify success
 
@@ -532,28 +517,43 @@
 ======>[prepare2Commit]Current sequence[4]
 ======>[prepare2Commit]Verify success
 
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
+======>[prepare2Commit]Current Commit Message from Node[4]
+======>[prepare2Commit]Current sequence[4]
+======>[prepare2Commit]Verify success
+
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
 ======>[prepare2Commit]Current Commit Message from Node[8]
 ======>[prepare2Commit]Current sequence[4]
 ======>[prepare2Commit]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
+======>[prepare2Commit]Current Commit Message from Node[6]
+======>[prepare2Commit]Current sequence[4]
+======>[prepare2Commit]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
+======>[prepare2Commit]Current Commit Message from Node[3]
+======>[prepare2Commit]Current sequence[4]
+======>[prepare2Commit]Verify success
 ======>[prepare2Commit]Consensus status is [Committed] seq=4 and timer stop
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
+======>[prepare2Commit]Current Commit Message from Node[2]
+======>[prepare2Commit]Current sequence[4]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit] current[seq=4] state isn't Prepared:[Committed]
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
+======>[prepare2Commit]Current Commit Message from Node[0]
+======>[prepare2Commit]Current sequence[4]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit] current[seq=4] state isn't Prepared:[Committed]
 ===>Service is executing opertion[<READ TX FROM POOL>]......
 ===>Reply Success! Seq is [4], Result is [success], Length is [110]
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
 ======>[prepare2Commit]Current Commit Message from Node[9]
-======>[prepare2Commit]Current sequence[4]
-======>[prepare2Commit]Verify success
-======>[prepare2Commit]:=>havn't got log for message(4) yet
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
-======>[prepare2Commit]Current Commit Message from Node[1]
-======>[prepare2Commit]Current sequence[4]
-======>[prepare2Commit]Verify success
-======>[prepare2Commit]:=>havn't got log for message(4) yet
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
-======>[prepare2Commit]Current Commit Message from Node[4]
 ======>[prepare2Commit]Current sequence[4]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(4) yet
@@ -567,6 +567,21 @@
 ======>[idle2PrePrepare]Verify success
 ======>[idle2PrePrepare] Consensus status is [PrePrepared] seq=5
 
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
+======>[prePrepare2Prepare]Current Prepare Message from Node[7]
+======>[prePrepare2Prepare]Current sequence[5]
+======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
+======>[prePrepare2Prepare]Current Prepare Message from Node[4]
+======>[prePrepare2Prepare]Current sequence[5]
+======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
+======>[prePrepare2Prepare]Current Prepare Message from Node[9]
+======>[prePrepare2Prepare]Current sequence[5]
+======>[prePrepare2Prepare]Verify success
+
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[6]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[6]
 ======>[prePrepare2Prepare]Current sequence[5]
@@ -577,41 +592,26 @@
 ======>[prePrepare2Prepare]Current sequence[5]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
-======>[prePrepare2Prepare]Current Prepare Message from Node[4]
-======>[prePrepare2Prepare]Current sequence[5]
-======>[prePrepare2Prepare]Verify success
-
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[1]
 ======>[prePrepare2Prepare]Current sequence[5]
 ======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
-======>[prePrepare2Prepare]Current Prepare Message from Node[3]
-======>[prePrepare2Prepare]Current sequence[5]
-======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] Consensus status is [Prepared] seq=5
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[2]
 ======>[prePrepare2Prepare]Current sequence[5]
 ======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] Consensus status is [Prepared] seq=5
+======>[prePrepare2Prepare] current[seq=5] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
-======>[prePrepare2Prepare]Current Prepare Message from Node[9]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
+======>[prePrepare2Prepare]Current Prepare Message from Node[3]
 ======>[prePrepare2Prepare]Current sequence[5]
 ======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=5] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
-======>[prePrepare2Prepare]Current Prepare Message from Node[7]
-======>[prePrepare2Prepare]Current sequence[5]
-======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] current[seq=5] state isn't PrePrepared:[Prepared]
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
-======>[prepare2Commit]Current Commit Message from Node[2]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
+======>[prepare2Commit]Current Commit Message from Node[4]
 ======>[prepare2Commit]Current sequence[5]
 ======>[prepare2Commit]Verify success
 
@@ -620,13 +620,13 @@
 ======>[prepare2Commit]Current sequence[5]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
-======>[prepare2Commit]Current Commit Message from Node[4]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
+======>[prepare2Commit]Current Commit Message from Node[7]
 ======>[prepare2Commit]Current sequence[5]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
-======>[prepare2Commit]Current Commit Message from Node[7]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
+======>[prepare2Commit]Current Commit Message from Node[2]
 ======>[prepare2Commit]Current sequence[5]
 ======>[prepare2Commit]Verify success
 
@@ -635,15 +635,15 @@
 ======>[prepare2Commit]Current sequence[5]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
-======>[prepare2Commit]Current Commit Message from Node[3]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
+======>[prepare2Commit]Current Commit Message from Node[0]
 ======>[prepare2Commit]Current sequence[5]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]Consensus status is [Committed] seq=5 and timer stop
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
 ===>Service is executing opertion[<READ TX FROM POOL>]......
 ===>Reply Success! Seq is [5], Result is [success], Length is [110]
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
 ======>[prepare2Commit]Current Commit Message from Node[6]
 ======>[prepare2Commit]Current sequence[5]
 ======>[prepare2Commit]Verify success
@@ -655,8 +655,8 @@
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(5) yet
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
-======>[prepare2Commit]Current Commit Message from Node[0]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
+======>[prepare2Commit]Current Commit Message from Node[3]
 ======>[prepare2Commit]Current sequence[5]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(5) yet
@@ -670,13 +670,13 @@
 ======>[idle2PrePrepare]Verify success
 ======>[idle2PrePrepare] Consensus status is [PrePrepared] seq=6
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
-======>[prePrepare2Prepare]Current Prepare Message from Node[7]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
+======>[prePrepare2Prepare]Current Prepare Message from Node[9]
 ======>[prePrepare2Prepare]Current sequence[6]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
-======>[prePrepare2Prepare]Current Prepare Message from Node[8]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
+======>[prePrepare2Prepare]Current Prepare Message from Node[4]
 ======>[prePrepare2Prepare]Current sequence[6]
 ======>[prePrepare2Prepare]Verify success
 
@@ -685,21 +685,27 @@
 ======>[prePrepare2Prepare]Current sequence[6]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[6]
-======>[prePrepare2Prepare]Current Prepare Message from Node[6]
-======>[prePrepare2Prepare]Current sequence[6]
-======>[prePrepare2Prepare]Verify success
-
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[1]
 ======>[prePrepare2Prepare]Current sequence[6]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
-======>[prePrepare2Prepare]Current Prepare Message from Node[9]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
+======>[prePrepare2Prepare]Current Prepare Message from Node[8]
+======>[prePrepare2Prepare]Current sequence[6]
+======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[6]
+======>[prePrepare2Prepare]Current Prepare Message from Node[6]
 ======>[prePrepare2Prepare]Current sequence[6]
 ======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] Consensus status is [Prepared] seq=6
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
+======>[prePrepare2Prepare]Current Prepare Message from Node[7]
+======>[prePrepare2Prepare]Current sequence[6]
+======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] current[seq=6] state isn't PrePrepared:[Prepared]
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[3]
@@ -707,29 +713,8 @@
 ======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=6] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
-======>[prePrepare2Prepare]Current Prepare Message from Node[4]
-======>[prePrepare2Prepare]Current sequence[6]
-======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] current[seq=6] state isn't PrePrepared:[Prepared]
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
-======>[prepare2Commit]Current Commit Message from Node[7]
-======>[prepare2Commit]Current sequence[6]
-======>[prepare2Commit]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
-======>[prepare2Commit]Current Commit Message from Node[1]
-======>[prepare2Commit]Current sequence[6]
-======>[prepare2Commit]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
-======>[prepare2Commit]Current Commit Message from Node[3]
-======>[prepare2Commit]Current sequence[6]
-======>[prepare2Commit]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
-======>[prepare2Commit]Current Commit Message from Node[6]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
+======>[prepare2Commit]Current Commit Message from Node[8]
 ======>[prepare2Commit]Current sequence[6]
 ======>[prepare2Commit]Verify success
 
@@ -738,31 +723,46 @@
 ======>[prepare2Commit]Current sequence[6]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
-======>[prepare2Commit]Current Commit Message from Node[0]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
+======>[prepare2Commit]Current Commit Message from Node[7]
 ======>[prepare2Commit]Current sequence[6]
 ======>[prepare2Commit]Verify success
-======>[prepare2Commit]Consensus status is [Committed] seq=6 and timer stop
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
-======>[prepare2Commit]Current Commit Message from Node[9]
-======>[prepare2Commit]Current sequence[6]
-===>Service is executing opertion[<READ TX FROM POOL>]......
-======>[prepare2Commit]Verify success
-======>[prepare2Commit] current[seq=6] state isn't Prepared:[Committed]
 
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
 ======>[prepare2Commit]Current Commit Message from Node[4]
 ======>[prepare2Commit]Current sequence[6]
-===>Reply Success! Seq is [6], Result is [success], Length is [110]
 ======>[prepare2Commit]Verify success
-======>[prepare2Commit]:=>havn't got log for message(6) yet
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
-======>[prepare2Commit]Current Commit Message from Node[8]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
+======>[prepare2Commit]Current Commit Message from Node[3]
 ======>[prepare2Commit]Current sequence[6]
 ======>[prepare2Commit]Verify success
-======>[prepare2Commit]:=>havn't got log for message(6) yet
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
+======>[prepare2Commit]Current Commit Message from Node[9]
+======>[prepare2Commit]Current sequence[6]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]Consensus status is [Committed] seq=6 and timer stop
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
+======>[prepare2Commit]Current Commit Message from Node[6]
+======>[prepare2Commit]Current sequence[6]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit] current[seq=6] state isn't Prepared:[Committed]
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
+======>[prepare2Commit]Current Commit Message from Node[0]
+======>[prepare2Commit]Current sequence[6]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit] current[seq=6] state isn't Prepared:[Committed]
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
+======>[prepare2Commit]Current Commit Message from Node[1]
+======>[prepare2Commit]Current sequence[6]
+===>Service is executing opertion[<READ TX FROM POOL>]......
+======>[prepare2Commit]Verify success
+===>Reply Success! Seq is [6], Result is [success], Length is [110]
+======>[prepare2Commit] current[seq=6] state isn't Prepared:[Committed]
 
 ======>[procConsensusMsg]Consesus message type:[Request] from Node[0]
 ======>[NewRequest]Receive a new request[7]
@@ -773,23 +773,13 @@
 ======>[idle2PrePrepare]Verify success
 ======>[idle2PrePrepare] Consensus status is [PrePrepared] seq=7
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
-======>[prePrepare2Prepare]Current Prepare Message from Node[7]
-======>[prePrepare2Prepare]Current sequence[7]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
-======>[prePrepare2Prepare]Current Prepare Message from Node[1]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
+======>[prePrepare2Prepare]Current Prepare Message from Node[9]
 ======>[prePrepare2Prepare]Current sequence[7]
 ======>[prePrepare2Prepare]Verify success
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[8]
-======>[prePrepare2Prepare]Current sequence[7]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[6]
-======>[prePrepare2Prepare]Current Prepare Message from Node[6]
 ======>[prePrepare2Prepare]Current sequence[7]
 ======>[prePrepare2Prepare]Verify success
 
@@ -802,7 +792,23 @@
 ======>[prePrepare2Prepare]Current Prepare Message from Node[2]
 ======>[prePrepare2Prepare]Current sequence[7]
 ======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[6]
+======>[prePrepare2Prepare]Current Prepare Message from Node[6]
+======>[prePrepare2Prepare]Current sequence[7]
+======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
+======>[prePrepare2Prepare]Current Prepare Message from Node[1]
+======>[prePrepare2Prepare]Current sequence[7]
+======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] Consensus status is [Prepared] seq=7
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
+======>[prePrepare2Prepare]Current Prepare Message from Node[7]
+======>[prePrepare2Prepare]Current sequence[7]
+======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] current[seq=7] state isn't PrePrepared:[Prepared]
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[4]
@@ -810,24 +816,18 @@
 ======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=7] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
-======>[prePrepare2Prepare]Current Prepare Message from Node[9]
-======>[prePrepare2Prepare]Current sequence[7]
-======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] current[seq=7] state isn't PrePrepared:[Prepared]
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
-======>[prepare2Commit]Current Commit Message from Node[7]
-======>[prepare2Commit]Current sequence[7]
-======>[prepare2Commit]Verify success
-
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
 ======>[prepare2Commit]Current Commit Message from Node[8]
 ======>[prepare2Commit]Current sequence[7]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
-======>[prepare2Commit]Current Commit Message from Node[3]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
+======>[prepare2Commit]Current Commit Message from Node[6]
+======>[prepare2Commit]Current sequence[7]
+======>[prepare2Commit]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
+======>[prepare2Commit]Current Commit Message from Node[2]
 ======>[prepare2Commit]Current sequence[7]
 ======>[prepare2Commit]Verify success
 
@@ -836,8 +836,8 @@
 ======>[prepare2Commit]Current sequence[7]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
-======>[prepare2Commit]Current Commit Message from Node[4]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
+======>[prepare2Commit]Current Commit Message from Node[3]
 ======>[prepare2Commit]Current sequence[7]
 ======>[prepare2Commit]Verify success
 
@@ -846,23 +846,23 @@
 ======>[prepare2Commit]Current sequence[7]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]Consensus status is [Committed] seq=7 and timer stop
-===>Service is executing opertion[<READ TX FROM POOL>]......
-===>Reply Success! Seq is [7], Result is [success], Length is [110]
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
-======>[prepare2Commit]Current Commit Message from Node[6]
-======>[prepare2Commit]Current sequence[7]
-======>[prepare2Commit]Verify success
-======>[prepare2Commit]:=>havn't got log for message(7) yet
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
-======>[prepare2Commit]Current Commit Message from Node[2]
-======>[prepare2Commit]Current sequence[7]
-======>[prepare2Commit]Verify success
-======>[prepare2Commit]:=>havn't got log for message(7) yet
 
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
 ======>[prepare2Commit]Current Commit Message from Node[9]
+======>[prepare2Commit]Current sequence[7]
+===>Service is executing opertion[<READ TX FROM POOL>]......
+===>Reply Success! Seq is [7], Result is [success], Length is [110]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]:=>havn't got log for message(7) yet
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
+======>[prepare2Commit]Current Commit Message from Node[4]
+======>[prepare2Commit]Current sequence[7]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]:=>havn't got log for message(7) yet
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
+======>[prepare2Commit]Current Commit Message from Node[7]
 ======>[prepare2Commit]Current sequence[7]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(7) yet
@@ -876,11 +876,6 @@
 ======>[idle2PrePrepare]Verify success
 ======>[idle2PrePrepare] Consensus status is [PrePrepared] seq=8
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
-======>[prePrepare2Prepare]Current Prepare Message from Node[4]
-======>[prePrepare2Prepare]Current sequence[8]
-======>[prePrepare2Prepare]Verify success
-
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[6]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[6]
 ======>[prePrepare2Prepare]Current sequence[8]
@@ -896,13 +891,18 @@
 ======>[prePrepare2Prepare]Current sequence[8]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
-======>[prePrepare2Prepare]Current Prepare Message from Node[2]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
+======>[prePrepare2Prepare]Current Prepare Message from Node[4]
 ======>[prePrepare2Prepare]Current sequence[8]
 ======>[prePrepare2Prepare]Verify success
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[7]
+======>[prePrepare2Prepare]Current sequence[8]
+======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
+======>[prePrepare2Prepare]Current Prepare Message from Node[2]
 ======>[prePrepare2Prepare]Current sequence[8]
 ======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] Consensus status is [Prepared] seq=8
@@ -924,18 +924,13 @@
 ======>[prepare2Commit]Current sequence[8]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
-======>[prepare2Commit]Current Commit Message from Node[2]
-======>[prepare2Commit]Current sequence[8]
-======>[prepare2Commit]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
-======>[prepare2Commit]Current Commit Message from Node[4]
-======>[prepare2Commit]Current sequence[8]
-======>[prepare2Commit]Verify success
-
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
 ======>[prepare2Commit]Current Commit Message from Node[8]
+======>[prepare2Commit]Current sequence[8]
+======>[prepare2Commit]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
+======>[prepare2Commit]Current Commit Message from Node[6]
 ======>[prepare2Commit]Current sequence[8]
 ======>[prepare2Commit]Verify success
 
@@ -944,22 +939,27 @@
 ======>[prepare2Commit]Current sequence[8]
 ======>[prepare2Commit]Verify success
 
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
+======>[prepare2Commit]Current Commit Message from Node[0]
+======>[prepare2Commit]Current sequence[8]
+======>[prepare2Commit]Verify success
+
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
 ======>[prepare2Commit]Current Commit Message from Node[3]
 ======>[prepare2Commit]Current sequence[8]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]Consensus status is [Committed] seq=8 and timer stop
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
-======>[prepare2Commit]Current Commit Message from Node[6]
-======>[prepare2Commit]Current sequence[8]
 ===>Service is executing opertion[<READ TX FROM POOL>]......
 ===>Reply Success! Seq is [8], Result is [success], Length is [110]
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
+======>[prepare2Commit]Current Commit Message from Node[2]
+======>[prepare2Commit]Current sequence[8]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(8) yet
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
-======>[prepare2Commit]Current Commit Message from Node[0]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
+======>[prepare2Commit]Current Commit Message from Node[4]
 ======>[prepare2Commit]Current sequence[8]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(8) yet
@@ -979,23 +979,8 @@
 ======>[idle2PrePrepare]Verify success
 ======>[idle2PrePrepare] Consensus status is [PrePrepared] seq=9
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
-======>[prePrepare2Prepare]Current Prepare Message from Node[4]
-======>[prePrepare2Prepare]Current sequence[9]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
-======>[prePrepare2Prepare]Current Prepare Message from Node[9]
-======>[prePrepare2Prepare]Current sequence[9]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
-======>[prePrepare2Prepare]Current Prepare Message from Node[7]
-======>[prePrepare2Prepare]Current sequence[9]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
-======>[prePrepare2Prepare]Current Prepare Message from Node[8]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
+======>[prePrepare2Prepare]Current Prepare Message from Node[2]
 ======>[prePrepare2Prepare]Current sequence[9]
 ======>[prePrepare2Prepare]Verify success
 
@@ -1004,26 +989,46 @@
 ======>[prePrepare2Prepare]Current sequence[9]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
-======>[prePrepare2Prepare]Current Prepare Message from Node[2]
-======>[prePrepare2Prepare]Current sequence[9]
-======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] Consensus status is [Prepared] seq=9
-
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[3]
 ======>[prePrepare2Prepare]Current sequence[9]
 ======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] current[seq=9] state isn't PrePrepared:[Prepared]
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[1]
 ======>[prePrepare2Prepare]Current sequence[9]
 ======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
+======>[prePrepare2Prepare]Current Prepare Message from Node[8]
+======>[prePrepare2Prepare]Current sequence[9]
+======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
+======>[prePrepare2Prepare]Current Prepare Message from Node[7]
+======>[prePrepare2Prepare]Current sequence[9]
+======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] Consensus status is [Prepared] seq=9
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
+======>[prePrepare2Prepare]Current Prepare Message from Node[4]
+======>[prePrepare2Prepare]Current sequence[9]
+======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=9] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
-======>[prepare2Commit]Current Commit Message from Node[8]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
+======>[prePrepare2Prepare]Current Prepare Message from Node[9]
+======>[prePrepare2Prepare]Current sequence[9]
+======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] current[seq=9] state isn't PrePrepared:[Prepared]
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
+======>[prepare2Commit]Current Commit Message from Node[6]
+======>[prepare2Commit]Current sequence[9]
+======>[prepare2Commit]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
+======>[prepare2Commit]Current Commit Message from Node[3]
 ======>[prepare2Commit]Current sequence[9]
 ======>[prepare2Commit]Verify success
 
@@ -1032,13 +1037,8 @@
 ======>[prepare2Commit]Current sequence[9]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
-======>[prepare2Commit]Current Commit Message from Node[6]
-======>[prepare2Commit]Current sequence[9]
-======>[prepare2Commit]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
-======>[prepare2Commit]Current Commit Message from Node[1]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
+======>[prepare2Commit]Current Commit Message from Node[8]
 ======>[prepare2Commit]Current sequence[9]
 ======>[prepare2Commit]Verify success
 
@@ -1047,28 +1047,28 @@
 ======>[prepare2Commit]Current sequence[9]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
-======>[prepare2Commit]Current Commit Message from Node[3]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
+======>[prepare2Commit]Current Commit Message from Node[7]
 ======>[prepare2Commit]Current sequence[9]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]Consensus status is [Committed] seq=9 and timer stop
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
-======>[prepare2Commit]Current Commit Message from Node[4]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
+======>[prepare2Commit]Current Commit Message from Node[1]
 ======>[prepare2Commit]Current sequence[9]
 ===>Service is executing opertion[<READ TX FROM POOL>]......
-======>[prepare2Commit]Verify success
-======>[prepare2Commit] current[seq=9] state isn't Prepared:[Committed]
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
 ===>Reply Success! Seq is [9], Result is [success], Length is [110]
-======>[prepare2Commit]Current Commit Message from Node[7]
-======>[prepare2Commit]Current sequence[9]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(9) yet
 
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
 ======>[prepare2Commit]Current Commit Message from Node[9]
+======>[prepare2Commit]Current sequence[9]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]:=>havn't got log for message(9) yet
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
+======>[prepare2Commit]Current Commit Message from Node[4]
 ======>[prepare2Commit]Current sequence[9]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(9) yet
@@ -1082,18 +1082,18 @@
 ======>[idle2PrePrepare]Verify success
 ======>[idle2PrePrepare] Consensus status is [PrePrepared] seq=10
 
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
+======>[prePrepare2Prepare]Current Prepare Message from Node[8]
+======>[prePrepare2Prepare]Current sequence[10]
+======>[prePrepare2Prepare]Verify success
+
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[7]
 ======>[prePrepare2Prepare]Current sequence[10]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
-======>[prePrepare2Prepare]Current Prepare Message from Node[1]
-======>[prePrepare2Prepare]Current sequence[10]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
-======>[prePrepare2Prepare]Current Prepare Message from Node[9]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
+======>[prePrepare2Prepare]Current Prepare Message from Node[3]
 ======>[prePrepare2Prepare]Current sequence[10]
 ======>[prePrepare2Prepare]Verify success
 
@@ -1102,8 +1102,8 @@
 ======>[prePrepare2Prepare]Current sequence[10]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
-======>[prePrepare2Prepare]Current Prepare Message from Node[3]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
+======>[prePrepare2Prepare]Current Prepare Message from Node[4]
 ======>[prePrepare2Prepare]Current sequence[10]
 ======>[prePrepare2Prepare]Verify success
 
@@ -1113,25 +1113,20 @@
 ======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] Consensus status is [Prepared] seq=10
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
-======>[prePrepare2Prepare]Current Prepare Message from Node[4]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
+======>[prePrepare2Prepare]Current Prepare Message from Node[1]
 ======>[prePrepare2Prepare]Current sequence[10]
 ======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=10] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
-======>[prePrepare2Prepare]Current Prepare Message from Node[8]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
+======>[prePrepare2Prepare]Current Prepare Message from Node[9]
 ======>[prePrepare2Prepare]Current sequence[10]
 ======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=10] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
-======>[prepare2Commit]Current Commit Message from Node[2]
-======>[prepare2Commit]Current sequence[10]
-======>[prepare2Commit]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
-======>[prepare2Commit]Current Commit Message from Node[4]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
+======>[prepare2Commit]Current Commit Message from Node[3]
 ======>[prepare2Commit]Current sequence[10]
 ======>[prepare2Commit]Verify success
 
@@ -1140,41 +1135,46 @@
 ======>[prepare2Commit]Current sequence[10]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
-======>[prepare2Commit]Current Commit Message from Node[1]
-======>[prepare2Commit]Current sequence[10]
-======>[prepare2Commit]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
-======>[prepare2Commit]Current Commit Message from Node[3]
-======>[prepare2Commit]Current sequence[10]
-======>[prepare2Commit]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
-======>[prepare2Commit]Current Commit Message from Node[6]
-======>[prepare2Commit]Current sequence[10]
-======>[prepare2Commit]Verify success
-======>[prepare2Commit]Consensus status is [Committed] seq=10 and timer stop
-
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
 ======>[prepare2Commit]Current Commit Message from Node[7]
 ======>[prepare2Commit]Current sequence[10]
 ======>[prepare2Commit]Verify success
-======>[prepare2Commit] current[seq=10] state isn't Prepared:[Committed]
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
-======>[prepare2Commit]Current Commit Message from Node[9]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
+======>[prepare2Commit]Current Commit Message from Node[2]
 ======>[prepare2Commit]Current sequence[10]
 ======>[prepare2Commit]Verify success
-======>[prepare2Commit] current[seq=10] state isn't Prepared:[Committed]
 
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
 ======>[prepare2Commit]Current Commit Message from Node[0]
 ======>[prepare2Commit]Current sequence[10]
 ======>[prepare2Commit]Verify success
-======>[prepare2Commit] current[seq=10] state isn't Prepared:[Committed]
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
+======>[prepare2Commit]Current Commit Message from Node[1]
+======>[prepare2Commit]Current sequence[10]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]Consensus status is [Committed] seq=10 and timer stop
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
+======>[prepare2Commit]Current Commit Message from Node[6]
+======>[prepare2Commit]Current sequence[10]
 ===>Service is executing opertion[<READ TX FROM POOL>]......
 ===>Reply Success! Seq is [10], Result is [success], Length is [111]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]:=>havn't got log for message(10) yet
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
+======>[prepare2Commit]Current Commit Message from Node[4]
+======>[prepare2Commit]Current sequence[10]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]:=>havn't got log for message(10) yet
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
+======>[prepare2Commit]Current Commit Message from Node[9]
+======>[prepare2Commit]Current sequence[10]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]:=>havn't got log for message(10) yet
 
 ======>[procConsensusMsg]Consesus message type:[Request] from Node[0]
 ======>[NewRequest]Receive a new request[11]
@@ -1185,11 +1185,6 @@
 ======>[idle2PrePrepare]Verify success
 ======>[idle2PrePrepare] Consensus status is [PrePrepared] seq=11
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
-======>[prePrepare2Prepare]Current Prepare Message from Node[1]
-======>[prePrepare2Prepare]Current sequence[11]
-======>[prePrepare2Prepare]Verify success
-
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[6]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[6]
 ======>[prePrepare2Prepare]Current sequence[11]
@@ -1200,36 +1195,46 @@
 ======>[prePrepare2Prepare]Current sequence[11]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
-======>[prePrepare2Prepare]Current Prepare Message from Node[7]
-======>[prePrepare2Prepare]Current sequence[11]
-======>[prePrepare2Prepare]Verify success
-
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[4]
 ======>[prePrepare2Prepare]Current sequence[11]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
-======>[prePrepare2Prepare]Current Prepare Message from Node[9]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
+======>[prePrepare2Prepare]Current Prepare Message from Node[1]
 ======>[prePrepare2Prepare]Current sequence[11]
 ======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] Consensus status is [Prepared] seq=11
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[8]
 ======>[prePrepare2Prepare]Current sequence[11]
 ======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] current[seq=11] state isn't PrePrepared:[Prepared]
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[3]
 ======>[prePrepare2Prepare]Current sequence[11]
 ======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] Consensus status is [Prepared] seq=11
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
+======>[prePrepare2Prepare]Current Prepare Message from Node[7]
+======>[prePrepare2Prepare]Current sequence[11]
+======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=11] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
-======>[prepare2Commit]Current Commit Message from Node[2]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
+======>[prePrepare2Prepare]Current Prepare Message from Node[9]
+======>[prePrepare2Prepare]Current sequence[11]
+======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] current[seq=11] state isn't PrePrepared:[Prepared]
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
+======>[prepare2Commit]Current Commit Message from Node[6]
+======>[prepare2Commit]Current sequence[11]
+======>[prepare2Commit]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
+======>[prepare2Commit]Current Commit Message from Node[1]
 ======>[prepare2Commit]Current sequence[11]
 ======>[prepare2Commit]Verify success
 
@@ -1238,43 +1243,38 @@
 ======>[prepare2Commit]Current sequence[11]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
-======>[prepare2Commit]Current Commit Message from Node[7]
-======>[prepare2Commit]Current sequence[11]
-======>[prepare2Commit]Verify success
-
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
 ======>[prepare2Commit]Current Commit Message from Node[0]
 ======>[prepare2Commit]Current sequence[11]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
-======>[prepare2Commit]Current Commit Message from Node[3]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
+======>[prepare2Commit]Current Commit Message from Node[4]
 ======>[prepare2Commit]Current sequence[11]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
-======>[prepare2Commit]Current Commit Message from Node[6]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
+======>[prepare2Commit]Current Commit Message from Node[7]
 ======>[prepare2Commit]Current sequence[11]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]Consensus status is [Committed] seq=11 and timer stop
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
-===>Service is executing opertion[<READ TX FROM POOL>]......
-===>Reply Success! Seq is [11], Result is [success], Length is [111]
-======>[prepare2Commit]Current Commit Message from Node[4]
-======>[prepare2Commit]Current sequence[11]
-======>[prepare2Commit]Verify success
-======>[prepare2Commit]:=>havn't got log for message(11) yet
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
-======>[prepare2Commit]Current Commit Message from Node[1]
-======>[prepare2Commit]Current sequence[11]
-======>[prepare2Commit]Verify success
-======>[prepare2Commit]:=>havn't got log for message(11) yet
-
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
 ======>[prepare2Commit]Current Commit Message from Node[8]
+======>[prepare2Commit]Current sequence[11]
+===>Service is executing opertion[<READ TX FROM POOL>]......
+===>Reply Success! Seq is [11], Result is [success], Length is [111]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]:=>havn't got log for message(11) yet
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
+======>[prepare2Commit]Current Commit Message from Node[3]
+======>[prepare2Commit]Current sequence[11]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]:=>havn't got log for message(11) yet
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
+======>[prepare2Commit]Current Commit Message from Node[2]
 ======>[prepare2Commit]Current sequence[11]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(11) yet
@@ -1288,6 +1288,16 @@
 ======>[idle2PrePrepare]Verify success
 ======>[idle2PrePrepare] Consensus status is [PrePrepared] seq=12
 
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
+======>[prePrepare2Prepare]Current Prepare Message from Node[7]
+======>[prePrepare2Prepare]Current sequence[12]
+======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
+======>[prePrepare2Prepare]Current Prepare Message from Node[1]
+======>[prePrepare2Prepare]Current sequence[12]
+======>[prePrepare2Prepare]Verify success
+
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[6]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[6]
 ======>[prePrepare2Prepare]Current sequence[12]
@@ -1307,23 +1317,7 @@
 ======>[prePrepare2Prepare]Current Prepare Message from Node[8]
 ======>[prePrepare2Prepare]Current sequence[12]
 ======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
-======>[prePrepare2Prepare]Current Prepare Message from Node[9]
-======>[prePrepare2Prepare]Current sequence[12]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
-======>[prePrepare2Prepare]Current Prepare Message from Node[1]
-======>[prePrepare2Prepare]Current sequence[12]
-======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] Consensus status is [Prepared] seq=12
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
-======>[prePrepare2Prepare]Current Prepare Message from Node[7]
-======>[prePrepare2Prepare]Current sequence[12]
-======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] current[seq=12] state isn't PrePrepared:[Prepared]
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[2]
@@ -1331,8 +1325,14 @@
 ======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=12] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
-======>[prepare2Commit]Current Commit Message from Node[3]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
+======>[prePrepare2Prepare]Current Prepare Message from Node[9]
+======>[prePrepare2Prepare]Current sequence[12]
+======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] current[seq=12] state isn't PrePrepared:[Prepared]
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
+======>[prepare2Commit]Current Commit Message from Node[7]
 ======>[prepare2Commit]Current sequence[12]
 ======>[prepare2Commit]Verify success
 
@@ -1341,13 +1341,13 @@
 ======>[prepare2Commit]Current sequence[12]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
-======>[prepare2Commit]Current Commit Message from Node[1]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
+======>[prepare2Commit]Current Commit Message from Node[6]
 ======>[prepare2Commit]Current sequence[12]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
-======>[prepare2Commit]Current Commit Message from Node[7]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
+======>[prepare2Commit]Current Commit Message from Node[0]
 ======>[prepare2Commit]Current sequence[12]
 ======>[prepare2Commit]Verify success
 
@@ -1356,28 +1356,28 @@
 ======>[prepare2Commit]Current sequence[12]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
-======>[prepare2Commit]Current Commit Message from Node[2]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
+======>[prepare2Commit]Current Commit Message from Node[3]
 ======>[prepare2Commit]Current sequence[12]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]Consensus status is [Committed] seq=12 and timer stop
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
+======>[prepare2Commit]Current Commit Message from Node[1]
+======>[prepare2Commit]Current sequence[12]
 ===>Service is executing opertion[<READ TX FROM POOL>]......
 ===>Reply Success! Seq is [12], Result is [success], Length is [111]
-======>[prepare2Commit]Current Commit Message from Node[0]
-======>[prepare2Commit]Current sequence[12]
-======>[prepare2Commit]Verify success
-======>[prepare2Commit]:=>havn't got log for message(12) yet
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
-======>[prepare2Commit]Current Commit Message from Node[6]
-======>[prepare2Commit]Current sequence[12]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(12) yet
 
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
 ======>[prepare2Commit]Current Commit Message from Node[8]
+======>[prepare2Commit]Current sequence[12]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]:=>havn't got log for message(12) yet
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
+======>[prepare2Commit]Current Commit Message from Node[2]
 ======>[prepare2Commit]Current sequence[12]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(12) yet
@@ -1391,6 +1391,26 @@
 ======>[idle2PrePrepare]Verify success
 ======>[idle2PrePrepare] Consensus status is [PrePrepared] seq=13
 
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
+======>[prePrepare2Prepare]Current Prepare Message from Node[3]
+======>[prePrepare2Prepare]Current sequence[13]
+======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
+======>[prePrepare2Prepare]Current Prepare Message from Node[2]
+======>[prePrepare2Prepare]Current sequence[13]
+======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
+======>[prePrepare2Prepare]Current Prepare Message from Node[1]
+======>[prePrepare2Prepare]Current sequence[13]
+======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
+======>[prePrepare2Prepare]Current Prepare Message from Node[8]
+======>[prePrepare2Prepare]Current sequence[13]
+======>[prePrepare2Prepare]Verify success
+
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[6]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[6]
 ======>[prePrepare2Prepare]Current sequence[13]
@@ -1400,39 +1420,24 @@
 ======>[prePrepare2Prepare]Current Prepare Message from Node[4]
 ======>[prePrepare2Prepare]Current sequence[13]
 ======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
-======>[prePrepare2Prepare]Current Prepare Message from Node[3]
-======>[prePrepare2Prepare]Current sequence[13]
-======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] Consensus status is [Prepared] seq=13
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[7]
 ======>[prePrepare2Prepare]Current sequence[13]
 ======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
-======>[prePrepare2Prepare]Current Prepare Message from Node[2]
-======>[prePrepare2Prepare]Current sequence[13]
-======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] current[seq=13] state isn't PrePrepared:[Prepared]
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[9]
 ======>[prePrepare2Prepare]Current sequence[13]
 ======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] Consensus status is [Prepared] seq=13
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
-======>[prePrepare2Prepare]Current Prepare Message from Node[8]
-======>[prePrepare2Prepare]Current sequence[13]
-======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=13] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
-======>[prePrepare2Prepare]Current Prepare Message from Node[1]
-======>[prePrepare2Prepare]Current sequence[13]
-======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] current[seq=13] state isn't PrePrepared:[Prepared]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
+======>[prepare2Commit]Current Commit Message from Node[1]
+======>[prepare2Commit]Current sequence[13]
+======>[prepare2Commit]Verify success
 
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
 ======>[prepare2Commit]Current Commit Message from Node[3]
@@ -1444,18 +1449,13 @@
 ======>[prepare2Commit]Current sequence[13]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
-======>[prepare2Commit]Current Commit Message from Node[9]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
+======>[prepare2Commit]Current Commit Message from Node[0]
 ======>[prepare2Commit]Current sequence[13]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
-======>[prepare2Commit]Current Commit Message from Node[6]
-======>[prepare2Commit]Current sequence[13]
-======>[prepare2Commit]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
-======>[prepare2Commit]Current Commit Message from Node[1]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
+======>[prepare2Commit]Current Commit Message from Node[7]
 ======>[prepare2Commit]Current sequence[13]
 ======>[prepare2Commit]Verify success
 
@@ -1473,14 +1473,14 @@
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(13) yet
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
-======>[prepare2Commit]Current Commit Message from Node[7]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
+======>[prepare2Commit]Current Commit Message from Node[6]
 ======>[prepare2Commit]Current sequence[13]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(13) yet
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
-======>[prepare2Commit]Current Commit Message from Node[0]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
+======>[prepare2Commit]Current Commit Message from Node[9]
 ======>[prepare2Commit]Current sequence[13]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(13) yet
@@ -1494,23 +1494,23 @@
 ======>[idle2PrePrepare]Verify success
 ======>[idle2PrePrepare] Consensus status is [PrePrepared] seq=14
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
-======>[prePrepare2Prepare]Current Prepare Message from Node[1]
-======>[prePrepare2Prepare]Current sequence[14]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
-======>[prePrepare2Prepare]Current Prepare Message from Node[2]
-======>[prePrepare2Prepare]Current sequence[14]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
-======>[prePrepare2Prepare]Current Prepare Message from Node[7]
-======>[prePrepare2Prepare]Current sequence[14]
-======>[prePrepare2Prepare]Verify success
-
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[3]
+======>[prePrepare2Prepare]Current sequence[14]
+======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[6]
+======>[prePrepare2Prepare]Current Prepare Message from Node[6]
+======>[prePrepare2Prepare]Current sequence[14]
+======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
+======>[prePrepare2Prepare]Current Prepare Message from Node[4]
+======>[prePrepare2Prepare]Current sequence[14]
+======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
+======>[prePrepare2Prepare]Current Prepare Message from Node[1]
 ======>[prePrepare2Prepare]Current sequence[14]
 ======>[prePrepare2Prepare]Verify success
 
@@ -1519,26 +1519,26 @@
 ======>[prePrepare2Prepare]Current sequence[14]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
-======>[prePrepare2Prepare]Current Prepare Message from Node[4]
-======>[prePrepare2Prepare]Current sequence[14]
-======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] Consensus status is [Prepared] seq=14
-
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[8]
 ======>[prePrepare2Prepare]Current sequence[14]
 ======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] current[seq=14] state isn't PrePrepared:[Prepared]
+======>[prePrepare2Prepare] Consensus status is [Prepared] seq=14
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[6]
-======>[prePrepare2Prepare]Current Prepare Message from Node[6]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
+======>[prePrepare2Prepare]Current Prepare Message from Node[2]
 ======>[prePrepare2Prepare]Current sequence[14]
 ======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=14] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
-======>[prepare2Commit]Current Commit Message from Node[2]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
+======>[prePrepare2Prepare]Current Prepare Message from Node[7]
+======>[prePrepare2Prepare]Current sequence[14]
+======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] current[seq=14] state isn't PrePrepared:[Prepared]
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
+======>[prepare2Commit]Current Commit Message from Node[7]
 ======>[prepare2Commit]Current sequence[14]
 ======>[prepare2Commit]Verify success
 
@@ -1547,18 +1547,8 @@
 ======>[prepare2Commit]Current sequence[14]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
-======>[prepare2Commit]Current Commit Message from Node[6]
-======>[prepare2Commit]Current sequence[14]
-======>[prepare2Commit]Verify success
-
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
 ======>[prepare2Commit]Current Commit Message from Node[9]
-======>[prepare2Commit]Current sequence[14]
-======>[prepare2Commit]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
-======>[prepare2Commit]Current Commit Message from Node[4]
 ======>[prepare2Commit]Current sequence[14]
 ======>[prepare2Commit]Verify success
 
@@ -1566,24 +1556,34 @@
 ======>[prepare2Commit]Current Commit Message from Node[3]
 ======>[prepare2Commit]Current sequence[14]
 ======>[prepare2Commit]Verify success
-======>[prepare2Commit]Consensus status is [Committed] seq=14 and timer stop
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
-======>[prepare2Commit]Current Commit Message from Node[7]
-======>[prepare2Commit]Current sequence[14]
-======>[prepare2Commit]Verify success
-======>[prepare2Commit] current[seq=14] state isn't Prepared:[Committed]
-===>Service is executing opertion[<READ TX FROM POOL>]......
-===>Reply Success! Seq is [14], Result is [success], Length is [111]
 
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
 ======>[prepare2Commit]Current Commit Message from Node[8]
 ======>[prepare2Commit]Current sequence[14]
 ======>[prepare2Commit]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
+======>[prepare2Commit]Current Commit Message from Node[2]
+======>[prepare2Commit]Current sequence[14]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]Consensus status is [Committed] seq=14 and timer stop
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
+======>[prepare2Commit]Current Commit Message from Node[6]
+======>[prepare2Commit]Current sequence[14]
+===>Service is executing opertion[<READ TX FROM POOL>]......
+===>Reply Success! Seq is [14], Result is [success], Length is [111]
+======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(14) yet
 
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
 ======>[prepare2Commit]Current Commit Message from Node[0]
+======>[prepare2Commit]Current sequence[14]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]:=>havn't got log for message(14) yet
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
+======>[prepare2Commit]Current Commit Message from Node[4]
 ======>[prepare2Commit]Current sequence[14]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(14) yet
@@ -1597,23 +1597,13 @@
 ======>[idle2PrePrepare]Verify success
 ======>[idle2PrePrepare] Consensus status is [PrePrepared] seq=15
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
-======>[prePrepare2Prepare]Current Prepare Message from Node[4]
-======>[prePrepare2Prepare]Current sequence[15]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
-======>[prePrepare2Prepare]Current Prepare Message from Node[9]
-======>[prePrepare2Prepare]Current sequence[15]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
-======>[prePrepare2Prepare]Current Prepare Message from Node[3]
-======>[prePrepare2Prepare]Current sequence[15]
-======>[prePrepare2Prepare]Verify success
-
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[1]
+======>[prePrepare2Prepare]Current sequence[15]
+======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
+======>[prePrepare2Prepare]Current Prepare Message from Node[4]
 ======>[prePrepare2Prepare]Current sequence[15]
 ======>[prePrepare2Prepare]Verify success
 
@@ -1626,7 +1616,23 @@
 ======>[prePrepare2Prepare]Current Prepare Message from Node[6]
 ======>[prePrepare2Prepare]Current sequence[15]
 ======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
+======>[prePrepare2Prepare]Current Prepare Message from Node[7]
+======>[prePrepare2Prepare]Current sequence[15]
+======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
+======>[prePrepare2Prepare]Current Prepare Message from Node[9]
+======>[prePrepare2Prepare]Current sequence[15]
+======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] Consensus status is [Prepared] seq=15
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
+======>[prePrepare2Prepare]Current Prepare Message from Node[3]
+======>[prePrepare2Prepare]Current sequence[15]
+======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] current[seq=15] state isn't PrePrepared:[Prepared]
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[8]
@@ -1634,19 +1640,13 @@
 ======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=15] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
-======>[prePrepare2Prepare]Current Prepare Message from Node[7]
-======>[prePrepare2Prepare]Current sequence[15]
-======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] current[seq=15] state isn't PrePrepared:[Prepared]
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
-======>[prepare2Commit]Current Commit Message from Node[1]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
+======>[prepare2Commit]Current Commit Message from Node[4]
 ======>[prepare2Commit]Current sequence[15]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
-======>[prepare2Commit]Current Commit Message from Node[0]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
+======>[prepare2Commit]Current Commit Message from Node[2]
 ======>[prepare2Commit]Current sequence[15]
 ======>[prepare2Commit]Verify success
 
@@ -1655,13 +1655,13 @@
 ======>[prepare2Commit]Current sequence[15]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
-======>[prepare2Commit]Current Commit Message from Node[6]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
+======>[prepare2Commit]Current Commit Message from Node[7]
 ======>[prepare2Commit]Current sequence[15]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
-======>[prepare2Commit]Current Commit Message from Node[4]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
+======>[prepare2Commit]Current Commit Message from Node[0]
 ======>[prepare2Commit]Current sequence[15]
 ======>[prepare2Commit]Verify success
 
@@ -1671,22 +1671,22 @@
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]Consensus status is [Committed] seq=15 and timer stop
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
-===>Service is executing opertion[<READ TX FROM POOL>]......
-===>Reply Success! Seq is [15], Result is [success], Length is [111]
-======>[prepare2Commit]Current Commit Message from Node[7]
-======>[prepare2Commit]Current sequence[15]
-======>[prepare2Commit]Verify success
-======>[prepare2Commit]:=>havn't got log for message(15) yet
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
-======>[prepare2Commit]Current Commit Message from Node[2]
-======>[prepare2Commit]Current sequence[15]
-======>[prepare2Commit]Verify success
-======>[prepare2Commit]:=>havn't got log for message(15) yet
-
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
 ======>[prepare2Commit]Current Commit Message from Node[8]
+======>[prepare2Commit]Current sequence[15]
+===>Service is executing opertion[<READ TX FROM POOL>]......
+===>Reply Success! Seq is [15], Result is [success], Length is [111]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]:=>havn't got log for message(15) yet
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
+======>[prepare2Commit]Current Commit Message from Node[6]
+======>[prepare2Commit]Current sequence[15]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]:=>havn't got log for message(15) yet
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
+======>[prepare2Commit]Current Commit Message from Node[1]
 ======>[prepare2Commit]Current sequence[15]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(15) yet
@@ -1700,13 +1700,8 @@
 ======>[idle2PrePrepare]Verify success
 ======>[idle2PrePrepare] Consensus status is [PrePrepared] seq=16
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[6]
-======>[prePrepare2Prepare]Current Prepare Message from Node[6]
-======>[prePrepare2Prepare]Current sequence[16]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
-======>[prePrepare2Prepare]Current Prepare Message from Node[4]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
+======>[prePrepare2Prepare]Current Prepare Message from Node[7]
 ======>[prePrepare2Prepare]Current sequence[16]
 ======>[prePrepare2Prepare]Verify success
 
@@ -1715,46 +1710,46 @@
 ======>[prePrepare2Prepare]Current sequence[16]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
-======>[prePrepare2Prepare]Current Prepare Message from Node[2]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
+======>[prePrepare2Prepare]Current Prepare Message from Node[3]
 ======>[prePrepare2Prepare]Current sequence[16]
 ======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
-======>[prePrepare2Prepare]Current Prepare Message from Node[7]
-======>[prePrepare2Prepare]Current sequence[16]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
-======>[prePrepare2Prepare]Current Prepare Message from Node[9]
-======>[prePrepare2Prepare]Current sequence[16]
-======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] Consensus status is [Prepared] seq=16
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[8]
 ======>[prePrepare2Prepare]Current sequence[16]
 ======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] current[seq=16] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
-======>[prePrepare2Prepare]Current Prepare Message from Node[3]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
+======>[prePrepare2Prepare]Current Prepare Message from Node[2]
+======>[prePrepare2Prepare]Current sequence[16]
+======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
+======>[prePrepare2Prepare]Current Prepare Message from Node[4]
+======>[prePrepare2Prepare]Current sequence[16]
+======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] Consensus status is [Prepared] seq=16
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[6]
+======>[prePrepare2Prepare]Current Prepare Message from Node[6]
 ======>[prePrepare2Prepare]Current sequence[16]
 ======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=16] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
-======>[prepare2Commit]Current Commit Message from Node[4]
-======>[prepare2Commit]Current sequence[16]
-======>[prepare2Commit]Verify success
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
+======>[prePrepare2Prepare]Current Prepare Message from Node[9]
+======>[prePrepare2Prepare]Current sequence[16]
+======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] current[seq=16] state isn't PrePrepared:[Prepared]
 
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
 ======>[prepare2Commit]Current Commit Message from Node[2]
 ======>[prepare2Commit]Current sequence[16]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
-======>[prepare2Commit]Current Commit Message from Node[9]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
+======>[prepare2Commit]Current Commit Message from Node[0]
 ======>[prepare2Commit]Current sequence[16]
 ======>[prepare2Commit]Verify success
 
@@ -1763,8 +1758,8 @@
 ======>[prepare2Commit]Current sequence[16]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
-======>[prepare2Commit]Current Commit Message from Node[3]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
+======>[prepare2Commit]Current Commit Message from Node[4]
 ======>[prepare2Commit]Current sequence[16]
 ======>[prepare2Commit]Verify success
 
@@ -1772,19 +1767,24 @@
 ======>[prepare2Commit]Current Commit Message from Node[8]
 ======>[prepare2Commit]Current sequence[16]
 ======>[prepare2Commit]Verify success
-======>[prepare2Commit]Consensus status is [Committed] seq=16 and timer stop
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
-======>[prepare2Commit]Current Commit Message from Node[0]
-======>[prepare2Commit]Current sequence[16]
-===>Service is executing opertion[<READ TX FROM POOL>]......
-===>Reply Success! Seq is [16], Result is [success], Length is [111]
-======>[prepare2Commit]Verify success
-======>[prepare2Commit]:=>havn't got log for message(16) yet
 
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
 ======>[prepare2Commit]Current Commit Message from Node[6]
 ======>[prepare2Commit]Current sequence[16]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]Consensus status is [Committed] seq=16 and timer stop
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
+======>[prepare2Commit]Current Commit Message from Node[9]
+======>[prepare2Commit]Current sequence[16]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit] current[seq=16] state isn't Prepared:[Committed]
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
+======>[prepare2Commit]Current Commit Message from Node[3]
+======>[prepare2Commit]Current sequence[16]
+===>Service is executing opertion[<READ TX FROM POOL>]......
+===>Reply Success! Seq is [16], Result is [success], Length is [111]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(16) yet
 
@@ -1803,13 +1803,8 @@
 ======>[idle2PrePrepare]Verify success
 ======>[idle2PrePrepare] Consensus status is [PrePrepared] seq=17
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
-======>[prePrepare2Prepare]Current Prepare Message from Node[7]
-======>[prePrepare2Prepare]Current sequence[17]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
-======>[prePrepare2Prepare]Current Prepare Message from Node[3]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
+======>[prePrepare2Prepare]Current Prepare Message from Node[9]
 ======>[prePrepare2Prepare]Current sequence[17]
 ======>[prePrepare2Prepare]Verify success
 
@@ -1818,41 +1813,56 @@
 ======>[prePrepare2Prepare]Current sequence[17]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
-======>[prePrepare2Prepare]Current Prepare Message from Node[9]
-======>[prePrepare2Prepare]Current sequence[17]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[6]
-======>[prePrepare2Prepare]Current Prepare Message from Node[6]
-======>[prePrepare2Prepare]Current sequence[17]
-======>[prePrepare2Prepare]Verify success
-
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[4]
 ======>[prePrepare2Prepare]Current sequence[17]
 ======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] Consensus status is [Prepared] seq=17
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
-======>[prePrepare2Prepare]Current Prepare Message from Node[8]
-======>[prePrepare2Prepare]Current sequence[17]
-======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] current[seq=17] state isn't PrePrepared:[Prepared]
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[1]
 ======>[prePrepare2Prepare]Current sequence[17]
 ======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
+======>[prePrepare2Prepare]Current Prepare Message from Node[8]
+======>[prePrepare2Prepare]Current sequence[17]
+======>[prePrepare2Prepare]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
+======>[prePrepare2Prepare]Current Prepare Message from Node[3]
+======>[prePrepare2Prepare]Current sequence[17]
+======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] Consensus status is [Prepared] seq=17
+
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
+======>[prePrepare2Prepare]Current Prepare Message from Node[7]
+======>[prePrepare2Prepare]Current sequence[17]
+======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=17] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
-======>[prepare2Commit]Current Commit Message from Node[4]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[6]
+======>[prePrepare2Prepare]Current Prepare Message from Node[6]
+======>[prePrepare2Prepare]Current sequence[17]
+======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] current[seq=17] state isn't PrePrepared:[Prepared]
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
+======>[prepare2Commit]Current Commit Message from Node[2]
 ======>[prepare2Commit]Current sequence[17]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
-======>[prepare2Commit]Current Commit Message from Node[6]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
+======>[prepare2Commit]Current Commit Message from Node[1]
+======>[prepare2Commit]Current sequence[17]
+======>[prepare2Commit]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
+======>[prepare2Commit]Current Commit Message from Node[8]
+======>[prepare2Commit]Current sequence[17]
+======>[prepare2Commit]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
+======>[prepare2Commit]Current Commit Message from Node[0]
 ======>[prepare2Commit]Current sequence[17]
 ======>[prepare2Commit]Verify success
 
@@ -1861,33 +1871,23 @@
 ======>[prepare2Commit]Current sequence[17]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
-======>[prepare2Commit]Current Commit Message from Node[2]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
+======>[prepare2Commit]Current Commit Message from Node[6]
 ======>[prepare2Commit]Current sequence[17]
 ======>[prepare2Commit]Verify success
+======>[prepare2Commit]Consensus status is [Committed] seq=17 and timer stop
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
+======>[prepare2Commit]Current Commit Message from Node[4]
+======>[prepare2Commit]Current sequence[17]
+===>Service is executing opertion[<READ TX FROM POOL>]......
+======>[prepare2Commit]Verify success
+======>[prepare2Commit] current[seq=17] state isn't Prepared:[Committed]
 
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
 ======>[prepare2Commit]Current Commit Message from Node[3]
 ======>[prepare2Commit]Current sequence[17]
-======>[prepare2Commit]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
-======>[prepare2Commit]Current Commit Message from Node[8]
-======>[prepare2Commit]Current sequence[17]
-======>[prepare2Commit]Verify success
-======>[prepare2Commit]Consensus status is [Committed] seq=17 and timer stop
-===>Service is executing opertion[<READ TX FROM POOL>]......
 ===>Reply Success! Seq is [17], Result is [success], Length is [111]
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
-======>[prepare2Commit]Current Commit Message from Node[0]
-======>[prepare2Commit]Current sequence[17]
-======>[prepare2Commit]Verify success
-======>[prepare2Commit]:=>havn't got log for message(17) yet
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
-======>[prepare2Commit]Current Commit Message from Node[1]
-======>[prepare2Commit]Current sequence[17]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(17) yet
 
@@ -1906,18 +1906,8 @@
 ======>[idle2PrePrepare]Verify success
 ======>[idle2PrePrepare] Consensus status is [PrePrepared] seq=18
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
-======>[prePrepare2Prepare]Current Prepare Message from Node[1]
-======>[prePrepare2Prepare]Current sequence[18]
-======>[prePrepare2Prepare]Verify success
-
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[9]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[9]
-======>[prePrepare2Prepare]Current sequence[18]
-======>[prePrepare2Prepare]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
-======>[prePrepare2Prepare]Current Prepare Message from Node[2]
 ======>[prePrepare2Prepare]Current sequence[18]
 ======>[prePrepare2Prepare]Verify success
 
@@ -1931,17 +1921,21 @@
 ======>[prePrepare2Prepare]Current sequence[18]
 ======>[prePrepare2Prepare]Verify success
 
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
+======>[prePrepare2Prepare]Current Prepare Message from Node[1]
+======>[prePrepare2Prepare]Current sequence[18]
+======>[prePrepare2Prepare]Verify success
+
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[6]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[6]
 ======>[prePrepare2Prepare]Current sequence[18]
 ======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] Consensus status is [Prepared] seq=18
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[7]
 ======>[prePrepare2Prepare]Current sequence[18]
 ======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] current[seq=18] state isn't PrePrepared:[Prepared]
+======>[prePrepare2Prepare] Consensus status is [Prepared] seq=18
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[8]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[8]
@@ -1949,13 +1943,14 @@
 ======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=18] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
-======>[prepare2Commit]Current Commit Message from Node[2]
-======>[prepare2Commit]Current sequence[18]
-======>[prepare2Commit]Verify success
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
+======>[prePrepare2Prepare]Current Prepare Message from Node[2]
+======>[prePrepare2Prepare]Current sequence[18]
+======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] current[seq=18] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
-======>[prepare2Commit]Current Commit Message from Node[7]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
+======>[prepare2Commit]Current Commit Message from Node[9]
 ======>[prepare2Commit]Current sequence[18]
 ======>[prepare2Commit]Verify success
 
@@ -1964,39 +1959,44 @@
 ======>[prepare2Commit]Current sequence[18]
 ======>[prepare2Commit]Verify success
 
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
+======>[prepare2Commit]Current Commit Message from Node[1]
+======>[prepare2Commit]Current sequence[18]
+======>[prepare2Commit]Verify success
+
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
 ======>[prepare2Commit]Current Commit Message from Node[8]
 ======>[prepare2Commit]Current sequence[18]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
-======>[prepare2Commit]Current Commit Message from Node[4]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
+======>[prepare2Commit]Current Commit Message from Node[6]
 ======>[prepare2Commit]Current sequence[18]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
-======>[prepare2Commit]Current Commit Message from Node[9]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
+======>[prepare2Commit]Current Commit Message from Node[7]
 ======>[prepare2Commit]Current sequence[18]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]Consensus status is [Committed] seq=18 and timer stop
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
-======>[prepare2Commit]Current Commit Message from Node[6]
-======>[prepare2Commit]Current sequence[18]
-===>Service is executing opertion[<READ TX FROM POOL>]......
-======>[prepare2Commit]Verify success
-======>[prepare2Commit] current[seq=18] state isn't Prepared:[Committed]
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
-======>[prepare2Commit]Current Commit Message from Node[1]
-======>[prepare2Commit]Current sequence[18]
-======>[prepare2Commit]Verify success
-======>[prepare2Commit] current[seq=18] state isn't Prepared:[Committed]
-
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
 ======>[prepare2Commit]Current Commit Message from Node[3]
 ======>[prepare2Commit]Current sequence[18]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit] current[seq=18] state isn't Prepared:[Committed]
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[4]
+======>[prepare2Commit]Current Commit Message from Node[4]
+======>[prepare2Commit]Current sequence[18]
+===>Service is executing opertion[<READ TX FROM POOL>]......
 ===>Reply Success! Seq is [18], Result is [success], Length is [111]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit]:=>havn't got log for message(18) yet
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
+======>[prepare2Commit]Current Commit Message from Node[2]
+======>[prepare2Commit]Current sequence[18]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(18) yet
 
@@ -2009,8 +2009,8 @@
 ======>[idle2PrePrepare]Verify success
 ======>[idle2PrePrepare] Consensus status is [PrePrepared] seq=19
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
-======>[prePrepare2Prepare]Current Prepare Message from Node[2]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
+======>[prePrepare2Prepare]Current Prepare Message from Node[7]
 ======>[prePrepare2Prepare]Current sequence[19]
 ======>[prePrepare2Prepare]Verify success
 
@@ -2019,8 +2019,8 @@
 ======>[prePrepare2Prepare]Current sequence[19]
 ======>[prePrepare2Prepare]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
-======>[prePrepare2Prepare]Current Prepare Message from Node[4]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
+======>[prePrepare2Prepare]Current Prepare Message from Node[1]
 ======>[prePrepare2Prepare]Current sequence[19]
 ======>[prePrepare2Prepare]Verify success
 
@@ -2029,41 +2029,36 @@
 ======>[prePrepare2Prepare]Current sequence[19]
 ======>[prePrepare2Prepare]Verify success
 
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[2]
+======>[prePrepare2Prepare]Current Prepare Message from Node[2]
+======>[prePrepare2Prepare]Current sequence[19]
+======>[prePrepare2Prepare]Verify success
+
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[3]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[3]
 ======>[prePrepare2Prepare]Current sequence[19]
 ======>[prePrepare2Prepare]Verify success
+======>[prePrepare2Prepare] Consensus status is [Prepared] seq=19
 
 ======>[procConsensusMsg]Consesus message type:[Prepare] from Node[6]
 ======>[prePrepare2Prepare]Current Prepare Message from Node[6]
 ======>[prePrepare2Prepare]Current sequence[19]
 ======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] Consensus status is [Prepared] seq=19
+======>[prePrepare2Prepare] current[seq=19] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[7]
-======>[prePrepare2Prepare]Current Prepare Message from Node[7]
+======>[procConsensusMsg]Consesus message type:[Prepare] from Node[4]
+======>[prePrepare2Prepare]Current Prepare Message from Node[4]
 ======>[prePrepare2Prepare]Current sequence[19]
 ======>[prePrepare2Prepare]Verify success
 ======>[prePrepare2Prepare] current[seq=19] state isn't PrePrepared:[Prepared]
 
-======>[procConsensusMsg]Consesus message type:[Prepare] from Node[1]
-======>[prePrepare2Prepare]Current Prepare Message from Node[1]
-======>[prePrepare2Prepare]Current sequence[19]
-======>[prePrepare2Prepare]Verify success
-======>[prePrepare2Prepare] current[seq=19] state isn't PrePrepared:[Prepared]
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
-======>[prepare2Commit]Current Commit Message from Node[8]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
+======>[prepare2Commit]Current Commit Message from Node[1]
 ======>[prepare2Commit]Current sequence[19]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
-======>[prepare2Commit]Current Commit Message from Node[9]
-======>[prepare2Commit]Current sequence[19]
-======>[prepare2Commit]Verify success
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
-======>[prepare2Commit]Current Commit Message from Node[6]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
+======>[prepare2Commit]Current Commit Message from Node[3]
 ======>[prepare2Commit]Current sequence[19]
 ======>[prepare2Commit]Verify success
 
@@ -2072,13 +2067,18 @@
 ======>[prepare2Commit]Current sequence[19]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
-======>[prepare2Commit]Current Commit Message from Node[7]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
+======>[prepare2Commit]Current Commit Message from Node[2]
 ======>[prepare2Commit]Current sequence[19]
 ======>[prepare2Commit]Verify success
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[1]
-======>[prepare2Commit]Current Commit Message from Node[1]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[8]
+======>[prepare2Commit]Current Commit Message from Node[8]
+======>[prepare2Commit]Current sequence[19]
+======>[prepare2Commit]Verify success
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[6]
+======>[prepare2Commit]Current Commit Message from Node[6]
 ======>[prepare2Commit]Current sequence[19]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]Consensus status is [Committed] seq=19 and timer stop
@@ -2086,32 +2086,34 @@
 ======>[procConsensusMsg]Consesus message type:[Commit] from Node[0]
 ======>[prepare2Commit]Current Commit Message from Node[0]
 ======>[prepare2Commit]Current sequence[19]
-===>Service is executing opertion[<READ TX FROM POOL>]......
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit] current[seq=19] state isn't Prepared:[Committed]
 
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[3]
-======>[prepare2Commit]Current Commit Message from Node[3]
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[7]
+======>[prepare2Commit]Current Commit Message from Node[7]
 ======>[prepare2Commit]Current sequence[19]
+======>[prepare2Commit]Verify success
+======>[prepare2Commit] current[seq=19] state isn't Prepared:[Committed]
+
+======>[procConsensusMsg]Consesus message type:[Commit] from Node[9]
+======>[prepare2Commit]Current Commit Message from Node[9]
+======>[prepare2Commit]Current sequence[19]
+===>Service is executing opertion[<READ TX FROM POOL>]......
 ===>Reply Success! Seq is [19], Result is [success], Length is [111]
 ======>[prepare2Commit]Verify success
 ======>[prepare2Commit]:=>havn't got log for message(19) yet
-
-======>[procConsensusMsg]Consesus message type:[Commit] from Node[2]
-======>[prepare2Commit]Current Commit Message from Node[2]
-======>[prepare2Commit]Current sequence[19]
-======>[prepare2Commit]Verify success
-======>[prepare2Commit]:=>havn't got log for message(19) yet
-===>P2p network capture data err:EOF
 ===>P2p network capture data err:EOF
 ===>Remove peer node127.0.0.1:30000
+===>Remove peer node127.0.0.1:30000's public key&{%!s(*elliptic.p256Curve=&{{0x4e6c20 0xc0000f2040}}) 52115224380479343272450926908740342735843273975494604334108685004759064029995 34766945186024552050407297402121725771124709292716995726771402912416086735251}
+===>P2p network capture data err:EOF
+===>Remove peer node127.0.0.1:30001
+===>Remove peer node127.0.0.1:30001's public key&{%!s(*elliptic.p256Curve=&{{0x4e6c20 0xc0000f2040}}) 106663591543826571446214906072441105594296935662693305616946031657304065711116 26071000657343042369365887564898433953796793328800586222655318374875754541512}
+===>P2p network capture data err:EOF
 ===>Remove peer node127.0.0.1:30002
-===>Remove peer node127.0.0.1:30000's public key&{%!s(*elliptic.p256Curve=&{{0x4e6c20 0xc0000260c0}}) 39553845035563731245167851876915849907161178597583586243444215559768454174742 47599000414961751172764744644127015638794492830800991253111074329079659832983}
+===>Remove peer node127.0.0.1:30002's public key&{%!s(*elliptic.p256Curve=&{{0x4e6c20 0xc0000f2040}}) 19302597563231192234872472270023735676697187243471853513699165199747869940454 88825592308136782092864563427106407676151589427554756076087317765602358997105}
 ===>P2p network capture data err:EOF
 ===>Remove peer node127.0.0.1:30003
-===>Remove peer node127.0.0.1:30003's public key&{%!s(*elliptic.p256Curve=&{{0x4e6c20 0xc0000260c0}}) 756585054631481041400805377733725411487349939316979851155544222628447102066 55349697957339930197211917396274389548222982219488246796261945483033956207411}
-===>Remove peer node127.0.0.1:30002's public key&{%!s(*elliptic.p256Curve=&{{0x4e6c20 0xc0000260c0}}) 22231503282887722416158000184721466379366753646225943809869686363897352660518 18666253098403351655789401807054584639433619906834889688175174510064981885596}
+===>Remove peer node127.0.0.1:30003's public key&{%!s(*elliptic.p256Curve=&{{0x4e6c20 0xc0000f2040}}) 47915045597974915637795709986536563292995174625492295175219414066607274199178 33495368986078617273865242823272551706600170921926794117975081171967468016437}
 ===>P2p network capture data err:EOF
 ===>Remove peer node127.0.0.1:30004
-===>Remove peer node127.0.0.1:30004's public key&{%!s(*elliptic.p256Curve=&{{0x4e6c20 0xc0000260c0}}) 70403969055605032843382703995939878141040420729106493537929241477377367804424 51169261226823838211826321051255092162264338126685806523865286805435586737656}
-===>Finish by signal[hangup]
+===>Remove peer node127.0.0.1:30004's public key&{%!s(*elliptic.p256Curve=&{{0x4e6c20 0xc0000f2040}}) 110216427497848988422438201017369138449941898139239622340464449968091267426417 70147516418048759791925210433585878464049932634649329130854690253917845794246}

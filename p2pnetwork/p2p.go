@@ -44,6 +44,7 @@ type SimpleP2p struct {
 	PeerPublicKeys   map[int64]*ecdsa.PublicKey
 	ClientPublicKeys map[string]*ecdsa.PublicKey
 	MsgChan          chan<- *message.ConMessage
+	mutex            sync.Mutex
 }
 
 // new simple P2P liarary
@@ -72,6 +73,7 @@ func NewSimpleP2pLib(id int64, msgChan chan<- *message.ConMessage) P2pNetwork {
 		PeerPublicKeys:   make(map[int64]*ecdsa.PublicKey),
 		ClientPublicKeys: make(map[string]*ecdsa.PublicKey),
 		MsgChan:          msgChan,
+		mutex : sync.Mutex{},
 	}
 	go sp.monitor(id)
 
@@ -168,7 +170,7 @@ func (sp *SimpleP2p) waitData(conn *net.TCPConn) {
 			panic(err)
 		}
 		time.Sleep(100 * time.Millisecond)
-
+		
 		// if MutexLocked(sp.PeersMutex[conn.RemoteAddr().String()]) {
 		// 	sp.PeersMutex[conn.RemoteAddr().String()].Unlock()
 		// }
@@ -189,11 +191,11 @@ func (sp *SimpleP2p) waitData(conn *net.TCPConn) {
 			}
 
 			if sp.PeerPublicKeys[conMsg.From] != newPublicKey {
-				mutex := sync.Mutex{}
-				mutex.Lock()
+				// mutex := sync.Mutex{}
+				sp.mutex.Lock()
 				sp.Ip2Id[conn.RemoteAddr().String()] = conMsg.From
 				sp.PeerPublicKeys[conMsg.From] = newPublicKey
-				mutex.Unlock()
+				sp.mutex.Unlock()
 				// sp.PeersMutex[conn.RemoteAddr().String()] = &mutex
 
 				fmt.Printf("===>Get new public key from Node[%d], IP[%s]\n", conMsg.From, conn.RemoteAddr().String())
